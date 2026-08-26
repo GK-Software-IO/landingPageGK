@@ -1,0 +1,806 @@
+<title>Placa Verde GK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --ground:#05070C;
+    --surface:#0D111A;
+    --sunken:#0A0E16;
+    --ink:#E9EEF7;
+    --muted:#8593A9;
+    --line:#1B2432;
+    --paper:#F5F7FA;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) clamp(1.1rem,4vw,2.5rem) 5rem}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 .9rem;
+  }
+  h1{
+    font-family:"Archivo",sans-serif;font-weight:700;
+    font-size:clamp(1.9rem,1.2rem + 2.6vw,3rem);line-height:1.08;letter-spacing:-.025em;
+    text-wrap:balance;margin:0 0 .8rem;
+  }
+  .lede{max-width:64ch;color:var(--muted);margin:0}
+  .lede strong{color:var(--ink);font-weight:600}
+
+  .deck{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.1rem;
+    margin-top:clamp(2.2rem,5vw,3.4rem);
+  }
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .card__head{display:flex;align-items:center;gap:.7rem;padding:.9rem 1.15rem;border-bottom:1px solid var(--line)}
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;
+    color:var(--ground);background:var(--ink);padding:.18rem .45rem;border-radius:4px;
+  }
+  .card__name{font-family:"Archivo",sans-serif;font-weight:600;font-size:1.02rem;letter-spacing:-.01em;margin:0}
+
+  .stage--dark{
+    display:flex;align-items:center;justify-content:center;
+    padding:2.4rem 1rem;background:var(--sunken);
+    --knock:var(--sunken);
+  }
+  .lockup{display:flex;align-items:center;gap:1rem}
+  .lockup svg{display:block;flex:none}
+  .word{display:flex;flex-direction:column;line-height:1;gap:.45em}
+  .word b{font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:-.04em;font-size:1.85rem}
+  .word span{
+    font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.58rem;
+    letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+  }
+
+  .proofs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .proof{
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.75rem;
+    padding:1.15rem .5rem .8rem;border-right:1px solid var(--line);min-height:110px;
+    --knock:var(--surface);
+  }
+  .proof:last-child{border-right:0}
+  .proof__box{display:flex;align-items:center;justify-content:center;flex:1}
+  .proof__label{
+    font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .proof--paper{background:var(--paper);--knock:var(--paper)}
+  .proof--paper .proof__label{color:#7A8697}
+  .proof--mono{--fill1:var(--ink);--fill2:var(--ink);--knock:var(--surface)}
+
+  .ramp{display:flex;align-items:center;gap:.3rem;padding:.75rem 1.15rem;border-top:1px solid var(--line)}
+  .ramp i{width:22px;height:22px;border-radius:5px;flex:none}
+  .ramp code{
+    font-family:"IBM Plex Mono",monospace;font-size:.63rem;color:var(--muted);
+    margin-left:auto;letter-spacing:.02em;
+  }
+  .concept{margin:0;padding:.8rem 1.15rem 1.15rem;font-size:.86rem;color:var(--muted)}
+
+  .closing{
+    margin-top:clamp(2.2rem,5vw,3.4rem);padding:clamp(1.4rem,3vw,2rem);
+    border:1px solid var(--line);border-radius:16px;background:var(--surface);
+  }
+  .closing h2{font-family:"Archivo",sans-serif;font-size:1.1rem;font-weight:600;margin:0 0 .55rem;letter-spacing:-.01em}
+  .closing p{margin:0 0 .7rem;color:var(--muted);font-size:.95rem;max-width:72ch}
+  .closing strong{color:var(--ink);font-weight:600}
+  .closing ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--muted);font-size:.92rem}
+  .closing li{margin:.25rem 0}
+
+  :root{
+    --ground:#0A0C08;
+    --surface:#12160E;
+    --sunken:#0D1109;
+    --ink:#E9EBE0;
+    --muted:#8C947C;
+    --line:#232A1B;
+    --paper:#F3F3EC;
+  }
+  .card{--fill1:url(#g-mil);--fill2:#1E2615}
+  .gstage{display:flex;align-items:center;justify-content:center;padding:2.2rem 1rem}
+  .gcard .word span{opacity:.9}
+  .gstage{--knock:var(--sunken)}
+  .gcard .gstage{--knock:inherit}
+  .sec-head{margin:clamp(2.4rem,6vw,3.6rem) 0 1.1rem}
+  .sec-head h2{
+    font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(1.3rem,1rem + 1.4vw,1.8rem);
+    letter-spacing:-.02em;margin:0 0 .45rem;
+  }
+  .sec-head p{margin:0;color:var(--muted);max-width:70ch;font-size:.92rem}
+  .sec-head p strong{color:var(--ink);font-weight:600}
+  .deck{margin-top:0}
+  .proofs{grid-template-columns:repeat(auto-fit,minmax(90px,1fr))}
+</style>
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <defs>
+    <linearGradient id="g-mil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5F7040"/><stop offset="1" stop-color="#38452A"/></linearGradient>
+    <linearGradient id="g-v1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5A6B39"/><stop offset="1" stop-color="#3A4626"/></linearGradient>
+    <linearGradient id="g-v2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3E5140"/><stop offset="1" stop-color="#263327"/></linearGradient>
+    <linearGradient id="g-v3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1B4A38"/><stop offset="1" stop-color="#0E2C21"/></linearGradient>
+    <linearGradient id="g-v4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B7A52"/><stop offset="1" stop-color="#434E33"/></linearGradient>
+    <linearGradient id="g-v5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2C5738"/><stop offset="1" stop-color="#173322"/></linearGradient>
+    <linearGradient id="g-v6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14403A"/><stop offset="1" stop-color="#0A2925"/></linearGradient>
+    <linearGradient id="g-v7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7A8A45"/><stop offset="1" stop-color="#3B4522"/></linearGradient>
+    <linearGradient id="g-v8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46512E"/><stop offset="1" stop-color="#2A311B"/></linearGradient>
+  </defs>
+  <symbol id="mark-m1" viewBox="0 0 120 120"><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M82 0 L52 60 H70 L48 120 H32 L54 66 H34 L66 0 Z" fill="var(--knock)"/></symbol>
+  <symbol id="mark-m2" viewBox="0 0 120 120"><path d="M4 60 L30 10 H90 L116 60 L90 110 H30 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M4 60 L30 10 H90 L116 60 L90 110 H30 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M84 0 L44 120 H28 L68 0 Z" fill="var(--knock)"/></symbol>
+  <symbol id="mark-m3" viewBox="0 0 120 120"><path d="M38 4 H82 L116 38 V82 L82 116 H38 L4 82 V38 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M38 4 H82 L116 38 V82 L82 116 H38 L4 82 V38 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M40 0 L94 58 L40 120 H20 L74 58 L20 0 Z" fill="var(--knock)"/></symbol>
+  <symbol id="mark-m4" viewBox="0 0 120 120"><path d="M4 4 H90 L116 30 V116 H30 L4 90 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M4 4 H90 L116 30 V116 H30 L4 90 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M96 0 V32 H64 V72 H32 V120 H14 V54 H46 V14 H78 V0 Z" fill="var(--knock)"/></symbol>
+  <symbol id="mark-m5" viewBox="0 0 120 120"><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><circle cx="60" cy="20" r="6" fill="var(--knock)"/><circle cx="24" cy="82" r="6" fill="var(--knock)"/><circle cx="96" cy="82" r="6" fill="var(--knock)"/><path d="M80 0 L46 120 H36 L70 0 Z" fill="var(--knock)"/></symbol>
+  <symbol id="mark-m6" viewBox="0 0 120 120"><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M60 18 L96 37 V83 L60 102 L24 83 V37 Z" fill="none" stroke="var(--knock)" stroke-width="3" opacity=".65"/><path d="M82 0 L52 60 H70 L48 120 H32 L54 66 H34 L66 0 Z" fill="var(--knock)"/></symbol>
+  <symbol id="mark-m7" viewBox="0 0 120 120"><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M78 0 L54 54 H70 L60 78 H40 L64 24 H48 L62 0 Z" fill="var(--knock)"/></symbol>
+  <symbol id="mark-m8" viewBox="0 0 120 120"><path d="M60 2 L94 26 L118 60 L94 94 L60 118 L26 94 L2 60 L26 26 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 2 L94 26 L118 60 L94 94 L60 118 L26 94 L2 60 L26 26 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M72 0 L44 120 H35 L63 0 Z" fill="var(--knock)"/><path d="M94 0 L66 120 H57 L85 0 Z" fill="var(--knock)"/></symbol>
+  <symbol id="mark-g1" viewBox="0 0 120 120"><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M22 0 H36 V52 L76 0 H98 L50 60 L98 120 H76 L36 68 V120 H22 Z" transform="translate(58 60) scale(.94) translate(-58 -60)" fill="var(--knock)"/></symbol>
+  <symbol id="mark-g2" viewBox="0 0 120 120"><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><g fill="none" stroke="var(--knock)" stroke-width="10.5" stroke-linecap="butt"><path d="M52 45 A21 21 0 1 0 52 75 L52 62 H41"/><path d="M70 36 V84"/><path d="M92 36 L71 60.5 L92 84"/></g></symbol>
+  <symbol id="mark-g3" viewBox="0 0 120 120"><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M22 0 H36 V52 L76 0 H98 L50 60 L112 120 H86 L36 70 V120 H22 Z" transform="translate(58 60) scale(.98) translate(-58 -60)" fill="var(--knock)"/></symbol>
+  <symbol id="mark-g4" viewBox="0 0 120 120"><path d="M38 4 H82 L116 38 V82 L82 116 H38 L4 82 V38 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M38 4 H82 L116 38 V82 L82 116 H38 L4 82 V38 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M86 33 A38 38 0 1 0 86 87 L86 62 H120" fill="none" stroke="var(--knock)" stroke-width="15"/></symbol>
+  <symbol id="mark-h1" viewBox="0 0 120 120"><path d="M60 4 L115 44 L94 109 H26 L5 44 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L115 44 L94 109 H26 L5 44 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M22 0 H36 V52 L76 0 H98 L50 60 L98 120 H76 L36 68 V120 H22 Z" transform="translate(60 62) scale(.82) translate(-58 -60)" fill="var(--knock)"/></symbol>
+  <symbol id="mark-h2" viewBox="0 0 120 120"><path d="M60 4 L115 44 L94 109 H26 L5 44 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L115 44 L94 109 H26 L5 44 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><g transform="translate(54 62) scale(0.86) translate(-60 -60)" fill="none" stroke="var(--knock)" stroke-width="9.5" stroke-linecap="butt"><path d="M58.6 44.4 A22 22 0 1 0 58.6 75.6 L58.6 62 H47"/><path d="M99 36 V84"/><path d="M77 36 L98 60.5 L77 84"/></g></symbol>
+  <symbol id="mark-h3" viewBox="0 0 120 120"><path d="M8 6 H112 V68 L60 116 L8 68 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M8 6 H112 V68 L60 116 L8 68 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><g transform="translate(55 54) scale(0.84) translate(-60 -60)" fill="none" stroke="var(--knock)" stroke-width="9.5" stroke-linecap="butt"><path d="M58.6 44.4 A22 22 0 1 0 58.6 75.6 L58.6 62 H47"/><path d="M99 36 V84"/><path d="M77 36 L98 60.5 L77 84"/></g></symbol>
+  <symbol id="mark-h4" viewBox="0 0 120 120"><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><g transform="translate(120 0) scale(-1 1)"><path d="M22 0 H36 V52 L76 0 H98 L50 60 L98 120 H76 L36 68 V120 H22 Z" transform="translate(58 60) scale(.94) translate(-58 -60)" fill="var(--knock)"/></g></symbol>
+  <symbol id="mark-h5" viewBox="0 0 120 120"><path d="M60 116 L5 76 L26 11 H94 L115 76 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 116 L5 76 L26 11 H94 L115 76 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M84 0 L44 120 H28 L68 0 Z" fill="var(--knock)"/></symbol>
+  <symbol id="mark-h6" viewBox="0 0 120 120"><path d="M60 4 L115 44 L94 109 H26 L5 44 Z" transform="translate(9 9)" fill="var(--fill2)"/><path d="M60 4 L115 44 L94 109 H26 L5 44 Z" fill="var(--fill1)" stroke="var(--knock)" stroke-width="3"/><path d="M84 38 A34 34 0 1 0 84 86 L84 64 H115" fill="none" stroke="var(--knock)" stroke-width="14"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">GK Software · identidade visual · rodada 10</p>
+    <h1>Placa, pentágono e o K vazado</h1>
+    <p class="lede">Duas perguntas separadas, respondidas em duas seções. Primeiro <strong>a forma</strong>: oito execuções da placa da R7, todas num verde militar fixo, para você comparar só a geometria. Depois <strong>o rasgo virando letra</strong>, que você pediu no meio do caminho. Depois <strong>pentágono e K invertido</strong>. Por fim <strong>a cor</strong>: oito verdes na mesma forma, do olive drab de manual ao verde inglês com dourado.</p>
+  </header>
+
+  <div class="sec-head">
+    <h2>Parte 1 · a forma</h2>
+    <p>Todas na mesma paleta militar, então qualquer diferença que você sentir vem da geometria. O que muda: número de lados, orientação, e se o corte atravessa ou não.</p>
+  </div>
+  <div class="deck">
+    <section class="card">
+      <div class="card__head"><span class="tag">M1</span><h2 class="card__name">Hexágono · raio</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-m1"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">A R7 direto, agora em verde. Placa vertical com o raio atravessando — o ponto de partida.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">M2</span><h2 class="card__name">Hexágono deitado</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-m2"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-m2"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m2"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-m2"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Girado 90°, o hexágono ganha estabilidade e perde agressividade. Corte reto para não brigar com a horizontal.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">M3</span><h2 class="card__name">Octógono</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-m3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-m3"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m3"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-m3"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Oito lados leem como flange, tampa de motor, peça torneada. Corte em V para manter o avanço.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">M4</span><h2 class="card__name">Placa chanfrada</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-m4"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-m4"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m4"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-m4"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Retângulo com dois cantos cortados — chapa de aço real. O corte em escada traz entrega incremental.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">M5</span><h2 class="card__name">Placa com fixação</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-m5"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-m5"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m5"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-m5"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Furos de parafuso nos vértices. Vira componente de máquina, não símbolo — a mais literal da série.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">M6</span><h2 class="card__name">Placa gravada</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-m6"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-m6"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m6"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-m6"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Um sulco interno acompanhando a borda, como gravação em metal. Detalhe que só aparece no tamanho grande.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">M7</span><h2 class="card__name">Corte parcial</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-m7"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-m7"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m7"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-m7"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">O rasgo entra e para no meio. Mais contida: a placa continua inteira, só marcada.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">M8</span><h2 class="card__name">Losango chanfrado</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-m8"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-m8"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m8"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-m8"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Oito faces num diamante. O <code>//</code> duplo atravessando dá o ângulo que faltava.</p>
+    </section>
+  </div>
+
+
+  <div class="sec-head">
+    <h2>Parte 2 · o rasgo que escreve GK</h2>
+    <p>O corte deixa de ser figura abstrata e vira letra. Isso resolve a única fraqueza real da marca abstrata — <strong>ela não fala o nome</strong> — sem voltar ao monograma em caixinha da primeira rodada, porque aqui a letra é ausência de material, não desenho aplicado.</p>
+  </div>
+  <div class="deck">
+    <section class="card">
+      <div class="card__head"><span class="tag">G1</span><h2 class="card__name">K rasgado</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-g1"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-g1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-g1"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-g1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">O corte é a letra: um K atravessa a placa de ponta a ponta. Fala o nome sem escrever o nome.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">G2</span><h2 class="card__name">GK gravado</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-g2"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-g2"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-g2"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-g2"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">G e K sulcados na face, sem atravessar. Leitura de gravação em metal — discreta e inequívoca.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">G3</span><h2 class="card__name">K descarga</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-g3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-g3"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-g3"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-g3"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">O braço inferior do K escapa da placa e vira raio. Letra e energia na mesma forma.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">G4</span><h2 class="card__name">G aberto</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-g4"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-g4"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-g4"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-g4"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Só o G, com a barra atravessando a borda direita. O mais minimalista — e o mais forte em 20px.</p>
+    </section>
+  </div>
+
+
+  <div class="sec-head">
+    <h2>Parte 3 · pentágono e o K ao contrário</h2>
+    <p>Suas duas últimas ideias, combinadas nas seis abaixo. O <strong>pentágono</strong> muda o caráter da placa: cinco lados não têm eixo de simetria horizontal, então a forma já aponta para algum lugar antes de qualquer corte. E o <strong>K espelhado</strong> vira os braços de volta para o G — as duas letras se encaram, o que dá simetria ao conjunto sem deixá-lo parado.</p>
+  </div>
+  <div class="deck">
+    <section class="card">
+      <div class="card__head"><span class="tag">H1</span><h2 class="card__name">Pentágono · K rasgado</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-h1"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-h1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-h1"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-h1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Cinco lados dão assimetria natural: a placa já aponta para cima antes de qualquer corte. O K atravessa como nas anteriores.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">H2</span><h2 class="card__name">Pentágono · G e K espelhado</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-h2"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-h2"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-h2"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-h2"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">O K invertido faz os braços apontarem de volta para o G. As duas letras se encaram e a marca fica simétrica sem ser estática.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">H3</span><h2 class="card__name">Escudo · GK simétrico</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-h3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-h3"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-h3"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-h3"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Pentágono de brasão, topo reto e ponta embaixo. Com o K ao contrário, o conjunto vira selo — e selo aguenta bordado e carimbo.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">H4</span><h2 class="card__name">Hexágono · K invertido</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-h4"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-h4"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-h4"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-h4"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Só o K espelhado, grande, atravessando. Sem o G ele lê como <code>&lt;</code> — símbolo de código, não letra. Ambiguidade útil.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">H5</span><h2 class="card__name">Pentágono invertido · rasgo</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-h5"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-h5"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-h5"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-h5"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">Ponta para baixo: a placa aponta, em vez de sustentar. Mais tensa, e a que menos parece logo de fornecedor.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">H6</span><h2 class="card__name">Pentágono · G aberto</h2></div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="76" height="76"><use href="#mark-h6"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-h6"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-h6"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-h6"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <p class="concept">O G sozinho com a barra saindo pela borda. A mais limpa das seis e a mais legível em tamanho mínimo.</p>
+    </section>
+  </div>
+
+  <div class="sec-head">
+    <h2>Parte 4 · o verde</h2>
+    <p>A mesma forma M1 em oito verdes — vale para qualquer uma das formas acima, cada um com seu acento e seu fundo. Verde escuro é traiçoeiro: fica lindo em tela e <strong>fecha em impresso e em tamanho pequeno</strong>, por isso cada card mostra fundo claro e 20px.</p>
+  </div>
+  <div class="deck">
+    <section class="card gcard" style="--fill1:url(#g-v1);--fill2:#1E2615;--accent:#D6C9A8">
+      <div class="card__head"><span class="tag">V1</span><h2 class="card__name">Militar clássico</h2></div>
+      <div class="gstage" style="background:#1E2615">
+        <div class="lockup">
+          <svg width="66" height="66"><use href="#mark-m1"/></svg>
+          <div class="word"><b>GK</b><span style="color:#D6C9A8">Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="background:#D6C9A822">
+          <div class="proof__box" style="--knock:#1E2615"><svg width="20" height="20"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#5A6B39"></i><i style="background:#1E2615"></i><i style="background:#D6C9A8"></i>
+        <code>#5A6B39</code></div>
+      <p class="concept">Olive drab de manual. Terroso, sem brilho — a leitura mais óbvia de militar.</p>
+    </section>
+    <section class="card gcard" style="--fill1:url(#g-v2);--fill2:#1A241A;--accent:#9FB07C">
+      <div class="card__head"><span class="tag">V2</span><h2 class="card__name">Tanque</h2></div>
+      <div class="gstage" style="background:#1A241A">
+        <div class="lockup">
+          <svg width="66" height="66"><use href="#mark-m1"/></svg>
+          <div class="word"><b>GK</b><span style="color:#9FB07C">Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="background:#9FB07C22">
+          <div class="proof__box" style="--knock:#1A241A"><svg width="20" height="20"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#3E5140"></i><i style="background:#1A241A"></i><i style="background:#9FB07C"></i>
+        <code>#3E5140</code></div>
+      <p class="concept">Verde acinzentado e frio. Mais discreto, menos fantasia, envelhece muito bem.</p>
+    </section>
+    <section class="card gcard" style="--fill1:url(#g-v3);--fill2:#081C15;--accent:#6EE7B7">
+      <div class="card__head"><span class="tag">V3</span><h2 class="card__name">Floresta</h2></div>
+      <div class="gstage" style="background:#081C15">
+        <div class="lockup">
+          <svg width="66" height="66"><use href="#mark-m1"/></svg>
+          <div class="word"><b>GK</b><span style="color:#6EE7B7">Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="background:#6EE7B722">
+          <div class="proof__box" style="--knock:#081C15"><svg width="20" height="20"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#1B4A38"></i><i style="background:#081C15"></i><i style="background:#6EE7B7"></i>
+        <code>#1B4A38</code></div>
+      <p class="concept">Verde profundo com acento vivo. O mais próximo de tecnologia sem sair do escuro.</p>
+    </section>
+    <section class="card gcard" style="--fill1:url(#g-v4);--fill2:#2A3120;--accent:#EFE9D8">
+      <div class="card__head"><span class="tag">V4</span><h2 class="card__name">Musgo</h2></div>
+      <div class="gstage" style="background:#2A3120">
+        <div class="lockup">
+          <svg width="66" height="66"><use href="#mark-m1"/></svg>
+          <div class="word"><b>GK</b><span style="color:#EFE9D8">Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="background:#EFE9D822">
+          <div class="proof__box" style="--knock:#2A3120"><svg width="20" height="20"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#6B7A52"></i><i style="background:#2A3120"></i><i style="background:#EFE9D8"></i>
+        <code>#6B7A52</code></div>
+      <p class="concept">Claro e seco. Funciona bem impresso e em tecido; perde força em tela escura.</p>
+    </section>
+    <section class="card gcard" style="--fill1:url(#g-v5);--fill2:#0D2016;--accent:#C2A15A">
+      <div class="card__head"><span class="tag">V5</span><h2 class="card__name">Caçador</h2></div>
+      <div class="gstage" style="background:#0D2016">
+        <div class="lockup">
+          <svg width="66" height="66"><use href="#mark-m1"/></svg>
+          <div class="word"><b>GK</b><span style="color:#C2A15A">Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="background:#C2A15A22">
+          <div class="proof__box" style="--knock:#0D2016"><svg width="20" height="20"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#2C5738"></i><i style="background:#0D2016"></i><i style="background:#C2A15A"></i>
+        <code>#2C5738</code></div>
+      <p class="concept">Verde inglês com acento dourado. Puxa para clube e tradição, não para quartel.</p>
+    </section>
+    <section class="card gcard" style="--fill1:url(#g-v6);--fill2:#061A17;--accent:#4ADE80">
+      <div class="card__head"><span class="tag">V6</span><h2 class="card__name">Petróleo verde</h2></div>
+      <div class="gstage" style="background:#061A17">
+        <div class="lockup">
+          <svg width="66" height="66"><use href="#mark-m1"/></svg>
+          <div class="word"><b>GK</b><span style="color:#4ADE80">Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="background:#4ADE8022">
+          <div class="proof__box" style="--knock:#061A17"><svg width="20" height="20"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#14403A"></i><i style="background:#061A17"></i><i style="background:#4ADE80"></i>
+        <code>#14403A</code></div>
+      <p class="concept">Na fronteira com o azul-petróleo das primeiras rodadas — a ponte entre os dois mundos.</p>
+    </section>
+    <section class="card gcard" style="--fill1:url(#g-v7);--fill2:#15180C;--accent:#F2EEDF">
+      <div class="card__head"><span class="tag">V7</span><h2 class="card__name">Oliva sobre preto</h2></div>
+      <div class="gstage" style="background:#15180C">
+        <div class="lockup">
+          <svg width="66" height="66"><use href="#mark-m1"/></svg>
+          <div class="word"><b>GK</b><span style="color:#F2EEDF">Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="background:#F2EEDF22">
+          <div class="proof__box" style="--knock:#15180C"><svg width="20" height="20"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#7A8A45"></i><i style="background:#15180C"></i><i style="background:#F2EEDF"></i>
+        <code>#7A8A45</code></div>
+      <p class="concept">Oliva claro contra preto puro. O contraste mais alto do conjunto, quase alerta.</p>
+    </section>
+    <section class="card gcard" style="--fill1:url(#g-v8);--fill2:#171C0F;--accent:#E2703A">
+      <div class="card__head"><span class="tag">V8</span><h2 class="card__name">Militar & cobre</h2></div>
+      <div class="gstage" style="background:#171C0F">
+        <div class="lockup">
+          <svg width="66" height="66"><use href="#mark-m1"/></svg>
+          <div class="word"><b>GK</b><span style="color:#E2703A">Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="background:#E2703A22">
+          <div class="proof__box" style="--knock:#171C0F"><svg width="20" height="20"><use href="#mark-m1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#46512E"></i><i style="background:#171C0F"></i><i style="background:#E2703A"></i>
+        <code>#46512E</code></div>
+      <p class="concept">Verde de campo com laranja queimado. Aquece a paleta e traz de volta a energia do raio.</p>
+    </section>
+  </div>
+
+  <section class="closing">
+    <h2>O que eu escolheria</h2>
+    <p>Sobre a forma: <strong>M1</strong> e <strong>M3</strong> são as mais equilibradas — M3 (octógono) é a que mais parece peça usinada de verdade, e sobrevive melhor no pequeno porque a silhueta é mais cheia. <strong>M5</strong> (furos de fixação) é a mais divertida e a que menos aguenta redução. <strong>M7</strong> (corte parcial) é a mais sóbria: serve se você quiser a placa sem o drama do rasgo total.</p>
+    <p>Sobre o verde: <strong>V2 (Tanque)</strong> é o mais durável — acinzentado, sem fantasia, e o único que não corre risco de virar moda. <strong>V3 (Floresta)</strong> é o que melhor concilia seu gosto por verde com a leitura de tecnologia, graças ao acento vivo. <strong>V8 (Militar &amp; cobre)</strong> é o mais quente e o mais memorável, se você quiser trazer de volta a energia que o raio tinha.</p>
+    <p>Sobre o rasgo que vira letra: <strong>G1</strong> é a mais completa — atravessa como as outras, mas o vazio agora é um K legível, e nenhuma outra proposta destas dez rodadas conseguiu ser abstrata e falar o nome ao mesmo tempo. <strong>G4</strong> é a que melhor sobrevive em 20px, porque o G tem silhueta cheia. <strong>G3</strong> é a mais ambiciosa e a mais arriscada: quem não conhece a marca vê um raio, não um K — o que pode ser exatamente o que você quer.</p>
+    <p>Sobre pentágono e K invertido: o <strong>H2</strong> é a descoberta da rodada — o K ao contrário resolve um problema que eu não tinha conseguido resolver antes, que é dar simetria à marca sem torná-la simétrica de verdade, e as duas letras aparecem sem monograma em caixinha. <strong>H4</strong> é a mais esperta: sozinho, o K espelhado lê como <code>&lt;</code>, então quem é do meio vê código e quem não é vê uma seta. <strong>H6</strong> é a mais segura no pequeno. <strong>H5</strong> (ponta para baixo) é a mais tensa e a que menos parece logo de fornecedor — vale se você quiser algo com atitude.</p>
+    <p>Combinação que eu defenderia agora: <strong>H2 em V2 (Tanque)</strong> — pentágono, G e K encarando um ao outro, verde acinzentado que não vira moda. Segunda opção: <strong>G1 em V2</strong> — placa sóbria, corte que escreve K, verde que não vira moda. Com o acento areia reservado para tipografia e detalhes na landing page. Se quiser mais calor, <strong>G1 em V8</strong>; se quiser o máximo de legibilidade no pequeno, <strong>G4 em V3</strong>.</p>
+    <p>Diga a dupla e eu fecho o pacote: SVG horizontal, empilhado, símbolo isolado, favicon, versão de uma cor e as regras mínimas de uso.</p>
+  </section>
+</div>

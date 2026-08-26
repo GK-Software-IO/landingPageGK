@@ -1,0 +1,391 @@
+<title>Marcas de Alta Performance GK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --ground:#05070C;
+    --surface:#0D111A;
+    --sunken:#0A0E16;
+    --ink:#E9EEF7;
+    --muted:#8593A9;
+    --line:#1B2432;
+    --paper:#F5F7FA;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) clamp(1.1rem,4vw,2.5rem) 5rem}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 .9rem;
+  }
+  h1{
+    font-family:"Archivo",sans-serif;font-weight:700;
+    font-size:clamp(1.9rem,1.2rem + 2.6vw,3rem);line-height:1.08;letter-spacing:-.025em;
+    text-wrap:balance;margin:0 0 .8rem;
+  }
+  .lede{max-width:64ch;color:var(--muted);margin:0}
+  .lede strong{color:var(--ink);font-weight:600}
+
+  .deck{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.1rem;
+    margin-top:clamp(2.2rem,5vw,3.4rem);
+  }
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .card__head{display:flex;align-items:center;gap:.7rem;padding:.9rem 1.15rem;border-bottom:1px solid var(--line)}
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;
+    color:var(--ground);background:var(--ink);padding:.18rem .45rem;border-radius:4px;
+  }
+  .card__name{font-family:"Archivo",sans-serif;font-weight:600;font-size:1.02rem;letter-spacing:-.01em;margin:0}
+
+  .stage--dark{
+    display:flex;align-items:center;justify-content:center;
+    padding:2.4rem 1rem;background:var(--sunken);
+    --knock:var(--sunken);
+  }
+  .lockup{display:flex;align-items:center;gap:1rem}
+  .lockup svg{display:block;flex:none}
+  .word{display:flex;flex-direction:column;line-height:1;gap:.45em}
+  .word b{font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:-.04em;font-size:1.85rem}
+  .word span{
+    font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.58rem;
+    letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+  }
+
+  .proofs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .proof{
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.75rem;
+    padding:1.15rem .5rem .8rem;border-right:1px solid var(--line);min-height:110px;
+    --knock:var(--surface);
+  }
+  .proof:last-child{border-right:0}
+  .proof__box{display:flex;align-items:center;justify-content:center;flex:1}
+  .proof__label{
+    font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .proof--paper{background:var(--paper);--knock:var(--paper)}
+  .proof--paper .proof__label{color:#7A8697}
+  .proof--mono{--fill1:var(--ink);--fill2:var(--ink);--knock:var(--surface)}
+
+  .ramp{display:flex;align-items:center;gap:.3rem;padding:.75rem 1.15rem;border-top:1px solid var(--line)}
+  .ramp i{width:22px;height:22px;border-radius:5px;flex:none}
+  .ramp code{
+    font-family:"IBM Plex Mono",monospace;font-size:.63rem;color:var(--muted);
+    margin-left:auto;letter-spacing:.02em;
+  }
+  .concept{margin:0;padding:.8rem 1.15rem 1.15rem;font-size:.86rem;color:var(--muted)}
+
+  .closing{
+    margin-top:clamp(2.2rem,5vw,3.4rem);padding:clamp(1.4rem,3vw,2rem);
+    border:1px solid var(--line);border-radius:16px;background:var(--surface);
+  }
+  .closing h2{font-family:"Archivo",sans-serif;font-size:1.1rem;font-weight:600;margin:0 0 .55rem;letter-spacing:-.01em}
+  .closing p{margin:0 0 .7rem;color:var(--muted);font-size:.95rem;max-width:72ch}
+  .closing strong{color:var(--ink);font-weight:600}
+  .closing ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--muted);font-size:.92rem}
+  .closing li{margin:.25rem 0}
+
+  .tagline{
+    font-family:"IBM Plex Mono",monospace;font-size:.5rem;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--muted);
+  }
+</style>
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <defs>
+    <linearGradient id="g-p1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#2563EB"/></linearGradient>
+    <linearGradient id="g-p2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBBF24"/><stop offset="1" stop-color="#F97316"/></linearGradient>
+    <linearGradient id="g-p3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4ADE80"/><stop offset="1" stop-color="#06B6D4"/></linearGradient>
+    <linearGradient id="g-p4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F43F5E"/><stop offset="1" stop-color="#7C3AED"/></linearGradient>
+    <linearGradient id="g-p5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#6366F1"/></linearGradient>
+    <linearGradient id="g-p6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A3E635"/><stop offset="1" stop-color="#16A34A"/></linearGradient>
+    <linearGradient id="g-p7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06B6D4"/><stop offset="1" stop-color="#3B82F6"/></linearGradient>
+    <linearGradient id="g-p8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F97316"/><stop offset="1" stop-color="#DC2626"/></linearGradient>
+  </defs>
+  <symbol id="mark-p1" viewBox="0 0 120 120"><g transform="skewX(-9) translate(10 0)" fill="none" stroke-width="15" stroke-linejoin="miter" stroke-linecap="butt"><path d="M18 16 L60 60 L18 104" stroke="var(--fill1)"/><path d="M60 16 L102 60 L60 104" stroke="var(--fill2)"/></g></symbol>
+  <symbol id="mark-p2" viewBox="0 0 120 120"><path d="M68 4 L20 68 H52 L44 116 L100 48 H66 Z" fill="var(--fill1)"/><path d="M20 68 H52 L48 84 H26 Z" fill="var(--fill2)"/></symbol>
+  <symbol id="mark-p3" viewBox="0 0 120 120"><path d="M8 114 V96 L30 78 V114 Z" fill="var(--fill1)"/><path d="M34 114 V75 L56 57 V114 Z" fill="var(--fill1)"/><path d="M60 114 V53 L82 35 V114 Z" fill="var(--fill1)"/><path d="M86 114 V32 L108 14 V114 Z" fill="var(--fill2)"/></symbol>
+  <symbol id="mark-p4" viewBox="0 0 120 120"><g fill="var(--fill1)"><path d="M60 58 L50 8 L94 32 Z"/><path d="M60 58 L50 8 L94 32 Z" transform="rotate(120 60 60)"/><path d="M60 58 L50 8 L94 32 Z" transform="rotate(240 60 60)"/></g><circle cx="60" cy="60" r="13" fill="var(--fill2)"/></symbol>
+  <symbol id="mark-p5" viewBox="0 0 120 120"><g fill="var(--fill2)"><rect x="38" y="2" width="11" height="20" rx="2"/><rect x="71" y="2" width="11" height="20" rx="2"/><rect x="38" y="98" width="11" height="20" rx="2"/><rect x="71" y="98" width="11" height="20" rx="2"/><rect x="2" y="38" width="20" height="11" rx="2"/><rect x="2" y="71" width="20" height="11" rx="2"/><rect x="98" y="38" width="20" height="11" rx="2"/><rect x="98" y="71" width="20" height="11" rx="2"/></g><rect x="20" y="20" width="80" height="80" rx="16" fill="var(--fill1)"/><path d="M60 40 L80 60 L60 80 L40 60 Z" fill="var(--knock)"/></symbol>
+  <symbol id="mark-p6" viewBox="0 0 120 120"><path d="M60 8 L112 112 H8 Z" fill="var(--fill1)"/><path d="M60 60 L88 112 H32 Z" fill="var(--knock)"/><path d="M60 8 L79 46 H41 Z" fill="var(--fill2)"/></symbol>
+  <symbol id="mark-p7" viewBox="0 0 120 120"><g fill="none" stroke-width="12" stroke-linecap="butt"><path d="M4 98 C46 98 66 84 116 44" stroke="var(--fill1)"/><path d="M4 68 C40 68 56 58 96 28" stroke="var(--fill1)"/><path d="M28 38 C52 38 60 34 84 16" stroke="var(--fill2)"/></g></symbol>
+  <symbol id="mark-p8" viewBox="0 0 120 120"><g transform="rotate(135 60 60)" fill="none" stroke-width="14"><circle cx="60" cy="60" r="45" stroke="var(--fill1)" stroke-dasharray="177 106"/><circle cx="60" cy="60" r="45" stroke="var(--fill2)" stroke-dasharray="34 249" stroke-dashoffset="-183"/></g><path d="M60 60 L96 32" stroke="var(--fill2)" stroke-width="11" stroke-linecap="round"/><circle cx="60" cy="60" r="11" fill="var(--fill1)"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">GK Software · identidade visual · rodada 05</p>
+    <h1>Alta performance como conceito de marca</h1>
+    <p class="lede">"Alta performance" tem vocabulário visual próprio, e ele não é o mesmo de "tecnologia": é <strong>velocidade, ganho medido e precisão de máquina</strong> — ângulos agudos, inclinação para frente, progressão. As oito abaixo atacam esse conceito por ângulos diferentes, do mais literal ao mais abstrato. Fundo escuro é o habitat; ao lado, as provas de fundo claro, uma cor e 20px.</p>
+  </header>
+
+  <div class="deck">
+    <section class="card" style="--fill1:url(#g-p1);--fill2:#67E8F9">
+      <div class="card__head">
+        <span class="tag">P1</span>
+        <h2 class="card__name">Vetor</h2>
+      </div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="72" height="72"><use href="#mark-p1"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-p1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-p1"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-p1"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#22D3EE"></i><i style="background:#2563EB"></i><i style="background:#67E8F9"></i>
+        <code>#22D3EE → #2563EB</code>
+      </div>
+      <p class="concept">Dois chevrons inclinados para frente. Aceleração pura, sem metáfora intermediária.</p>
+    </section>
+
+    <section class="card" style="--fill1:url(#g-p2);--fill2:#FDE047">
+      <div class="card__head">
+        <span class="tag">P2</span>
+        <h2 class="card__name">Descarga</h2>
+      </div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="72" height="72"><use href="#mark-p2"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-p2"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-p2"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-p2"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#FBBF24"></i><i style="background:#F97316"></i><i style="background:#FDE047"></i>
+        <code>#FBBF24 → #F97316</code>
+      </div>
+      <p class="concept">Raio facetado: latência baixa e resposta imediata. Energia, não decoração.</p>
+    </section>
+
+    <section class="card" style="--fill1:url(#g-p3);--fill2:#A3E635">
+      <div class="card__head">
+        <span class="tag">P3</span>
+        <h2 class="card__name">Ápice</h2>
+      </div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="72" height="72"><use href="#mark-p3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-p3"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-p3"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-p3"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#4ADE80"></i><i style="background:#06B6D4"></i><i style="background:#A3E635"></i>
+        <code>#4ADE80 → #06B6D4</code>
+      </div>
+      <p class="concept">Quatro colunas com o topo em rampa contínua. Ganho de performance medido, não prometido.</p>
+    </section>
+
+    <section class="card" style="--fill1:url(#g-p4);--fill2:#FDA4AF">
+      <div class="card__head">
+        <span class="tag">P4</span>
+        <h2 class="card__name">Rotor</h2>
+      </div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="72" height="72"><use href="#mark-p4"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-p4"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-p4"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-p4"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#F43F5E"></i><i style="background:#7C3AED"></i><i style="background:#FDA4AF"></i>
+        <code>#F43F5E → #7C3AED</code>
+      </div>
+      <p class="concept">Três lâminas em rotação. Throughput: a máquina que não para de girar.</p>
+    </section>
+
+    <section class="card" style="--fill1:url(#g-p5);--fill2:#A5B4FC">
+      <div class="card__head">
+        <span class="tag">P5</span>
+        <h2 class="card__name">Núcleo</h2>
+      </div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="72" height="72"><use href="#mark-p5"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-p5"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-p5"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-p5"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#38BDF8"></i><i style="background:#6366F1"></i><i style="background:#A5B4FC"></i>
+        <code>#38BDF8 → #6366F1</code>
+      </div>
+      <p class="concept">Chip com barramento. Processamento como centro da marca — literal na medida certa.</p>
+    </section>
+
+    <section class="card" style="--fill1:url(#g-p6);--fill2:#D9F99D">
+      <div class="card__head">
+        <span class="tag">P6</span>
+        <h2 class="card__name">Delta</h2>
+      </div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="72" height="72"><use href="#mark-p6"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-p6"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-p6"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-p6"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#A3E635"></i><i style="background:#16A34A"></i><i style="background:#D9F99D"></i>
+        <code>#A3E635 → #16A34A</code>
+      </div>
+      <p class="concept">O símbolo matemático de variação. Alta performance é a diferença entre antes e depois.</p>
+    </section>
+
+    <section class="card" style="--fill1:url(#g-p7);--fill2:#67E8F9">
+      <div class="card__head">
+        <span class="tag">P7</span>
+        <h2 class="card__name">Fluxo</h2>
+      </div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="72" height="72"><use href="#mark-p7"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-p7"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-p7"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-p7"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#06B6D4"></i><i style="background:#3B82F6"></i><i style="background:#67E8F9"></i>
+        <code>#06B6D4 → #3B82F6</code>
+      </div>
+      <p class="concept">Linhas laminares acelerando à direita. Eficiência sem atrito — a estética do túnel de vento.</p>
+    </section>
+
+    <section class="card" style="--fill1:url(#g-p8);--fill2:#FCD34D">
+      <div class="card__head">
+        <span class="tag">P8</span>
+        <h2 class="card__name">Giro alto</h2>
+      </div>
+      <div class="stage--dark">
+        <div class="lockup">
+          <svg width="72" height="72"><use href="#mark-p8"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper">
+          <div class="proof__box"><svg width="42" height="42"><use href="#mark-p8"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-p8"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box"><svg width="20" height="20"><use href="#mark-p8"/></svg></div>
+          <span class="proof__label">20px</span>
+        </div>
+      </div>
+      <div class="ramp"><i style="background:#F97316"></i><i style="background:#DC2626"></i><i style="background:#FCD34D"></i>
+        <code>#F97316 → #DC2626</code>
+      </div>
+      <p class="concept">Tacômetro na faixa final com a agulha cravada. Trabalhar no limite da máquina.</p>
+    </section>
+  </div>
+
+  <section class="closing">
+    <h2>Leitura das oito</h2>
+    <p>Quanto mais literal o símbolo, mais rápido ele comunica e mais cedo ele cansa. Quanto mais abstrato, mais tempo leva para grudar — e mais tempo dura. Onde cada uma cai:</p>
+    <ul>
+      <li><strong>Mais literais</strong> — P2 (Descarga), P8 (Giro alto), P5 (Núcleo): entendimento imediato, porém raio e velocímetro são território disputado.</li>
+      <li><strong>Equilibradas</strong> — P1 (Vetor), P3 (Ápice), P7 (Fluxo): dizem performance sem apelar; P3 é a única que fala de <em>resultado medido</em>, não só de velocidade.</li>
+      <li><strong>Mais conceituais</strong> — P6 (Delta), P4 (Rotor): duram mais e diferenciam mais, ao custo de exigirem repetição para serem lidas.</li>
+      <li><strong>Melhores em 20px</strong> — P1, P6 e P4. <strong>Pior</strong>: P5, pelos pinos do chip.</li>
+    </ul>
+    <p>Minha aposta para "desenvolvimento de software de alta performance": <strong>P1 ou P3</strong>. P1 é a mais afiada e a que melhor sobrevive a qualquer redução; P3 é a única que promete resultado em vez de esforço — que é o que consultoria de performance vende.</p>
+    <p>Diga a sigla e eu fecho os arquivos finais. Se quiser cruzar (a forma de uma com a paleta de outra), também dá.</p>
+  </section>
+</div>

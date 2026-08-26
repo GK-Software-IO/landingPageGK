@@ -1,0 +1,24 @@
+# Bloco a acrescentar ao Caddyfile que já existe na VPS.
+# Troque o domínio; o caminho em "root" é o caminho VISTO PELO CADDY
+# (se o Caddy roda em container, é o destino do bind mount, não o da VPS).
+
+gksoftware.com.br, www.gksoftware.com.br {
+	root * /srv/gk-landing
+	encode zstd gzip
+	file_server
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+
+	# Os assets não têm hash no nome: um cache longo demais faria uma troca de
+	# logo levar semanas para aparecer. Uma semana é o meio-termo; o HTML fica
+	# curto para que uma correção de texto apareça no mesmo dia.
+	@assets path /assets/*
+	header @assets Cache-Control "public, max-age=604800"
+	header /index.html Cache-Control "public, max-age=300, must-revalidate"
+}

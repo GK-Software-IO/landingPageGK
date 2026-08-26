@@ -1,0 +1,395 @@
+<title>Direções de Marca GK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --ground:#F1F4F4;
+    --surface:#FFFFFF;
+    --sunken:#E7ECEB;
+    --ink:#0F1416;
+    --muted:#5F6E6B;
+    --line:#D8E0DE;
+    --brand:#123A45;
+    --brand-deep:#0B252C;
+    --accent:#B4643A;
+    --shadow:0 1px 2px rgba(11,37,44,.06), 0 12px 32px -18px rgba(11,37,44,.35);
+    --step:clamp(1rem,.6rem + 1.2vw,1.4rem);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0A0F10;
+      --surface:#121A1B;
+      --sunken:#0E1516;
+      --ink:#E6EDEB;
+      --muted:#8B9A97;
+      --line:#22302F;
+      --brand:#4FA3B4;
+      --brand-deep:#0B252C;
+      --accent:#D8834F;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0A0F10;
+    --surface:#121A1B;
+    --sunken:#0E1516;
+    --ink:#E6EDEB;
+    --muted:#8B9A97;
+    --line:#22302F;
+    --brand:#4FA3B4;
+    --brand-deep:#0B252C;
+    --accent:#D8834F;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) clamp(1.1rem,4vw,2.5rem) 5rem}
+
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 .9rem;
+  }
+  h1{
+    font-family:"Archivo",system-ui,sans-serif;font-weight:700;
+    font-size:clamp(1.9rem,1.2rem + 2.6vw,3rem);line-height:1.08;letter-spacing:-.02em;
+    text-wrap:balance;margin:0 0 .8rem;
+  }
+  .lede{max-width:62ch;color:var(--muted);font-size:1.02rem;margin:0}
+  .lede strong{color:var(--ink);font-weight:600}
+
+  .deck{display:flex;flex-direction:column;gap:clamp(1.4rem,3vw,2.2rem);margin-top:clamp(2.4rem,5vw,3.6rem)}
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .card__head{
+    display:flex;align-items:baseline;gap:.85rem;flex-wrap:wrap;
+    padding:1.15rem clamp(1.1rem,3vw,1.9rem);
+    border-bottom:1px solid var(--line);
+  }
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:600;letter-spacing:.1em;
+    color:var(--surface);background:var(--ink);
+    padding:.2rem .48rem;border-radius:4px;
+  }
+  .card__name{font-family:"Archivo",sans-serif;font-weight:600;font-size:1.06rem;letter-spacing:-.01em;margin:0}
+  .card__note{color:var(--muted);font-size:.9rem;margin:0;flex:1 1 22ch;min-width:20ch}
+
+  .stage{
+    display:flex;align-items:center;justify-content:center;
+    padding:clamp(2rem,6vw,3.4rem) 1.2rem;
+    background:
+      linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 28px,
+      var(--sunken);
+    background-blend-mode:normal;
+  }
+
+  /* lockups */
+  .lockup{display:flex;align-items:center;gap:clamp(.9rem,2vw,1.35rem)}
+  .lockup svg{display:block;flex:none}
+  .word{display:flex;flex-direction:column;line-height:1;gap:.42em}
+  .word b{
+    font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:-.035em;
+    font-size:clamp(2rem,1.2rem + 3vw,2.9rem);
+  }
+  .word span{
+    font-family:"IBM Plex Mono",monospace;font-weight:500;
+    font-size:clamp(.66rem,.5rem + .5vw,.82rem);letter-spacing:.36em;text-transform:uppercase;
+    padding-left:.12em;
+  }
+  .word span em{font-style:normal;opacity:.62}
+
+  /* paint contexts — --knock is the knockout color, --accent-fill the secondary */
+  .on-light{color:var(--brand);--knock:var(--surface);--accent-fill:var(--accent)}
+  .on-dark{color:#FFFFFF;--knock:var(--brand-deep);--accent-fill:#E08A57}
+  .mono-black{color:#0F1416;--knock:#FFFFFF;--accent-fill:#0F1416}
+  .mono-white{color:#FFFFFF;--knock:#0F1416;--accent-fill:#FFFFFF}
+
+  .proofs{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    border-top:1px solid var(--line);
+  }
+  .proof{
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.9rem;
+    padding:1.4rem .9rem 1rem;
+    border-right:1px solid var(--line);
+    min-height:132px;
+  }
+  .proof:last-child{border-right:0}
+  .proof__label{
+    font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);
+  }
+  .proof--dark{background:var(--brand-deep)}
+  .proof--dark .proof__label{color:rgba(255,255,255,.5)}
+  .proof--ink{background:#0F1416}
+  .proof--ink .proof__label{color:rgba(255,255,255,.45)}
+  .proof__box{display:flex;align-items:center;justify-content:center;flex:1}
+
+  .tabmock{
+    display:flex;align-items:center;gap:.5rem;
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:7px 7px 0 0;padding:.42rem .7rem;width:100%;max-width:190px;
+  }
+  .tabmock small{
+    font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
+  .verdict{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.2rem 1.6rem;
+    padding:1.05rem clamp(1.1rem,3vw,1.9rem) 1.35rem;
+    border-top:1px solid var(--line);
+    font-size:.88rem;
+  }
+  .verdict p{margin:.25rem 0}
+  .verdict b{
+    font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:600;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+    display:block;margin-bottom:.15rem;
+  }
+
+  .closing{
+    margin-top:clamp(2.2rem,5vw,3.4rem);padding:clamp(1.4rem,3vw,2rem);
+    border:1px dashed var(--line);border-radius:14px;background:var(--surface);
+  }
+  .closing h2{font-family:"Archivo",sans-serif;font-size:1.1rem;font-weight:600;margin:0 0 .5rem;letter-spacing:-.01em}
+  .closing p{margin:0 0 .6rem;color:var(--muted);font-size:.95rem;max-width:70ch}
+  .closing ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--muted);font-size:.92rem}
+  .closing li{margin:.2rem 0}
+  .closing code{
+    font-family:"IBM Plex Mono",monospace;font-size:.85em;
+    background:var(--sunken);padding:.1em .35em;border-radius:4px;color:var(--ink);
+  }
+</style>
+
+<!-- symbol library -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <!-- A: monograma em bloco -->
+  <symbol id="mark-a" viewBox="0 0 120 120">
+    <rect width="120" height="120" rx="27" fill="currentColor"/>
+    <g transform="translate(60 60) scale(1.12) translate(-60 -60)"
+       fill="none" stroke="var(--knock)" stroke-width="10.5" stroke-linecap="butt" stroke-linejoin="miter">
+      <path d="M58.1 45.9 A20 20 0 1 0 58.1 74.1 L58.1 62.5 L47.5 62.5"/>
+      <path d="M70 39 V81"/>
+      <path d="M90 39 L71.5 60.6 L90 81"/>
+    </g>
+  </symbol>
+
+  <!-- B: monograma aberto + cursor -->
+  <symbol id="mark-b" viewBox="0 0 120 120">
+    <g transform="translate(60 60) scale(1.3) translate(-60 -60)"
+       fill="none" stroke="currentColor" stroke-width="10.5" stroke-linecap="butt" stroke-linejoin="miter">
+      <path d="M56.4 45.9 A20 20 0 1 0 56.4 74.1 L56.4 62.5 L45.8 62.5"/>
+      <path d="M68 39 V81"/>
+      <path d="M88 39 L69.5 60.6 L88 81"/>
+    </g>
+    <rect x="97" y="43" width="12" height="46" rx="2" fill="var(--accent-fill)"/>
+  </symbol>
+
+  <!-- C: marca abstrata modular -->
+  <symbol id="mark-c" viewBox="0 0 120 120">
+    <path d="M4 4 H116 V56 H60 V116 H4 Z" fill="currentColor"/>
+    <path d="M68 64 H116 V116 H68 Z" fill="var(--accent-fill)"/>
+  </symbol>
+
+  <!-- D: barra tipográfica -->
+  <symbol id="mark-d" viewBox="0 0 120 120">
+    <rect x="46" y="4" width="28" height="112" rx="3" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">GK Software · identidade visual · rodada 01</p>
+    <h1>Quatro direções para a marca GK</h1>
+    <p class="lede">Consultoria e fábrica de software vendem <strong>credibilidade antes de estética</strong>: a marca precisa aguentar assinatura de proposta, crachá, slide de RFP e favicon de 16px. Todas as direções usam a mesma paleta candidata — petróleo com acento cobre — para que a decisão aqui seja de <strong>forma</strong>, não de cor. Cor a gente ajusta depois de escolher a forma.</p>
+  </header>
+
+  <div class="deck">
+
+    <!-- ============ A ============ -->
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">A</span>
+        <h2 class="card__name">Monograma em bloco</h2>
+        <p class="card__note">G e K construídos em traço uniforme dentro de um bloco sólido.</p>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="82" height="82"><use href="#mark-a"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="52" height="52"><use href="#mark-a"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-a"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">Favicon 17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-a"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof proof--ink mono-white">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-a"/></svg></div>
+          <span class="proof__label">Invertido</span>
+        </div>
+      </div>
+      <div class="verdict">
+        <p><b>Ponto forte</b>Bloco cheio ocupa avatar, favicon e app icon sem perder peso. É a direção mais "empresa estabelecida".</p>
+        <p><b>Risco</b>Monograma em quadrado é o formato mais comum do mercado — a distinção vem da execução do traço, não do conceito.</p>
+      </div>
+    </section>
+
+    <!-- ============ B ============ -->
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">B</span>
+        <h2 class="card__name">Monograma aberto + cursor</h2>
+        <p class="card__note">Sem container; o bloco em cobre lê como cursor de terminal.</p>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="86" height="86"><use href="#mark-b"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="56" height="56"><use href="#mark-b"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-b"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">Favicon 17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="50" height="50"><use href="#mark-b"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof proof--ink mono-white">
+          <div class="proof__box"><svg width="50" height="50"><use href="#mark-b"/></svg></div>
+          <span class="proof__label">Invertido</span>
+        </div>
+      </div>
+      <div class="verdict">
+        <p><b>Ponto forte</b>Diz "software" sem engrenagem, sem chave e sem <code>&lt;/&gt;</code>. Respira melhor em documento e assinatura de e-mail.</p>
+        <p><b>Risco</b>Marca aberta perde presença em 16px e em avatar redondo — precisaria de uma versão em bloco só para esses usos.</p>
+      </div>
+    </section>
+
+    <!-- ============ C ============ -->
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">C</span>
+        <h2 class="card__name">Módulos que se encaixam</h2>
+        <p class="card__note">Marca abstrata: duas peças, uma entregue, uma em curso.</p>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="74" height="74"><use href="#mark-c"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="50" height="50"><use href="#mark-c"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-c"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">Favicon 17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-c"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof proof--ink mono-white">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-c"/></svg></div>
+          <span class="proof__label">Invertido</span>
+        </div>
+      </div>
+      <div class="verdict">
+        <p><b>Ponto forte</b>Atemporal e escalável: se amanhã surgir um produto próprio, o símbolo abstrato acompanha sem virar "a logo do serviço".</p>
+        <p><b>Risco</b>Não fala GK. Marca abstrata só gruda com repetição — exige mais tempo de exposição para ser reconhecida.</p>
+      </div>
+    </section>
+
+    <!-- ============ D ============ -->
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">D</span>
+        <h2 class="card__name">Só wordmark</h2>
+        <p class="card__note">Sem símbolo. Toda a personalidade vai para o desenho da letra.</p>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="18" height="76"><use href="#mark-d"/></svg>
+          <div class="word"><b>GK</b><span>Software<em> · consultoria</em></span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box">
+            <div class="word" style="gap:.3em"><b style="font-size:1.5rem">GK</b><span style="font-size:.6rem">Software</span></div>
+          </div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><b style="font-family:Archivo,sans-serif;font-size:.8rem;letter-spacing:-.04em;color:var(--brand)">GK</b><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">Favicon 17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><b style="font-family:Archivo,sans-serif;font-size:1.5rem;letter-spacing:-.04em">GK</b></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+        <div class="proof proof--ink mono-white">
+          <div class="proof__box"><b style="font-family:Archivo,sans-serif;font-size:1.5rem;letter-spacing:-.04em">GK</b></div>
+          <span class="proof__label">Invertido</span>
+        </div>
+      </div>
+      <div class="verdict">
+        <p><b>Ponto forte</b>Mais barato de aplicar e impossível de aplicar errado. Funciona bem se a marca for muito ligada a você como pessoa.</p>
+        <p><b>Risco</b>Sem símbolo você não tem avatar, favicon nem app icon decentes — e "GK" isolado em 16px vira duas letras genéricas.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="closing">
+    <h2>Como decidir</h2>
+    <p>Para consultoria e fábrica de software, minha recomendação é <strong>A ou B</strong> — o monograma carrega o nome, que é o ativo que você precisa fixar na cabeça de quem contrata. Entre os dois: A se a maior parte da aplicação for digital e pequena (favicon, avatar de LinkedIn, ícone de app); B se for documento, proposta e apresentação.</p>
+    <ul>
+      <li>Me diga a letra — ou pontos de duas delas que você quer combinar.</li>
+      <li>Se a paleta petróleo/cobre não for o caminho, diga agora: refaço a rodada de cor separada da forma.</li>
+      <li>Fechada a direção, entrego os SVGs finais (horizontal, empilhado, símbolo, favicon) prontos para a landing page.</li>
+    </ul>
+  </section>
+</div>

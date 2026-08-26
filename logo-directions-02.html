@@ -1,0 +1,466 @@
+<title>Marcas Abstratas GK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --ground:#F1F4F4;
+    --surface:#FFFFFF;
+    --sunken:#E7ECEB;
+    --ink:#0F1416;
+    --muted:#5F6E6B;
+    --line:#D8E0DE;
+    --brand:#123A45;
+    --brand-deep:#0B252C;
+    --accent:#B4643A;
+    --shadow:0 1px 2px rgba(11,37,44,.06), 0 12px 32px -18px rgba(11,37,44,.35);
+    --step:clamp(1rem,.6rem + 1.2vw,1.4rem);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0A0F10;
+      --surface:#121A1B;
+      --sunken:#0E1516;
+      --ink:#E6EDEB;
+      --muted:#8B9A97;
+      --line:#22302F;
+      --brand:#4FA3B4;
+      --brand-deep:#0B252C;
+      --accent:#D8834F;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0A0F10;
+    --surface:#121A1B;
+    --sunken:#0E1516;
+    --ink:#E6EDEB;
+    --muted:#8B9A97;
+    --line:#22302F;
+    --brand:#4FA3B4;
+    --brand-deep:#0B252C;
+    --accent:#D8834F;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) clamp(1.1rem,4vw,2.5rem) 5rem}
+
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 .9rem;
+  }
+  h1{
+    font-family:"Archivo",system-ui,sans-serif;font-weight:700;
+    font-size:clamp(1.9rem,1.2rem + 2.6vw,3rem);line-height:1.08;letter-spacing:-.02em;
+    text-wrap:balance;margin:0 0 .8rem;
+  }
+  .lede{max-width:62ch;color:var(--muted);font-size:1.02rem;margin:0}
+  .lede strong{color:var(--ink);font-weight:600}
+
+  .deck{display:flex;flex-direction:column;gap:clamp(1.4rem,3vw,2.2rem);margin-top:clamp(2.4rem,5vw,3.6rem)}
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .card__head{
+    display:flex;align-items:baseline;gap:.85rem;flex-wrap:wrap;
+    padding:1.15rem clamp(1.1rem,3vw,1.9rem);
+    border-bottom:1px solid var(--line);
+  }
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:600;letter-spacing:.1em;
+    color:var(--surface);background:var(--ink);
+    padding:.2rem .48rem;border-radius:4px;
+  }
+  .card__name{font-family:"Archivo",sans-serif;font-weight:600;font-size:1.06rem;letter-spacing:-.01em;margin:0}
+  .card__note{color:var(--muted);font-size:.9rem;margin:0;flex:1 1 22ch;min-width:20ch}
+
+  .stage{
+    display:flex;align-items:center;justify-content:center;
+    padding:clamp(2rem,6vw,3.4rem) 1.2rem;
+    background:
+      linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 28px,
+      var(--sunken);
+    background-blend-mode:normal;
+  }
+
+  /* lockups */
+  .lockup{display:flex;align-items:center;gap:clamp(.9rem,2vw,1.35rem)}
+  .lockup svg{display:block;flex:none}
+  .word{display:flex;flex-direction:column;line-height:1;gap:.42em}
+  .word b{
+    font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:-.035em;
+    font-size:clamp(2rem,1.2rem + 3vw,2.9rem);
+  }
+  .word span{
+    font-family:"IBM Plex Mono",monospace;font-weight:500;
+    font-size:clamp(.66rem,.5rem + .5vw,.82rem);letter-spacing:.36em;text-transform:uppercase;
+    padding-left:.12em;
+  }
+  .word span em{font-style:normal;opacity:.62}
+
+  /* paint contexts — --knock is the knockout color, --accent-fill the secondary */
+  .on-light{color:var(--brand);--knock:var(--surface);--accent-fill:var(--accent)}
+  .on-dark{color:#FFFFFF;--knock:var(--brand-deep);--accent-fill:#E08A57}
+  .mono-black{color:#0F1416;--knock:#FFFFFF;--accent-fill:#0F1416}
+  .mono-white{color:#FFFFFF;--knock:#0F1416;--accent-fill:#FFFFFF}
+
+  .proofs{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    border-top:1px solid var(--line);
+  }
+  .proof{
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.9rem;
+    padding:1.4rem .9rem 1rem;
+    border-right:1px solid var(--line);
+    min-height:132px;
+  }
+  .proof:last-child{border-right:0}
+  .proof__label{
+    font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);
+  }
+  .proof--dark{background:var(--brand-deep)}
+  .proof--dark .proof__label{color:rgba(255,255,255,.5)}
+  .proof--ink{background:#0F1416}
+  .proof--ink .proof__label{color:rgba(255,255,255,.45)}
+  .proof__box{display:flex;align-items:center;justify-content:center;flex:1}
+
+  .tabmock{
+    display:flex;align-items:center;gap:.5rem;
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:7px 7px 0 0;padding:.42rem .7rem;width:100%;max-width:190px;
+  }
+  .tabmock small{
+    font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
+  .verdict{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.2rem 1.6rem;
+    padding:1.05rem clamp(1.1rem,3vw,1.9rem) 1.35rem;
+    border-top:1px solid var(--line);
+    font-size:.88rem;
+  }
+  .verdict p{margin:.25rem 0}
+  .verdict b{
+    font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:600;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+    display:block;margin-bottom:.15rem;
+  }
+
+  .closing{
+    margin-top:clamp(2.2rem,5vw,3.4rem);padding:clamp(1.4rem,3vw,2rem);
+    border:1px dashed var(--line);border-radius:14px;background:var(--surface);
+  }
+  .closing h2{font-family:"Archivo",sans-serif;font-size:1.1rem;font-weight:600;margin:0 0 .5rem;letter-spacing:-.01em}
+  .closing p{margin:0 0 .6rem;color:var(--muted);font-size:.95rem;max-width:70ch}
+  .closing ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--muted);font-size:.92rem}
+  .closing li{margin:.2rem 0}
+  .closing code{
+    font-family:"IBM Plex Mono",monospace;font-size:.85em;
+    background:var(--sunken);padding:.1em .35em;border-radius:4px;color:var(--ink);
+  }
+
+  .deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.15rem}
+  .card__head{padding:.95rem 1.2rem}
+  .stage{padding:2.2rem 1rem}
+  .lockup{gap:1rem}
+  .word b{font-size:1.75rem}
+  .word span{font-size:.6rem;letter-spacing:.3em}
+  .proof{min-height:112px;padding:1.1rem .7rem .85rem}
+  .concept{
+    margin:0;padding:.9rem 1.2rem 1.15rem;border-top:1px solid var(--line);
+    font-size:.87rem;color:var(--muted);
+  }
+  .concept code{
+    font-family:"IBM Plex Mono",monospace;font-size:.85em;background:var(--sunken);
+    padding:.05em .3em;border-radius:3px;color:var(--ink);
+  }
+</style>
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <symbol id="mark-c1" viewBox="0 0 120 120"><path d="M6 6 H114 V56 H62 V114 H6 Z" fill="currentColor"/><path d="M70 64 H114 V114 H70 Z" fill="var(--accent-fill)"/></symbol>
+  <symbol id="mark-c2" viewBox="0 0 120 120"><rect x="6" y="80" width="34" height="34" rx="5" fill="currentColor"/><rect x="45" y="41" width="34" height="34" rx="5" fill="currentColor"/><rect x="84" y="2" width="34" height="34" rx="5" fill="var(--accent-fill)"/></symbol>
+  <symbol id="mark-c3" viewBox="0 0 120 120"><rect x="6" y="6" width="50" height="50" rx="8" fill="currentColor"/><rect x="64" y="6" width="50" height="50" rx="8" fill="currentColor"/><rect x="6" y="64" width="50" height="50" rx="8" fill="currentColor"/><rect x="70" y="70" width="44" height="44" rx="7" fill="var(--accent-fill)"/></symbol>
+  <symbol id="mark-c4" viewBox="0 0 120 120"><path d="M60 10 L106 37 L60 64 L14 37 Z" fill="var(--accent-fill)"/><path d="M12 43 L58 70 L58 112 L12 85 Z" fill="currentColor"/><path d="M108 43 L62 70 L62 112 L108 85 Z" fill="currentColor"/></symbol>
+  <symbol id="mark-c5" viewBox="0 0 120 120"><path d="M8 8 H74 L30 112 H8 Z" fill="currentColor"/><path d="M82 8 H112 V112 H38 Z" fill="var(--accent-fill)"/></symbol>
+  <symbol id="mark-c6" viewBox="0 0 120 120"><path d="M60 18 L102 60 L60 102 L18 60 Z" fill="none" stroke="currentColor" stroke-width="9"/><circle cx="60" cy="18" r="13" fill="currentColor"/><circle cx="18" cy="60" r="13" fill="currentColor"/><circle cx="102" cy="60" r="13" fill="currentColor"/><circle cx="60" cy="102" r="13" fill="var(--accent-fill)"/></symbol>
+  <symbol id="mark-c7" viewBox="0 0 120 120"><g transform="rotate(-90 60 60)" fill="none" stroke-width="15" stroke-linecap="butt"><circle cx="60" cy="60" r="44" stroke="currentColor" stroke-dasharray="178 98"/><circle cx="60" cy="60" r="44" stroke="var(--accent-fill)" stroke-dasharray="66 210" stroke-dashoffset="-190"/></g></symbol>
+  <symbol id="mark-c8" viewBox="0 0 120 120"><path d="M60 8 L112 60 L60 112 L8 60 Z" fill="currentColor"/><path d="M60 36 L84 60 L60 84 L36 60 Z" fill="var(--knock)"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">GK Software · identidade visual · rodada 02</p>
+    <h1>Oito marcas abstratas</h1>
+    <p class="lede">Você reagiu à direção abstrata da rodada anterior, então esta rodada explora só esse território — <strong>símbolo geométrico, sem desenhar as letras G e K</strong>. Paleta mantida de propósito: variando só a forma, a comparação é honesta. Cada uma vem com as três provas que separam marca boa de marca bonita — negativo, 17px e uma cor só.</p>
+  </header>
+
+  <div class="deck">
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">C1</span>
+        <h2 class="card__name">Encaixe em degrau</h2>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="66" height="66"><use href="#mark-c1"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-c1"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-c1"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="38" height="38"><use href="#mark-c1"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+      </div>
+      <p class="concept">O bloco e a peça que o completa. É a C da rodada anterior, com proporção corrigida.</p>
+    </section>
+
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">C2</span>
+        <h2 class="card__name">Escada de entregas</h2>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="66" height="66"><use href="#mark-c2"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-c2"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-c2"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="38" height="38"><use href="#mark-c2"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+      </div>
+      <p class="concept">Três módulos em progressão diagonal: entrega incremental, sprint após sprint.</p>
+    </section>
+
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">C3</span>
+        <h2 class="card__name">Peça que fecha</h2>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="66" height="66"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-c3"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-c3"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="38" height="38"><use href="#mark-c3"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+      </div>
+      <p class="concept">Três quadrantes prontos e o quarto entrando no lugar. Sistema em construção.</p>
+    </section>
+
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">C4</span>
+        <h2 class="card__name">Cubo isométrico</h2>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="66" height="66"><use href="#mark-c4"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-c4"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-c4"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="38" height="38"><use href="#mark-c4"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+      </div>
+      <p class="concept">Três faces separadas que formam um volume. Camadas de um sistema que se sustentam.</p>
+    </section>
+
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">C5</span>
+        <h2 class="card__name">Fenda diagonal</h2>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="66" height="66"><use href="#mark-c5"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-c5"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-c5"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="38" height="38"><use href="#mark-c5"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+      </div>
+      <p class="concept">Um bloco partido por uma barra — o <code>/</code> do código, sem literalidade.</p>
+    </section>
+
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">C6</span>
+        <h2 class="card__name">Nós conectados</h2>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="66" height="66"><use href="#mark-c6"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-c6"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-c6"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="38" height="38"><use href="#mark-c6"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+      </div>
+      <p class="concept">Arquitetura distribuída: quatro serviços, um deles o seu ponto de entrada.</p>
+    </section>
+
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">C7</span>
+        <h2 class="card__name">Ciclo contínuo</h2>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="66" height="66"><use href="#mark-c7"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-c7"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-c7"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="38" height="38"><use href="#mark-c7"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+      </div>
+      <p class="concept">Anel aberto: integração e entrega que não param. O trecho em destaque é a iteração atual.</p>
+    </section>
+
+    <section class="card">
+      <div class="card__head">
+        <span class="tag">C8</span>
+        <h2 class="card__name">Núcleo</h2>
+      </div>
+      <div class="stage">
+        <div class="lockup on-light">
+          <svg width="66" height="66"><use href="#mark-c8"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark on-dark">
+          <div class="proof__box"><svg width="40" height="40"><use href="#mark-c8"/></svg></div>
+          <span class="proof__label">Negativo</span>
+        </div>
+        <div class="proof">
+          <div class="proof__box">
+            <div class="tabmock"><span class="on-light" style="display:flex"><svg width="17" height="17"><use href="#mark-c8"/></svg></span><small>GK Software</small></div>
+          </div>
+          <span class="proof__label">17px</span>
+        </div>
+        <div class="proof mono-black">
+          <div class="proof__box"><svg width="38" height="38"><use href="#mark-c8"/></svg></div>
+          <span class="proof__label">1 cor</span>
+        </div>
+      </div>
+      <p class="concept">Losango sólido com contra-forma central. Densidade e precisão de engenharia.</p>
+    </section>
+  </div>
+
+  <section class="closing">
+    <h2>Próximo passo</h2>
+    <p>Me diga o número — ou dois que valha a pena cruzar (o conceito de um com a construção do outro). Se ainda não chegou lá, o problema provavelmente não é a forma: aí eu mudo o eixo e trago uma rodada de <strong>cor e tipografia</strong> sobre a forma que menos te incomodou.</p>
+    <ul>
+      <li>Vale olhar as provas antes de decidir: <strong>C6</strong> e <strong>C7</strong> são as mais bonitas em tamanho grande e as que mais sofrem em 17px.</li>
+      <li><strong>C2</strong>, <strong>C3</strong> e <strong>C4</strong> são as que melhor aguentam avatar e ícone de app.</li>
+      <li>Fechada a direção, entrego os SVGs finais: horizontal, empilhado, símbolo isolado e favicon.</li>
+    </ul>
+  </section>
+</div>

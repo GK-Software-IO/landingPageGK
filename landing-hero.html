@@ -1,0 +1,221 @@
+<title>Hero GK — onde o slogan entra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap">
+
+<style>
+  :root{
+    --ground:#0B0B0D; --surface:#151517; --line:#2A2A2F;
+    --ink:#EDEDEF; --muted:#8A8A93; --peach:#FFB26B; --peach-deep:#D8823C;
+    --stage:#1E1C1E;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:clamp(2rem,5vw,4rem) clamp(1.1rem,4vw,2.5rem) 6rem}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--peach);margin:0 0 .9rem}
+  h1.doc{font-family:"Poppins",sans-serif;font-weight:700;font-size:clamp(1.9rem,1.2rem + 2.4vw,2.7rem);
+    line-height:1.1;letter-spacing:-.02em;margin:0 0 .8rem}
+  h2.doc{font-family:"Poppins",sans-serif;font-weight:600;font-size:1.3rem;letter-spacing:-.01em;
+    margin:clamp(2.8rem,6vw,4rem) 0 .4rem}
+  .lede{max-width:68ch;color:var(--muted);margin:0}
+  .lede strong,.note strong{color:var(--ink);font-weight:600}
+  .note{color:var(--muted);max-width:68ch;margin:0 0 1.5rem;font-size:.95rem}
+  .verdict{border-left:2px solid var(--peach);padding-left:.9rem;margin:1.3rem 0 0;
+    color:var(--muted);font-size:.9rem;max-width:68ch}
+  .verdict b{color:var(--ink);font-weight:600}
+
+  .cap{display:flex;align-items:baseline;gap:.6rem;margin:0 0 .7rem}
+  .cap__name{font-family:"Poppins",sans-serif;font-weight:600;font-size:.98rem;margin:0}
+  .cap__meta{font-family:"IBM Plex Mono",monospace;font-size:.64rem;color:var(--muted);margin-left:auto}
+  .cap--pick .cap__name::after{content:"recomendado";font-family:"IBM Plex Mono",monospace;
+    font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:#1A1A1C;background:var(--peach);
+    padding:.14rem .4rem;border-radius:4px;margin-left:.5rem;vertical-align:.15em}
+
+  /* ---------- moldura de tela ---------- */
+  .screen{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--stage);
+    background-image:radial-gradient(120% 150% at 85% 0%,#33303200 0%,#0000 60%),
+      linear-gradient(160deg,#262427 0%,#1a181a 55%,#141314 100%);}
+  .screen + .cap{margin-top:2.4rem}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+  @media(max-width:900px){.pair{grid-template-columns:1fr}}
+
+  /* ---------- header ---------- */
+  .hd{display:flex;align-items:center;gap:1.4rem;padding:1rem 1.6rem;border-bottom:1px solid #ffffff12}
+  .hd nav{margin-left:auto;display:flex;gap:1.3rem;font-size:.8rem;color:var(--muted)}
+  .hd .cta{border:1px solid #ffffff2e;border-radius:99px;padding:.3rem .85rem;font-size:.76rem;color:var(--ink)}
+  .brand{display:flex;align-items:center;gap:.7rem}
+  .brand img{display:block}
+  .brand__txt{display:flex;flex-direction:column;line-height:1;gap:.28em}
+  .brand__txt b{font-family:"Poppins",sans-serif;font-weight:700;font-size:1.16rem;letter-spacing:.01em}
+  .brand__txt span{font-family:"Poppins",sans-serif;font-weight:600;font-size:.5rem;
+    letter-spacing:.34em;text-indent:.34em;color:#EDEDEFcc}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(2.6rem,6vw,4.6rem) clamp(1.6rem,5vw,3.4rem) clamp(2.8rem,7vw,5rem)}
+  .hero--mid{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .h-slogan{font-family:"Poppins",sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;
+    font-size:clamp(2rem,1rem + 3.4vw,3.4rem);margin:0 0 1rem;text-wrap:balance}
+  .h-slogan em{font-style:normal;color:var(--peach)}
+  .h-prom{font-family:"Poppins",sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.12;
+    font-size:clamp(1.5rem,.8rem + 2.3vw,2.4rem);margin:0 0 .9rem;text-wrap:balance}
+  .h-sub{color:var(--muted);font-size:1.02rem;max-width:46ch;margin:0 0 1.8rem}
+  .hero--mid .h-sub{margin-left:auto;margin-right:auto}
+  .h-eyebrow{font-family:"Poppins",sans-serif;font-weight:600;font-size:.7rem;
+    letter-spacing:.28em;text-indent:.28em;text-transform:uppercase;color:var(--peach);margin:0 0 1.1rem}
+  .h-sig{font-family:"Poppins",sans-serif;font-weight:500;font-size:.78rem;
+    letter-spacing:.22em;text-indent:.22em;text-transform:uppercase;color:#EDEDEFb8;margin:1.4rem 0 0}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--peach);color:#1A1A1C;
+    font-family:"Poppins",sans-serif;font-weight:600;font-size:.9rem;
+    padding:.72rem 1.4rem;border-radius:99px;text-decoration:none}
+  .btn--ghost{background:none;color:var(--ink);border:1px solid #ffffff2e;margin-left:.6rem}
+  .btns{display:flex;flex-wrap:wrap;align-items:center}
+
+
+  /* ---------- duas frentes ---------- */
+  .lanes{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#ffffff14;
+    border-top:1px solid #ffffff14}
+  @media(max-width:820px){.lanes{grid-template-columns:1fr}}
+  .lane{background:#1b191b;padding:clamp(1.8rem,4vw,2.6rem) clamp(1.5rem,3.5vw,2.4rem)}
+  .lane__kicker{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--peach);margin:0 0 .7rem}
+  .lane__title{font-family:"Poppins",sans-serif;font-weight:600;font-size:1.35rem;
+    letter-spacing:-.01em;margin:0 0 .6rem}
+  .lane__lede{color:var(--muted);font-size:.95rem;margin:0 0 1.2rem;max-width:38ch}
+  .lane ul{list-style:none;padding:0;margin:0 0 1.4rem;font-size:.88rem}
+  .lane li{padding:.42rem 0 .42rem 1.2rem;border-bottom:1px solid #ffffff0f;position:relative;color:#D6D6DA}
+  .lane li:last-child{border-bottom:0}
+  .lane li::before{content:"";position:absolute;left:0;top:1.05em;width:6px;height:6px;
+    border-radius:2px;background:var(--peach-deep)}
+  .lane__cta{font-family:"Poppins",sans-serif;font-weight:600;font-size:.86rem;color:var(--peach);
+    text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+
+  .bad{color:#F0857F}
+  .good{color:#7BD3A0}
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">GK Software · landing</p>
+  <h1 class="doc">Onde o slogan entra</h1>
+  <p class="lede">Com a assinatura fora do logotipo, <strong>“Ideias que viram operação” virou um elemento livre</strong> — pode ser o título, o apoio do título, ou uma linha de fecho. Cada posição muda o que o visitante lê primeiro. As telas abaixo são o topo real da página, na largura real.</p>
+
+  <h2 class="doc">Antes: a logo no header</h2>
+  <p class="note">Sua lockup é vertical, e barra de header é horizontal. A 44px de altura o “SOFTWARE” fica com <strong>6px</strong> e vira mancha. Duas saídas honestas:</p>
+
+  <div class="pair">
+    <div>
+      <div class="cap"><p class="cap__name">Lockup vertical na barra</p><span class="cap__meta">não funciona</span></div>
+      <div class="screen"><div class="hd">
+        <div class="brand"><img src="assets/gk-lockup.png" alt="GK Software" style="height:46px"></div>
+        <nav><span>Serviços</span><span>Cases</span><span>Contato</span><span class="cta">Falar com a GK</span></nav>
+      </div><div style="height:130px"></div></div>
+      <p class="note" style="margin-top:.7rem"><span class="bad">✕</span> Ou a barra fica alta demais, ou o lettering some. Empilhado não sobrevive a 46px.</p>
+    </div>
+    <div>
+      <div class="cap cap--pick"><p class="cap__name">Símbolo + nome em texto</p><span class="cap__meta">horizontal</span></div>
+      <div class="screen"><div class="hd">
+        <div class="brand">
+          <img src="assets/gk-simbolo.png" alt="" style="height:38px">
+          <span class="brand__txt"><b>GK</b><span>SOFTWARE</span></span>
+        </div>
+        <nav><span>Serviços</span><span>Cases</span><span>Contato</span><span class="cta">Falar com a GK</span></nav>
+      </div><div style="height:130px"></div></div>
+      <p class="note" style="margin-top:.7rem"><span class="good">✓</span> O símbolo carrega a marca, o nome fica legível. É a variante horizontal que toda lockup vertical precisa ter.</p>
+    </div>
+  </div>
+  <p class="verdict">Isso não desfaz a decisão de ter uma lockup só — a vertical continua sendo <b>a</b> marca. A horizontal é uma aplicação dela para faixa estreita, do mesmo jeito que o símbolo sozinho é a aplicação para 32px.</p>
+
+  <h2 class="doc">Tratamento 1 · O slogan é o título</h2>
+  <p class="note">A frase assume o H1. Máximo de presença, e o visitante lê o posicionamento antes de qualquer coisa — mas gasta o espaço mais valioso da página numa frase que não diz o que você faz.</p>
+  <div class="screen">
+    <div class="hd">
+      <div class="brand"><img src="assets/gk-simbolo.png" alt="" style="height:38px">
+        <span class="brand__txt"><b>GK</b><span>SOFTWARE</span></span></div>
+      <nav><span>Serviços</span><span>Cases</span><span>Contato</span><span class="cta">Falar com a GK</span></nav>
+    </div>
+    <div class="hero">
+      <h1 class="h-slogan">Ideias que viram <em>operação</em>.</h1>
+      <p class="h-sub">Você traz o problema. A gente devolve o sistema — e continua de pé depois que a gente sai.</p>
+      <div class="btns"><a class="btn" href="#">Falar com a GK</a><a class="btn btn--ghost" href="#">Ver cases</a></div>
+    </div>
+  </div>
+
+  <h2 class="doc">Tratamento 2 · O slogan é o apoio</h2>
+  <p class="note">A frase vira sobrelinha e o H1 fica com a promessa concreta. O visitante lê o que você entrega primeiro, e a marca assina logo acima.</p>
+  <div class="cap cap--pick"><p class="cap__name">Sobrelinha + promessa</p><span class="cap__meta">alinhado à esquerda</span></div>
+  <div class="screen">
+    <div class="hd">
+      <div class="brand"><img src="assets/gk-simbolo.png" alt="" style="height:38px">
+        <span class="brand__txt"><b>GK</b><span>SOFTWARE</span></span></div>
+      <nav><span>Serviços</span><span>Cases</span><span>Contato</span><span class="cta">Falar com a GK</span></nav>
+    </div>
+    <div class="hero">
+      <p class="h-eyebrow">Ideias que viram operação</p>
+      <h1 class="h-prom">Você traz o problema.<br>A gente devolve o sistema.</h1>
+      <p class="h-sub">Software sob medida para quando a planilha não dá mais conta e o sistema de prateleira não serve.</p>
+      <div class="btns"><a class="btn" href="#">Falar com a GK</a><a class="btn btn--ghost" href="#">Ver cases</a></div>
+    </div>
+  </div>
+
+  <h2 class="doc">Tratamento 3 · O slogan fecha o bloco</h2>
+  <p class="note">Hero centrado com a lockup vertical inteira — aqui ela cabe, porque não é barra. O slogan aparece embaixo, no papel que tinha na sua imagem, só que com espaço pra ser lido.</p>
+  <div class="screen">
+    <div class="hero hero--mid">
+      <img src="assets/gk-lockup.png" alt="GK Software" style="height:186px;margin-bottom:1.7rem">
+      <h1 class="h-prom" style="max-width:22ch">Você traz o problema.<br>A gente devolve o sistema.</h1>
+      <p class="h-sub">Software sob medida para quando a planilha não dá mais conta e o sistema de prateleira não serve.</p>
+      <div class="btns"><a class="btn" href="#">Falar com a GK</a><a class="btn btn--ghost" href="#">Ver cases</a></div>
+      <p class="h-sig">Ideias que viram operação</p>
+    </div>
+  </div>
+
+  <p class="verdict"><b>Tratamento 2</b> é o que eu levaria. O slogan aparece primeiro na leitura, em corpo legível, e ainda assim o título entrega o que a GK faz — que é o que decide se a pessoa rola a página. O <b>1</b> é mais bonito e menos útil: quem não conhece a GK não descobre o que você vende. O <b>3</b> resolve bem a marca mas empurra a promessa pra baixo da dobra em telas menores, e um hero centrado é mais difícil de sustentar no resto da página.</p>
+
+
+  <h2 class="doc">Abaixo do hero · as duas frentes</h2>
+  <p class="note">Como a consultoria também é vendida avulsa, o primeiro bloco depois do hero precisa <strong>bifurcar</strong>: quem chegou querendo diagnóstico e quem chegou querendo um sistema não leem a mesma coisa. Uma lista única de serviços faria os dois se perguntarem se vieram ao lugar certo.</p>
+  <div class="screen">
+    <div class="hd">
+      <div class="brand"><img src="assets/gk-simbolo.png" alt="" style="height:38px">
+        <span class="brand__txt"><b>GK</b><span>SOFTWARE</span></span></div>
+      <nav><span>Serviços</span><span>Cases</span><span>Contato</span><span class="cta">Falar com a GK</span></nav>
+    </div>
+    <div class="hero" style="padding-bottom:clamp(2rem,5vw,3.2rem)">
+      <p class="h-eyebrow">Ideias que viram operação</p>
+      <h1 class="h-prom">Você traz o problema.<br>A gente devolve o sistema.</h1>
+      <p class="h-sub">Software sob medida para quando a planilha não dá mais conta e o sistema de prateleira não serve.</p>
+      <div class="btns"><a class="btn" href="#">Falar com a GK</a><a class="btn btn--ghost" href="#">Ver cases</a></div>
+    </div>
+    <div class="lanes">
+      <div class="lane">
+        <p class="lane__kicker">Frente 1</p>
+        <h3 class="lane__title">Consultoria</h3>
+        <p class="lane__lede">Seu time constrói, a GK entra como quem já quebrou a cara antes — sem assumir o teclado.</p>
+        <ul>
+          <li>Diagnóstico de sistema existente</li>
+          <li>Arquitetura e decisão técnica</li>
+          <li>Revisão de código e performance</li>
+          <li>Apoio contínuo ao time interno</li>
+        </ul>
+        <a class="lane__cta" href="#">Agendar um diagnóstico →</a>
+      </div>
+      <div class="lane">
+        <p class="lane__kicker">Frente 2</p>
+        <h3 class="lane__title">Desenvolvimento sob medida</h3>
+        <p class="lane__lede">A GK constrói, coloca no ar e sustenta. Você acompanha funcionando, não em apresentação.</p>
+        <ul>
+          <li>Sistemas internos e portais</li>
+          <li>Integrações e automação de processo</li>
+          <li>Modernização de legado</li>
+          <li>Sustentação depois do go-live</li>
+        </ul>
+        <a class="lane__cta" href="#">Falar sobre um projeto →</a>
+      </div>
+    </div>
+  </div>
+  <p class="verdict">As duas frentes ficam <b>lado a lado e com peso igual</b> — nenhuma parece o plano B da outra. Cada uma tem sua própria chamada, porque o compromisso que se pede é diferente: “agendar um diagnóstico” custa muito menos que “falar sobre um projeto”, e quem está só sondando precisa de uma porta do tamanho da dúvida dele.</p>
+  <p class="verdict" style="border-color:#F0857F"><b>Os itens das listas são rascunho.</b> Escrevi o que é plausível para o seu perfil, não o que você de fato vende — me corrige que eu troco.</p>
+
+  <p class="verdict" style="border-color:var(--muted)">Arquivos gerados nesta rodada, em <b>assets/</b>: <code>gk-lockup.png</code> (transparente, 182×290), <code>gk-simbolo.png</code> (147×147), <code>gk-wordmark.png</code> (182×131), <code>gk-lockup-positivo.png</code> (fundo claro), <code>gk-lockup-mono-branco.png</code> e <code>gk-lockup-mono-preto.png</code>.</p>
+</div>

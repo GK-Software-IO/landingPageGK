@@ -1,0 +1,213 @@
+<title>Assinatura GK — três saídas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&family=Poppins:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --ground:#0B0B0D; --surface:#151517; --line:#2A2A2F;
+    --ink:#EDEDEF; --muted:#8A8A93; --peach:#FFB26B; --dim:#9A7250;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(2rem,5vw,4rem) clamp(1.1rem,4vw,2.5rem) 6rem}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--peach);margin:0 0 .9rem}
+  h1{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(1.9rem,1.2rem + 2.4vw,2.7rem);
+    line-height:1.1;letter-spacing:-.025em;margin:0 0 .8rem}
+  h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-.02em;
+    margin:clamp(2.6rem,6vw,3.8rem) 0 .4rem}
+  .lede{max-width:68ch;color:var(--muted);margin:0}
+  .lede strong,.note strong{color:var(--ink);font-weight:600}
+  .note{color:var(--muted);max-width:68ch;margin:0 0 1.4rem;font-size:.95rem}
+  .verdict{border-left:2px solid var(--peach);padding-left:.9rem;margin:1.2rem 0 0;
+    color:var(--muted);font-size:.9rem;max-width:68ch}
+  .verdict b{color:var(--ink);font-weight:600}
+
+  table{border-collapse:collapse;margin:1.4rem 0 0;font-size:.86rem}
+  th,td{text-align:left;padding:.42rem .95rem .42rem 0;border-bottom:1px solid var(--line)}
+  th{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);font-weight:500}
+  td b{font-family:"IBM Plex Mono",monospace;color:var(--peach);font-weight:500}
+
+  .deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:1.1rem;align-items:start}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .card--pick{border-color:#C07C3C}
+  .card__head{display:flex;align-items:baseline;gap:.6rem;padding:.85rem 1.05rem;border-bottom:1px solid var(--line)}
+  .card__name{font-family:"Archivo",sans-serif;font-weight:600;font-size:.96rem;margin:0}
+  .card__meta{font-family:"IBM Plex Mono",monospace;font-size:.64rem;color:var(--muted);margin-left:auto}
+  .card--pick .card__name::after{content:"recomendada";font-family:"IBM Plex Mono",monospace;
+    font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:#1A1A1C;background:var(--peach);
+    padding:.14rem .4rem;border-radius:4px;margin-left:.5rem;vertical-align:.15em}
+  .card__foot{font-family:"IBM Plex Mono",monospace;font-size:.63rem;color:var(--muted);
+    padding:.6rem 1.05rem;border-top:1px solid var(--line)}
+
+  /* ---------- placa ---------- */
+  .frame{width:calc(652px * var(--s,1));height:calc(425px * var(--s,1));overflow:hidden}
+  .plate{position:relative;width:652px;height:425px;transform:scale(var(--s,1));transform-origin:top left}
+  .plate img{position:absolute;inset:0;width:652px;height:425px;display:block}
+  .sig{position:absolute;top:352px;left:318px;transform:translateX(-50%);
+    font-family:"Poppins",sans-serif;font-weight:500;white-space:nowrap;line-height:1;
+    text-transform:uppercase;font-size:var(--fs,8px);color:var(--c,#9A7250)}
+  .axis{position:absolute;top:40px;height:340px;width:1px;opacity:0;transition:opacity .15s}
+  .axis--mark{background:#4FD1C5}
+  .axis--word{background:#F06B6B}
+  #guias:checked ~ .wrap .axis{opacity:.55}
+  .legend{display:flex;gap:1.3rem;align-items:center;margin:1rem 0 1.3rem;
+    font-family:"IBM Plex Mono",monospace;font-size:.66rem;color:var(--muted)}
+  .legend label{display:flex;align-items:center;gap:.45rem;cursor:pointer;color:var(--ink)}
+  .legend i{width:14px;height:2px;display:inline-block}
+
+  .rail{display:flex;align-items:flex-end;justify-content:flex-start;gap:clamp(1.2rem,3vw,2.4rem);
+    flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.6rem}
+  .rail__cell{display:flex;flex-direction:column;gap:.8rem}
+  .rail__label{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted)}
+</style>
+
+<input type="checkbox" id="guias" hidden>
+<div class="wrap">
+  <p class="eyebrow">GK Software · assinatura</p>
+  <h1>Ideias que viram operação</h1>
+  <p class="lede">A lockup abaixo é <strong>a sua, intacta</strong> — o PNG original com a faixa da assinatura reconstruída por interpolação do fundo. Só a assinatura é renderizada por cima, e é a única coisa que varia entre os cartões. O tracking de cada variante é calculado para fechar exatamente na largura-alvo.</p>
+
+  <table>
+    <tr><th>elemento</th><th>largura</th><th>altura</th><th>eixo</th></tr>
+    <tr><td>símbolo</td><td><b>145px</b></td><td>145px</td><td>A</td></tr>
+    <tr><td>GK</td><td><b>180px</b></td><td>98px</td><td>B</td></tr>
+    <tr><td>SOFTWARE</td><td><b>180px</b></td><td>24px</td><td>B</td></tr>
+    <tr><td>assinatura (atual)</td><td><b>145px</b></td><td>~7px</td><td>A</td></tr>
+  </table>
+  <p class="verdict">Sua lockup trabalha com <b>dois eixos de largura</b>: 145px (símbolo) e 180px (lettering). Nada é centralizado por acaso — “SOFTWARE” tem o tracking calculado para bater a largura do “GK”, e a assinatura para bater a largura do círculo. É essa disciplina que faz a peça parecer resolvida.</p>
+
+  <div class="legend">
+    <label><input type="checkbox" onchange="document.getElementById('guias').checked=this.checked"> mostrar eixos</label>
+    <span><i class="axis--mark" style="background:#4FD1C5"></i> eixo A · 145px</span>
+    <span><i class="axis--word" style="background:#F06B6B"></i> eixo B · 180px</span>
+  </div>
+
+  <h2>1. Como está hoje</h2>
+  <p class="note">Reprodução do estado atual: frase completa presa ao eixo do símbolo, na cor apagada do original.</p>
+  <div class="deck">
+    <div class="card">
+      <div class="card__head"><p class="card__name">Original (PNG)</p><span class="card__meta">referência</span></div>
+      <div class="frame" style="--s:.62"><div class="plate"><img src="assets/gk-lockup-original.png" alt=""></div></div>
+      <p class="card__foot">assinatura queimada na imagem</p>
+    </div>
+    <div class="card">
+      <div class="card__head"><p class="card__name">Reproduzida em HTML</p><span class="card__meta">145px · #9A7250</span></div>
+      <div class="frame" style="--s:.62"><div class="plate">
+        <img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="145" style="--fs:8px;--c:#9A7250">Ideias que viram operação</span>
+        <i class="axis axis--mark" style="left:245.5px"></i><i class="axis axis--mark" style="left:390.5px"></i>
+        <i class="axis axis--word" style="left:228px"></i><i class="axis axis--word" style="left:408px"></i>
+      </div></div>
+      <p class="card__foot" data-readout>tracking calculado: …</p>
+    </div>
+  </div>
+  <p class="verdict">Se as duas parecem iguais, a base está fiel — daqui pra frente só a assinatura muda.</p>
+
+  <h2>2. As três saídas</h2>
+  <p class="note">Ligue os eixos para ver a diferença estrutural: a opção 1 troca a assinatura do eixo A para o eixo B, a opção 2 continua no eixo A com menos caracteres.</p>
+  <div class="deck">
+    <div class="card card--pick">
+      <div class="card__head"><p class="card__name">1 · Eixo do lettering</p><span class="card__meta">180px</span></div>
+      <div class="frame" style="--s:.62"><div class="plate">
+        <img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="180" style="--fs:10px;--c:rgba(237,237,239,.72)">Ideias que viram operação</span>
+        <i class="axis axis--word" style="left:228px"></i><i class="axis axis--word" style="left:408px"></i>
+      </div></div>
+      <p class="card__foot" data-readout>tracking calculado: …</p>
+    </div>
+    <div class="card">
+      <div class="card__head"><p class="card__name">2 · Frase curta</p><span class="card__meta">145px</span></div>
+      <div class="frame" style="--s:.62"><div class="plate">
+        <img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="145" style="--fs:10.5px;--c:rgba(237,237,239,.72)">Ideias em operação</span>
+        <i class="axis axis--mark" style="left:245.5px"></i><i class="axis axis--mark" style="left:390.5px"></i>
+      </div></div>
+      <p class="card__foot" data-readout>tracking calculado: …</p>
+    </div>
+    <div class="card">
+      <div class="card__head"><p class="card__name">3 · Só a cor</p><span class="card__meta">145px · sem mexer na largura</span></div>
+      <div class="frame" style="--s:.62"><div class="plate">
+        <img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="145" style="--fs:8px;--c:rgba(237,237,239,.72)">Ideias que viram operação</span>
+        <i class="axis axis--mark" style="left:245.5px"></i><i class="axis axis--mark" style="left:390.5px"></i>
+      </div></div>
+      <p class="card__foot" data-readout>tracking calculado: …</p>
+    </div>
+  </div>
+  <p class="verdict"><b>Opção 1</b> ganha corpo sem inventar medida nova — a assinatura passa a fechar com o bloco GK/SOFTWARE, e a lockup fica com dois eixos em vez de dois-e-meio. <b>Opção 2</b> mantém a amarração com o círculo, que é mais elegante, mas “em operação” perde o verbo que fazia o trabalho. <b>Opção 3</b> é a intervenção mínima: não toca em nada estrutural e ainda assim resolve boa parte da leitura.</p>
+
+  <h2>3. Cor da assinatura</h2>
+  <p class="note">O original está em <strong>#9A7250</strong> — não é o pêssego do símbolo (#FFB26B), é uma versão bem mais apagada. Aqui, opção 1 com três tratamentos.</p>
+  <div class="deck">
+    <div class="card">
+      <div class="card__head"><p class="card__name">Apagada (atual)</p><span class="card__meta">#9A7250</span></div>
+      <div class="frame" style="--s:.62"><div class="plate"><img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="180" style="--fs:10px;--c:#9A7250">Ideias que viram operação</span></div></div>
+    </div>
+    <div class="card">
+      <div class="card__head"><p class="card__name">Pêssego do símbolo</p><span class="card__meta">#FFB26B</span></div>
+      <div class="frame" style="--s:.62"><div class="plate"><img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="180" style="--fs:10px;--c:#FFB26B">Ideias que viram operação</span></div></div>
+    </div>
+    <div class="card card--pick">
+      <div class="card__head"><p class="card__name">Branco 72%</p><span class="card__meta">#EDEDEF · .72</span></div>
+      <div class="frame" style="--s:.62"><div class="plate"><img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="180" style="--fs:10px;--c:rgba(237,237,239,.72)">Ideias que viram operação</span></div></div>
+    </div>
+  </div>
+  <p class="verdict"><b>Branco a 72%</b> lê melhor e deixa o pêssego exclusivo do símbolo — a cor da marca fica com um dono só. O pêssego cheio compete com o círculo e puxa o olho pra baixo; o apagado é o que você já tem.</p>
+
+  <h2>4. Redução</h2>
+  <p class="note">Opção 1 nos tamanhos reais de aplicação. É aqui que se decide a partir de que largura a assinatura sai da peça.</p>
+  <div class="rail">
+    <div class="rail__cell">
+      <div class="frame" style="--s:.55"><div class="plate"><img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="180" style="--fs:10px;--c:rgba(237,237,239,.72)">Ideias que viram operação</span></div></div>
+      <span class="rail__label">360px</span>
+    </div>
+    <div class="rail__cell">
+      <div class="frame" style="--s:.37"><div class="plate"><img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="180" style="--fs:10px;--c:rgba(237,237,239,.72)">Ideias que viram operação</span></div></div>
+      <span class="rail__label">240px</span>
+    </div>
+    <div class="rail__cell">
+      <div class="frame" style="--s:.25"><div class="plate"><img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="180" style="--fs:10px;--c:rgba(237,237,239,.72)">Ideias que viram operação</span></div></div>
+      <span class="rail__label">160px</span>
+    </div>
+    <div class="rail__cell">
+      <div class="frame" style="--s:.18"><div class="plate"><img src="assets/gk-lockup-limpa.png" alt="">
+        <span class="sig" data-w="180" style="--fs:10px;--c:rgba(237,237,239,.72)">Ideias que viram operação</span></div></div>
+      <span class="rail__label">120px</span>
+    </div>
+    <div class="rail__cell">
+      <div class="frame" style="--s:.18"><div class="plate"><img src="assets/gk-lockup-limpa.png" alt=""></div></div>
+      <span class="rail__label">120px · sem assinatura</span>
+    </div>
+  </div>
+  <p class="verdict">Compare os dois últimos: no ponto em que a assinatura vira uma listra cinza, a versão sem ela fica mais limpa. Esse é o limite que define a <b>versão reduzida</b> da marca.</p>
+</div>
+
+<script>
+  function ajusta(){
+    document.querySelectorAll('.sig').forEach(el=>{
+      const alvo = +el.dataset.w, n = el.textContent.length;
+      el.style.letterSpacing='0px'; el.style.width='auto';
+      const base = el.offsetWidth;
+      const ls = (alvo - base) / (n - 1);
+      el.style.letterSpacing = ls.toFixed(3)+'px';
+      el.style.width = alvo+'px';
+      const em = ls / parseFloat(getComputedStyle(el).fontSize);
+      const foot = el.closest('.card')?.querySelector('[data-readout]');
+      if (foot) foot.textContent =
+        `corpo ${parseFloat(getComputedStyle(el).fontSize).toFixed(1)}px · tracking ${em.toFixed(3)}em · largura ${alvo}px`;
+    });
+  }
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(ajusta);
+  addEventListener('resize', ajusta);
+</script>

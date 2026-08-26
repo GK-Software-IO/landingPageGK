@@ -1,0 +1,5 @@
+# histórico de sessão local (plugin remember) — não é do projeto
+.remember/
+
+# saída do build: gerada por ./deploy/build.sh <dominio>
+public/

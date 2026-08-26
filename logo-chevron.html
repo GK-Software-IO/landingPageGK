@@ -1,0 +1,416 @@
+<title>Marca GK · Chevron</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --ground:#EDEFF2;--surface:#FFFFFF;--sunken:#DBDEE2;
+    --ink:#14171B;--muted:#5D6672;--line:#D3D8DE;
+    --dark:#14171B;
+    --m1:#181A1E;--m2:#7A808A;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0B0D10;--surface:#14171C;--sunken:#0F1216;
+      --ink:#E9ECF1;--muted:#8B94A2;--line:#242A32;--dark:#05070A;
+      --m1:#E9ECF1;--m2:#79818E;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0B0D10;--surface:#14171C;--sunken:#0F1216;
+    --ink:#E9ECF1;--muted:#8B94A2;--line:#242A32;--dark:#05070A;
+    --m1:#E9ECF1;--m2:#79818E;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:clamp(2rem,5vw,4rem) clamp(1.1rem,4vw,2.5rem) 5rem}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 .9rem;
+  }
+  h1{
+    font-family:"Archivo",sans-serif;font-weight:700;
+    font-size:clamp(1.9rem,1.2rem + 2.6vw,3rem);line-height:1.08;letter-spacing:-.025em;
+    text-wrap:balance;margin:0 0 .8rem;
+  }
+  .lede{max-width:66ch;color:var(--muted);margin:0}
+  .lede strong{color:var(--ink);font-weight:600}
+
+  .hero{
+    margin-top:2rem;padding:clamp(2rem,6vw,3.6rem) 1.5rem;
+    background:var(--sunken);border:1px solid var(--line);border-radius:18px;
+    display:flex;align-items:center;justify-content:center;
+    --m1:#181A1E;--m2:#7A808A;
+  }
+  .lockup{display:flex;align-items:center;gap:1.4rem}
+  .lockup svg{display:block;flex:none}
+  .word{display:flex;flex-direction:column;line-height:1;gap:.5em;color:var(--m1)}
+  .word b{font-family:"Archivo",sans-serif;font-weight:700;font-size:2.1rem;letter-spacing:-.045em}
+  .word span{
+    font-family:"IBM Plex Sans",sans-serif;font-weight:500;font-size:.66rem;
+    letter-spacing:.42em;text-transform:uppercase;opacity:.65;
+  }
+  .hero .word b{font-size:2.8rem}
+
+  .finding{
+    display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap;
+    margin-top:1.2rem;padding:1.1rem 1.3rem;
+    background:var(--surface);border:1px solid var(--line);
+    border-left:3px solid #C2703D;border-radius:12px;
+  }
+  .finding svg{flex:none}
+  .finding p{margin:0;font-size:.9rem;color:var(--muted);max-width:58ch;flex:1 1 26ch}
+  .finding p strong{color:var(--ink);font-weight:600}
+
+  .deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:1.1rem;margin-top:1.4rem}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .card__head{display:flex;align-items:center;gap:.7rem;padding:.85rem 1.15rem;border-bottom:1px solid var(--line)}
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;
+    color:var(--surface);background:var(--ink);padding:.18rem .45rem;border-radius:4px;
+  }
+  .card__name{font-family:"Archivo",sans-serif;font-weight:600;font-size:1rem;letter-spacing:-.01em;margin:0}
+  .stage{
+    display:flex;align-items:center;justify-content:center;padding:2rem 1rem;background:var(--sunken);
+    --m1:#181A1E;--m2:#7A808A;
+  }
+  .stage .word b{font-size:1.6rem}
+  .stage .word span{font-size:.55rem;letter-spacing:.34em}
+
+  .proofs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .proof{
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.7rem;
+    padding:1.1rem .5rem .8rem;border-right:1px solid var(--line);min-height:110px;
+    --m1:var(--ink);--m2:var(--muted);
+  }
+  .proof:last-child{border-right:0}
+  .pbox{display:flex;align-items:center;justify-content:center;flex:1}
+  .plabel{
+    font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .proof--dark{background:var(--dark);--m1:#FFFFFF;--m2:#6C7480}
+  .proof--dark .plabel{color:rgba(255,255,255,.45)}
+  .proof--mono{--m1:var(--ink);--m2:var(--ink)}
+  .concept{margin:0;padding:.8rem 1.15rem 1.15rem;font-size:.86rem;color:var(--muted);border-top:1px solid var(--line)}
+
+  .sec-head{margin:clamp(2.4rem,6vw,3.4rem) 0 1.1rem}
+  .sec-head h2{
+    font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(1.3rem,1rem + 1.4vw,1.8rem);
+    letter-spacing:-.02em;margin:0 0 .45rem;
+  }
+  .sec-head p{margin:0;color:var(--muted);max-width:70ch;font-size:.92rem}
+
+  .pals{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+  .pal{
+    border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.2rem 1rem;
+    display:flex;flex-direction:column;align-items:center;gap:1rem;
+  }
+  .pal__meta{text-align:center;color:#1B1D21}
+  .pal__meta b{font-family:"Archivo",sans-serif;font-size:.95rem;display:block}
+  .pal__meta small{font-size:.78rem;opacity:.7;display:block;margin-bottom:.35rem}
+  .pal__meta code{font-family:"IBM Plex Mono",monospace;font-size:.62rem;opacity:.6}
+
+  .closing{
+    margin-top:clamp(2.2rem,5vw,3.4rem);padding:clamp(1.4rem,3vw,2rem);
+    border:1px solid var(--line);border-radius:16px;background:var(--surface);
+  }
+  .closing h2{font-family:"Archivo",sans-serif;font-size:1.1rem;font-weight:600;margin:0 0 .55rem;letter-spacing:-.01em}
+  .closing p{margin:0 0 .7rem;color:var(--muted);font-size:.95rem;max-width:72ch}
+  .closing strong{color:var(--ink);font-weight:600}
+  .closing ul{margin:.4rem 0 .8rem;padding-left:1.1rem;color:var(--muted);font-size:.92rem}
+  .closing li{margin:.28rem 0}
+</style>
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <symbol id="mk-c1" viewBox="0 0 140 100"><path d="M87 18 L117 50 L87 82 L87 64 L101 50 L87 36 Z" fill="var(--m2)"/><g fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M64 50 A26 26 0 1 1 44.73 24.89"/><path d="M64 50 H42"/></g><path d="M76 18 L106 50 L76 82 L76 64 L90 50 L76 36 Z" fill="var(--m1)"/><path d="M126 20 V80" fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round"/></symbol>
+  <symbol id="mk-c2" viewBox="0 0 140 100"><path d="M87 20 L113 50 L87 80" fill="none" stroke="var(--m2)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><g fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M64 50 A26 26 0 1 1 44.73 24.89"/><path d="M64 50 H42"/></g><path d="M78 20 L104 50 L78 80" fill="none" stroke="var(--m1)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M126 20 V80" fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round"/></symbol>
+  <symbol id="mk-c3" viewBox="0 0 140 100"><g fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M64 50 A26 26 0 1 1 44.73 24.89"/><path d="M64 50 H42"/></g><path d="M76 18 L106 50 L76 82 L76 64 L90 50 L76 36 Z" fill="var(--m1)"/><path d="M126 20 V80" fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round"/></symbol>
+  <symbol id="mk-c4" viewBox="0 0 140 100"><path d="M81 18 L111 50 L81 82 L81 64 L95 50 L81 36 Z" fill="var(--m2)"/><g fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M64 50 A26 26 0 1 1 44.73 24.89"/><path d="M64 50 H42"/></g><path d="M70 18 L100 50 L70 82 L70 64 L84 50 L70 36 Z" fill="var(--m1)"/><path d="M120 20 V80" fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round"/></symbol>
+  <symbol id="mk-c5" viewBox="0 0 140 100"><path d="M87 18 L117 50 L87 82 L87 64 L101 50 L87 36 Z" fill="var(--m2)"/><g fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M64 50 A26 26 0 1 1 44.73 24.89"/><path d="M64 50 H42"/></g><path d="M76 18 L106 50 L76 82 L76 64 L90 50 L76 36 Z" fill="var(--m1)"/><path d="M132 20 V80" fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round"/></symbol>
+  <symbol id="mk-c6" viewBox="0 0 140 100"><path d="M87 18 L117 50 L87 82 L87 64 L101 50 L87 36 Z" fill="var(--m2)"/><g fill="var(--m1)"><rect x="-4" y="-4.2" width="8.4" height="8.4" rx="1.4" transform="translate(67.96 59.73) rotate(18)"/><rect x="-4" y="-4.2" width="8.4" height="8.4" rx="1.4" transform="translate(56.52 75.48) rotate(54)"/><rect x="-4" y="-4.2" width="8.4" height="8.4" rx="1.4" transform="translate(38.00 81.50) rotate(90)"/><rect x="-4" y="-4.2" width="8.4" height="8.4" rx="1.4" transform="translate(19.48 75.48) rotate(126)"/><rect x="-4" y="-4.2" width="8.4" height="8.4" rx="1.4" transform="translate(8.04 59.73) rotate(162)"/><rect x="-4" y="-4.2" width="8.4" height="8.4" rx="1.4" transform="translate(8.04 40.27) rotate(198)"/><rect x="-4" y="-4.2" width="8.4" height="8.4" rx="1.4" transform="translate(19.48 24.52) rotate(234)"/><rect x="-4" y="-4.2" width="8.4" height="8.4" rx="1.4" transform="translate(36.90 18.52) rotate(268)"/></g><g fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M64 50 A26 26 0 1 1 44.73 24.89"/><path d="M64 50 H42"/></g><path d="M76 18 L106 50 L76 82 L76 64 L90 50 L76 36 Z" fill="var(--m1)"/><path d="M126 20 V80" fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round"/></symbol>
+  <symbol id="mk-c7" viewBox="0 0 140 100"><path d="M87 18 L117 50 L87 82 L87 64 L101 50 L87 36 Z" fill="var(--m2)"/><g fill="none" stroke="var(--m1)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M64 50 A26 26 0 1 1 44.73 24.89"/><path d="M64 50 H42"/></g><path d="M76 18 L106 50 L76 82 L76 64 L90 50 L76 36 Z" fill="var(--m1)"/><path d="M126 20 V80" fill="none" stroke="var(--m1)" stroke-width="9" stroke-linecap="round"/></symbol>
+  <symbol id="mk-c8" viewBox="0 0 140 100"><path d="M87 18 L117 50 L87 82 L87 64 L101 50 L87 36 Z" fill="var(--m2)"/><g fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M64 50 A26 26 0 1 1 44.73 24.89"/><path d="M64 50 H42"/></g><path d="M76 18 L106 50 L76 82 L76 64 L90 50 L76 36 Z" fill="var(--m1)"/></symbol>
+  <symbol id="mk-icon" viewBox="20 10 96 80"><path d="M76 18 L106 50 L76 82 L76 64 L90 50 L76 36 Z" fill="var(--m1)"/><g fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="M64 50 A26 26 0 1 1 44.73 24.89"/><path d="M64 50 H42"/></g></symbol>
+  <symbol id="mk-wrong" viewBox="0 0 140 100">
+    <path d="M99 20 L125 50 L99 80" fill="none" stroke="var(--m2)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M64 50 A26 26 0 1 1 44.73 24.89"/><path d="M64 50 H42"/></g>
+    <path d="M80 20 V80" fill="none" stroke="var(--m1)" stroke-width="15" stroke-linecap="round"/>
+    <path d="M88 20 L114 50 L88 80" fill="none" stroke="var(--m1)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">GK Software · identidade visual · rodada 14</p>
+    <h1>G sólido, chevron e haste</h1>
+    <p class="lede">Peguei o seu esboço e reconstruí a geometria: o G virou um anel com abertura e barra, com raio e espessura constantes; o chevron ganhou ângulos exatos; a haste ficou alinhada ao mesmo eixo. <strong>O conjunto lê GK porque o chevron faz os braços de um K espelhado</strong> — a mesma ideia do "K ao contrário" que você levantou algumas mensagens atrás.</p>
+
+    <div class="hero">
+      <div class="lockup">
+        <svg width="238" height="170" viewBox="0 0 140 100"><use href="#mk-c1"/></svg>
+        <div class="word"><b>GK</b><span>Software</span></div>
+      </div>
+    </div>
+
+    <div class="finding" style="--m1:#181A1E;--m2:#7A808A">
+      <svg width="112" height="80" viewBox="0 0 140 100"><use href="#mk-wrong"/></svg>
+      <p><strong>Um teste que valeu a pena:</strong> desenhei também a versão com o K na ordem normal — haste à esquerda, chevron à direita. É a forma ao lado, e ela não funciona: sem a haste fechando à direita, o conjunto lê como <strong>D</strong> ou como botão de play, não como K. Sua intuição de espelhar o K estava certa, e agora tem prova.</p>
+    </div>
+  </header>
+
+  <div class="sec-head">
+    <h2>Oito execuções</h2>
+    <p>Todas na paleta grafite do seu esboço, para a comparação ser de forma. Cada card traz as três provas que decidem: fundo escuro, uma cor só e 24px.</p>
+  </div>
+  <div class="deck">
+    <section class="card">
+      <div class="card__head"><span class="tag">C1</span><h2 class="card__name">Angular</h2></div>
+      <div class="stage">
+        <div class="lockup">
+          <svg width="150" height="107" viewBox="0 0 140 100"><use href="#mk-c1"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark">
+          <div class="pbox"><svg width="86" height="61" viewBox="0 0 140 100"><use href="#mk-c1"/></svg></div>
+          <span class="plabel">Fundo escuro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="pbox"><svg width="76" height="54" viewBox="0 0 140 100"><use href="#mk-c1"/></svg></div>
+          <span class="plabel">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="pbox"><svg width="34" height="24" viewBox="0 0 140 100"><use href="#mk-c1"/></svg></div>
+          <span class="plabel">24px</span>
+        </div>
+      </div>
+      <p class="concept">O chevron de pontas retas do seu esboço, com a camada de profundidade atrás. É a que mais se parece com o desenho que você mandou.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">C2</span><h2 class="card__name">Arredondada</h2></div>
+      <div class="stage">
+        <div class="lockup">
+          <svg width="150" height="107" viewBox="0 0 140 100"><use href="#mk-c2"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark">
+          <div class="pbox"><svg width="86" height="61" viewBox="0 0 140 100"><use href="#mk-c2"/></svg></div>
+          <span class="plabel">Fundo escuro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="pbox"><svg width="76" height="54" viewBox="0 0 140 100"><use href="#mk-c2"/></svg></div>
+          <span class="plabel">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="pbox"><svg width="34" height="24" viewBox="0 0 140 100"><use href="#mk-c2"/></svg></div>
+          <span class="plabel">24px</span>
+        </div>
+      </div>
+      <p class="concept">Mesmas peças com terminais e junções arredondados. Fica mais amigável e menos técnica — o G e o chevron passam a ter a mesma família de curva.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">C3</span><h2 class="card__name">Chapada</h2></div>
+      <div class="stage">
+        <div class="lockup">
+          <svg width="150" height="107" viewBox="0 0 140 100"><use href="#mk-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark">
+          <div class="pbox"><svg width="86" height="61" viewBox="0 0 140 100"><use href="#mk-c3"/></svg></div>
+          <span class="plabel">Fundo escuro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="pbox"><svg width="76" height="54" viewBox="0 0 140 100"><use href="#mk-c3"/></svg></div>
+          <span class="plabel">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="pbox"><svg width="34" height="24" viewBox="0 0 140 100"><use href="#mk-c3"/></svg></div>
+          <span class="plabel">24px</span>
+        </div>
+      </div>
+      <p class="concept">Sem a camada cinza: uma cor só. É a versão que precisa existir de qualquer jeito, para carimbo, bordado e fundo colorido.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">C4</span><h2 class="card__name">Chevron colado</h2></div>
+      <div class="stage">
+        <div class="lockup">
+          <svg width="150" height="107" viewBox="0 0 140 100"><use href="#mk-c4"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark">
+          <div class="pbox"><svg width="86" height="61" viewBox="0 0 140 100"><use href="#mk-c4"/></svg></div>
+          <span class="plabel">Fundo escuro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="pbox"><svg width="76" height="54" viewBox="0 0 140 100"><use href="#mk-c4"/></svg></div>
+          <span class="plabel">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="pbox"><svg width="34" height="24" viewBox="0 0 140 100"><use href="#mk-c4"/></svg></div>
+          <span class="plabel">24px</span>
+        </div>
+      </div>
+      <p class="concept">O chevron encosta no G. As três peças viram um bloco compacto — melhor proporção para avatar e assinatura de e-mail.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">C5</span><h2 class="card__name">Haste afastada</h2></div>
+      <div class="stage">
+        <div class="lockup">
+          <svg width="150" height="107" viewBox="0 0 140 100"><use href="#mk-c5"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark">
+          <div class="pbox"><svg width="86" height="61" viewBox="0 0 140 100"><use href="#mk-c5"/></svg></div>
+          <span class="plabel">Fundo escuro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="pbox"><svg width="76" height="54" viewBox="0 0 140 100"><use href="#mk-c5"/></svg></div>
+          <span class="plabel">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="pbox"><svg width="34" height="24" viewBox="0 0 140 100"><use href="#mk-c5"/></svg></div>
+          <span class="plabel">24px</span>
+        </div>
+      </div>
+      <p class="concept">Mais respiro entre o chevron e a haste. O K fica mais legível como letra e a marca ganha ar — ao custo de largura.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">C6</span><h2 class="card__name">Engrenagem discreta</h2></div>
+      <div class="stage">
+        <div class="lockup">
+          <svg width="150" height="107" viewBox="0 0 140 100"><use href="#mk-c6"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark">
+          <div class="pbox"><svg width="86" height="61" viewBox="0 0 140 100"><use href="#mk-c6"/></svg></div>
+          <span class="plabel">Fundo escuro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="pbox"><svg width="76" height="54" viewBox="0 0 140 100"><use href="#mk-c6"/></svg></div>
+          <span class="plabel">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="pbox"><svg width="34" height="24" viewBox="0 0 140 100"><use href="#mk-c6"/></svg></div>
+          <span class="plabel">24px</span>
+        </div>
+      </div>
+      <p class="concept">Dentes pequenos e próximos do anel, sem a região da barra. Traz a leitura mecânica sem transformar o G em ilustração.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">C7</span><h2 class="card__name">Traço fino</h2></div>
+      <div class="stage">
+        <div class="lockup">
+          <svg width="150" height="107" viewBox="0 0 140 100"><use href="#mk-c7"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark">
+          <div class="pbox"><svg width="86" height="61" viewBox="0 0 140 100"><use href="#mk-c7"/></svg></div>
+          <span class="plabel">Fundo escuro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="pbox"><svg width="76" height="54" viewBox="0 0 140 100"><use href="#mk-c7"/></svg></div>
+          <span class="plabel">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="pbox"><svg width="34" height="24" viewBox="0 0 140 100"><use href="#mk-c7"/></svg></div>
+          <span class="plabel">24px</span>
+        </div>
+      </div>
+      <p class="concept">Mesma construção com metade da espessura. Mais elegante em tamanho grande, mais frágil no pequeno.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">C8</span><h2 class="card__name">Só chevron</h2></div>
+      <div class="stage">
+        <div class="lockup">
+          <svg width="150" height="107" viewBox="0 0 140 100"><use href="#mk-c8"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--dark">
+          <div class="pbox"><svg width="86" height="61" viewBox="0 0 140 100"><use href="#mk-c8"/></svg></div>
+          <span class="plabel">Fundo escuro</span>
+        </div>
+        <div class="proof proof--mono">
+          <div class="pbox"><svg width="76" height="54" viewBox="0 0 140 100"><use href="#mk-c8"/></svg></div>
+          <span class="plabel">1 cor</span>
+        </div>
+        <div class="proof">
+          <div class="pbox"><svg width="34" height="24" viewBox="0 0 140 100"><use href="#mk-c8"/></svg></div>
+          <span class="plabel">24px</span>
+        </div>
+      </div>
+      <p class="concept">Sem a haste. Perde a leitura de K, mas ganha uma silhueta compacta — serve como ícone secundário, não como marca.</p>
+    </section>
+  </div>
+
+  <div class="sec-head">
+    <h2>A mesma marca em seis paletas</h2>
+    <p>Incluindo os verdes que você pediu. A cor de trás do chevron é sempre a mesma família da principal, um degrau mais clara — é ela que cria a profundidade sem precisar de gradiente.</p>
+  </div>
+  <div class="pals">
+    <div class="pal" style="--m1:#181A1E;--m2:#7A808A;background:#DBDEE2">
+      <svg width="118" height="84" viewBox="0 0 140 100"><use href="#mk-c1"/></svg>
+      <div class="pal__meta"><b>Grafite</b><small>o cinza do seu esboço</small>
+        <code>#181A1E · #7A808A</code></div>
+    </div>
+    <div class="pal" style="--m1:#2F3E2F;--m2:#7C8B6A;background:#DDE1D8">
+      <svg width="118" height="84" viewBox="0 0 140 100"><use href="#mk-c1"/></svg>
+      <div class="pal__meta"><b>Tanque</b><small>verde militar acinzentado</small>
+        <code>#2F3E2F · #7C8B6A</code></div>
+    </div>
+    <div class="pal" style="--m1:#14342A;--m2:#4E8F76;background:#D7E2DC">
+      <svg width="118" height="84" viewBox="0 0 140 100"><use href="#mk-c1"/></svg>
+      <div class="pal__meta"><b>Floresta</b><small>verde escuro com acento vivo</small>
+        <code>#14342A · #4E8F76</code></div>
+    </div>
+    <div class="pal" style="--m1:#46512E;--m2:#93A167;background:#E2E3D6">
+      <svg width="118" height="84" viewBox="0 0 140 100"><use href="#mk-c1"/></svg>
+      <div class="pal__meta"><b>Oliva</b><small>olive drab de manual</small>
+        <code>#46512E · #93A167</code></div>
+    </div>
+    <div class="pal" style="--m1:#0F1113;--m2:#6E7681;background:#E6E7E9">
+      <svg width="118" height="84" viewBox="0 0 140 100"><use href="#mk-c1"/></svg>
+      <div class="pal__meta"><b>Tinta</b><small>preto e cinza puros</small>
+        <code>#0F1113 · #6E7681</code></div>
+    </div>
+    <div class="pal" style="--m1:#3A452A;--m2:#C2703D;background:#E3E2D6">
+      <svg width="118" height="84" viewBox="0 0 140 100"><use href="#mk-c1"/></svg>
+      <div class="pal__meta"><b>Militar & cobre</b><small>verde de campo com cobre</small>
+        <code>#3A452A · #C2703D</code></div>
+    </div>
+  </div>
+
+  <section class="closing">
+    <h2>Onde estamos</h2>
+    <p>Esta é a construção mais resolvida de todas as rodadas, por três motivos: <strong>diz o nome</strong> (G legível, K formado por chevron e haste), <strong>tem massa</strong> (sobrevive à redução, diferente das versões em linha) e <strong>é sua</strong> — saiu do seu esboço, não de um repertório genérico.</p>
+    <ul>
+      <li><strong>C1 (angular)</strong> é a mais fiel ao seu desenho e a minha recomendação como marca principal.</li>
+      <li><strong>C4 (chevron colado)</strong> é a melhor proporção para avatar, assinatura e qualquer lugar onde a marca precise ser mais quadrada.</li>
+      <li><strong>C3 (chapada)</strong> não é alternativa: é a versão obrigatória de uma cor, que toda identidade precisa ter.</li>
+      <li><strong>C6</strong> é a ponte com as rodadas de engrenagem, se você ainda quiser essa leitura.</li>
+      <li>Na cor, <strong>Tanque</strong> e <strong>Militar &amp; cobre</strong> são as que melhor combinam com essa forma — o grafite do esboço funciona, mas é o mais previsível dos seis.</li>
+    </ul>
+    <p>Confirma C1 (ou outra) e a paleta, e eu fecho o pacote final: SVG horizontal, empilhado, símbolo isolado, favicon, versão de uma cor, versão para fundo escuro e as regras de tamanho mínimo e área de respiro.</p>
+  </section>
+</div>

@@ -1,0 +1,545 @@
+<title>Paletas da Marca GK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --ground:#F1F4F4;
+    --surface:#FFFFFF;
+    --sunken:#E7ECEB;
+    --ink:#0F1416;
+    --muted:#5F6E6B;
+    --line:#D8E0DE;
+    --brand:#123A45;
+    --brand-deep:#0B252C;
+    --accent:#B4643A;
+    --shadow:0 1px 2px rgba(11,37,44,.06), 0 12px 32px -18px rgba(11,37,44,.35);
+    --step:clamp(1rem,.6rem + 1.2vw,1.4rem);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0A0F10;
+      --surface:#121A1B;
+      --sunken:#0E1516;
+      --ink:#E6EDEB;
+      --muted:#8B9A97;
+      --line:#22302F;
+      --brand:#4FA3B4;
+      --brand-deep:#0B252C;
+      --accent:#D8834F;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0A0F10;
+    --surface:#121A1B;
+    --sunken:#0E1516;
+    --ink:#E6EDEB;
+    --muted:#8B9A97;
+    --line:#22302F;
+    --brand:#4FA3B4;
+    --brand-deep:#0B252C;
+    --accent:#D8834F;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) clamp(1.1rem,4vw,2.5rem) 5rem}
+
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 .9rem;
+  }
+  h1{
+    font-family:"Archivo",system-ui,sans-serif;font-weight:700;
+    font-size:clamp(1.9rem,1.2rem + 2.6vw,3rem);line-height:1.08;letter-spacing:-.02em;
+    text-wrap:balance;margin:0 0 .8rem;
+  }
+  .lede{max-width:62ch;color:var(--muted);font-size:1.02rem;margin:0}
+  .lede strong{color:var(--ink);font-weight:600}
+
+  .deck{display:flex;flex-direction:column;gap:clamp(1.4rem,3vw,2.2rem);margin-top:clamp(2.4rem,5vw,3.6rem)}
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .card__head{
+    display:flex;align-items:baseline;gap:.85rem;flex-wrap:wrap;
+    padding:1.15rem clamp(1.1rem,3vw,1.9rem);
+    border-bottom:1px solid var(--line);
+  }
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:600;letter-spacing:.1em;
+    color:var(--surface);background:var(--ink);
+    padding:.2rem .48rem;border-radius:4px;
+  }
+  .card__name{font-family:"Archivo",sans-serif;font-weight:600;font-size:1.06rem;letter-spacing:-.01em;margin:0}
+  .card__note{color:var(--muted);font-size:.9rem;margin:0;flex:1 1 22ch;min-width:20ch}
+
+  .stage{
+    display:flex;align-items:center;justify-content:center;
+    padding:clamp(2rem,6vw,3.4rem) 1.2rem;
+    background:
+      linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 28px,
+      var(--sunken);
+    background-blend-mode:normal;
+  }
+
+  /* lockups */
+  .lockup{display:flex;align-items:center;gap:clamp(.9rem,2vw,1.35rem)}
+  .lockup svg{display:block;flex:none}
+  .word{display:flex;flex-direction:column;line-height:1;gap:.42em}
+  .word b{
+    font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:-.035em;
+    font-size:clamp(2rem,1.2rem + 3vw,2.9rem);
+  }
+  .word span{
+    font-family:"IBM Plex Mono",monospace;font-weight:500;
+    font-size:clamp(.66rem,.5rem + .5vw,.82rem);letter-spacing:.36em;text-transform:uppercase;
+    padding-left:.12em;
+  }
+  .word span em{font-style:normal;opacity:.62}
+
+  /* paint contexts — --knock is the knockout color, --accent-fill the secondary */
+  .on-light{color:var(--brand);--knock:var(--surface);--accent-fill:var(--accent)}
+  .on-dark{color:#FFFFFF;--knock:var(--brand-deep);--accent-fill:#E08A57}
+  .mono-black{color:#0F1416;--knock:#FFFFFF;--accent-fill:#0F1416}
+  .mono-white{color:#FFFFFF;--knock:#0F1416;--accent-fill:#FFFFFF}
+
+  .proofs{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    border-top:1px solid var(--line);
+  }
+  .proof{
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.9rem;
+    padding:1.4rem .9rem 1rem;
+    border-right:1px solid var(--line);
+    min-height:132px;
+  }
+  .proof:last-child{border-right:0}
+  .proof__label{
+    font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);
+  }
+  .proof--dark{background:var(--brand-deep)}
+  .proof--dark .proof__label{color:rgba(255,255,255,.5)}
+  .proof--ink{background:#0F1416}
+  .proof--ink .proof__label{color:rgba(255,255,255,.45)}
+  .proof__box{display:flex;align-items:center;justify-content:center;flex:1}
+
+  .tabmock{
+    display:flex;align-items:center;gap:.5rem;
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:7px 7px 0 0;padding:.42rem .7rem;width:100%;max-width:190px;
+  }
+  .tabmock small{
+    font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
+  .verdict{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.2rem 1.6rem;
+    padding:1.05rem clamp(1.1rem,3vw,1.9rem) 1.35rem;
+    border-top:1px solid var(--line);
+    font-size:.88rem;
+  }
+  .verdict p{margin:.25rem 0}
+  .verdict b{
+    font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:600;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+    display:block;margin-bottom:.15rem;
+  }
+
+  .closing{
+    margin-top:clamp(2.2rem,5vw,3.4rem);padding:clamp(1.4rem,3vw,2rem);
+    border:1px dashed var(--line);border-radius:14px;background:var(--surface);
+  }
+  .closing h2{font-family:"Archivo",sans-serif;font-size:1.1rem;font-weight:600;margin:0 0 .5rem;letter-spacing:-.01em}
+  .closing p{margin:0 0 .6rem;color:var(--muted);font-size:.95rem;max-width:70ch}
+  .closing ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--muted);font-size:.92rem}
+  .closing li{margin:.2rem 0}
+  .closing code{
+    font-family:"IBM Plex Mono",monospace;font-size:.85em;
+    background:var(--sunken);padding:.1em .35em;border-radius:4px;color:var(--ink);
+  }
+
+  .picker{
+    position:sticky;top:0;z-index:5;
+    display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;
+    margin:2rem 0 .4rem;padding:.7rem;
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    box-shadow:var(--shadow);
+  }
+  .picker__label{
+    font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--muted);padding:0 .5rem 0 .35rem;
+  }
+  .pick{
+    display:flex;align-items:center;gap:.45rem;
+    padding:.4rem .65rem .4rem .45rem;
+    background:transparent;border:1px solid var(--line);border-radius:8px;
+    color:var(--muted);cursor:pointer;
+    font-family:"IBM Plex Sans",sans-serif;font-size:.8rem;
+    --knock:var(--surface);--accent-fill:var(--muted);
+    transition:border-color .15s,color .15s;
+  }
+  .pick svg{display:block;flex:none}
+  .pick:hover{border-color:var(--muted);color:var(--ink)}
+  .pick:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .pick.is-on{
+    border-color:var(--ink);color:var(--ink);background:var(--sunken);
+    --accent-fill:var(--ink);
+  }
+
+  .deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.15rem;margin-top:1.2rem}
+  .pal{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .pal__head{display:flex;align-items:center;gap:.7rem;padding:.85rem 1.1rem;border-bottom:1px solid var(--line)}
+  .pal__light{background:#FBFCFC;padding:1.7rem 1.1rem;display:flex;justify-content:center}
+  .pal__dark{background:var(--p-brand);padding:1.7rem 1.1rem;display:flex;justify-content:center}
+  .ctx-light{color:var(--p-brand);--knock:#FBFCFC;--accent-fill:var(--p-accent)}
+  .ctx-light .word b,.ctx-light .word span{color:var(--p-ink)}
+  .ctx-dark{color:#FFFFFF;--knock:var(--p-brand);--accent-fill:var(--p-accent)}
+  .ctx-dark .word b,.ctx-dark .word span{color:#FFFFFF}
+  .ctx-dark .word span{opacity:.72}
+  .lockup .word b{font-size:1.5rem}
+  .lockup .word span{font-size:.55rem;letter-spacing:.28em}
+
+  .chips{display:grid;grid-template-columns:repeat(4,1fr)}
+  .chip{
+    height:44px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.3rem;
+  }
+  .chip span{
+    font-family:"IBM Plex Mono",monospace;font-size:.56rem;color:rgba(255,255,255,.82);letter-spacing:.02em;
+  }
+  .chip--pale span{color:rgba(0,0,0,.5)}
+  .concept{margin:0;padding:.85rem 1.1rem 1.1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+</style>
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <symbol id="mark-c1" viewBox="0 0 120 120"><path d="M6 6 H114 V56 H62 V114 H6 Z" fill="currentColor"/><path d="M70 64 H114 V114 H70 Z" fill="var(--accent-fill)"/></symbol>
+  <symbol id="mark-c2" viewBox="0 0 120 120"><rect x="6" y="80" width="34" height="34" rx="5" fill="currentColor"/><rect x="45" y="41" width="34" height="34" rx="5" fill="currentColor"/><rect x="84" y="2" width="34" height="34" rx="5" fill="var(--accent-fill)"/></symbol>
+  <symbol id="mark-c3" viewBox="0 0 120 120"><rect x="6" y="6" width="50" height="50" rx="8" fill="currentColor"/><rect x="64" y="6" width="50" height="50" rx="8" fill="currentColor"/><rect x="6" y="64" width="50" height="50" rx="8" fill="currentColor"/><rect x="70" y="70" width="44" height="44" rx="7" fill="var(--accent-fill)"/></symbol>
+  <symbol id="mark-c4" viewBox="0 0 120 120"><path d="M60 10 L106 37 L60 64 L14 37 Z" fill="var(--accent-fill)"/><path d="M12 43 L58 70 L58 112 L12 85 Z" fill="currentColor"/><path d="M108 43 L62 70 L62 112 L108 85 Z" fill="currentColor"/></symbol>
+  <symbol id="mark-c5" viewBox="0 0 120 120"><path d="M8 8 H74 L30 112 H8 Z" fill="currentColor"/><path d="M82 8 H112 V112 H38 Z" fill="var(--accent-fill)"/></symbol>
+  <symbol id="mark-c6" viewBox="0 0 120 120"><path d="M60 18 L102 60 L60 102 L18 60 Z" fill="none" stroke="currentColor" stroke-width="9"/><circle cx="60" cy="18" r="13" fill="currentColor"/><circle cx="18" cy="60" r="13" fill="currentColor"/><circle cx="102" cy="60" r="13" fill="currentColor"/><circle cx="60" cy="102" r="13" fill="var(--accent-fill)"/></symbol>
+  <symbol id="mark-c7" viewBox="0 0 120 120"><g transform="rotate(-90 60 60)" fill="none" stroke-width="15" stroke-linecap="butt"><circle cx="60" cy="60" r="44" stroke="currentColor" stroke-dasharray="178 98"/><circle cx="60" cy="60" r="44" stroke="var(--accent-fill)" stroke-dasharray="66 210" stroke-dashoffset="-190"/></g></symbol>
+  <symbol id="mark-c8" viewBox="0 0 120 120"><path d="M60 8 L112 60 L60 112 L8 60 Z" fill="currentColor"/><path d="M60 36 L84 60 L60 84 L36 60 Z" fill="var(--knock)"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">GK Software · identidade visual · rodada 03</p>
+    <h1>Dez paletas, um símbolo de cada vez</h1>
+    <p class="lede">Cor não se julga no vácuo: ela muda de personalidade conforme a forma que veste. Escolha o símbolo na barra abaixo e <strong>todas as dez paletas trocam junto</strong> — inclusive a versão sobre fundo de marca, que é onde a maioria das paletas quebra.</p>
+  </header>
+
+  <nav class="picker" aria-label="Escolher símbolo">
+    <span class="picker__label">Símbolo</span>
+      <button type="button" class="pick" data-mark="c1"><svg width="26" height="26"><use href="#mark-c1"/></svg><span>Encaixe</span></button>
+      <button type="button" class="pick" data-mark="c2"><svg width="26" height="26"><use href="#mark-c2"/></svg><span>Escada</span></button>
+      <button type="button" class="pick is-on" data-mark="c3"><svg width="26" height="26"><use href="#mark-c3"/></svg><span>Peça que fecha</span></button>
+      <button type="button" class="pick" data-mark="c4"><svg width="26" height="26"><use href="#mark-c4"/></svg><span>Cubo</span></button>
+      <button type="button" class="pick" data-mark="c5"><svg width="26" height="26"><use href="#mark-c5"/></svg><span>Fenda</span></button>
+      <button type="button" class="pick" data-mark="c6"><svg width="26" height="26"><use href="#mark-c6"/></svg><span>Nós</span></button>
+      <button type="button" class="pick" data-mark="c7"><svg width="26" height="26"><use href="#mark-c7"/></svg><span>Ciclo</span></button>
+      <button type="button" class="pick" data-mark="c8"><svg width="26" height="26"><use href="#mark-c8"/></svg><span>Núcleo</span></button>
+  </nav>
+
+  <div class="deck">
+    <section class="pal" style="--p-brand:#123A45;--p-accent:#B4643A;--p-ink:#0F1416;--p-neutral:#E7ECEB">
+      <div class="pal__head">
+        <span class="tag">01</span>
+        <h2 class="card__name">Petróleo & Cobre</h2>
+      </div>
+      <div class="pal__light">
+        <div class="lockup ctx-light">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="pal__dark">
+        <div class="lockup ctx-dark">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip" style="background:#123A45"><span>#123A45</span></div>
+        <div class="chip" style="background:#B4643A"><span>#B4643A</span></div>
+        <div class="chip" style="background:#0F1416"><span>#0F1416</span></div>
+        <div class="chip chip--pale" style="background:#E7ECEB"><span>#E7ECEB</span></div>
+      </div>
+      <p class="concept">A da rodada anterior. Sóbria, quente no acento, envelhece bem. Baixo risco.</p>
+    </section>
+
+    <section class="pal" style="--p-brand:#1C2025;--p-accent:#F0A22E;--p-ink:#101215;--p-neutral:#ECEDEE">
+      <div class="pal__head">
+        <span class="tag">02</span>
+        <h2 class="card__name">Grafite & Âmbar</h2>
+      </div>
+      <div class="pal__light">
+        <div class="lockup ctx-light">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="pal__dark">
+        <div class="lockup ctx-dark">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip" style="background:#1C2025"><span>#1C2025</span></div>
+        <div class="chip" style="background:#F0A22E"><span>#F0A22E</span></div>
+        <div class="chip" style="background:#101215"><span>#101215</span></div>
+        <div class="chip chip--pale" style="background:#ECEDEE"><span>#ECEDEE</span></div>
+      </div>
+      <p class="concept">Quase preto com um acento que grita sozinho. Lê como ferramenta de engenharia, não como banco.</p>
+    </section>
+
+    <section class="pal" style="--p-brand:#1B3AD8;--p-accent:#FF6A35;--p-ink:#0D1330;--p-neutral:#E9ECF7">
+      <div class="pal__head">
+        <span class="tag">03</span>
+        <h2 class="card__name">Cobalto & Laranja</h2>
+      </div>
+      <div class="pal__light">
+        <div class="lockup ctx-light">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="pal__dark">
+        <div class="lockup ctx-dark">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip" style="background:#1B3AD8"><span>#1B3AD8</span></div>
+        <div class="chip" style="background:#FF6A35"><span>#FF6A35</span></div>
+        <div class="chip" style="background:#0D1330"><span>#0D1330</span></div>
+        <div class="chip chip--pale" style="background:#E9ECF7"><span>#E9ECF7</span></div>
+      </div>
+      <p class="concept">A mais energética do conjunto. Vende velocidade e time jovem — e é a que mais compete com fintech.</p>
+    </section>
+
+    <section class="pal" style="--p-brand:#0F2E5C;--p-accent:#F2635F;--p-ink:#0B1220;--p-neutral:#E8EDF4">
+      <div class="pal__head">
+        <span class="tag">04</span>
+        <h2 class="card__name">Marinho & Coral</h2>
+      </div>
+      <div class="pal__light">
+        <div class="lockup ctx-light">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="pal__dark">
+        <div class="lockup ctx-dark">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip" style="background:#0F2E5C"><span>#0F2E5C</span></div>
+        <div class="chip" style="background:#F2635F"><span>#F2635F</span></div>
+        <div class="chip" style="background:#0B1220"><span>#0B1220</span></div>
+        <div class="chip chip--pale" style="background:#E8EDF4"><span>#E8EDF4</span></div>
+      </div>
+      <p class="concept">Confiança institucional com um acento humano. Boa para proposta comercial de peso.</p>
+    </section>
+
+    <section class="pal" style="--p-brand:#0B6B4F;--p-accent:#1C2025;--p-ink:#0A1512;--p-neutral:#E5EFEA">
+      <div class="pal__head">
+        <span class="tag">05</span>
+        <h2 class="card__name">Esmeralda & Grafite</h2>
+      </div>
+      <div class="pal__light">
+        <div class="lockup ctx-light">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="pal__dark">
+        <div class="lockup ctx-dark">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip" style="background:#0B6B4F"><span>#0B6B4F</span></div>
+        <div class="chip" style="background:#1C2025"><span>#1C2025</span></div>
+        <div class="chip" style="background:#0A1512"><span>#0A1512</span></div>
+        <div class="chip chip--pale" style="background:#E5EFEA"><span>#E5EFEA</span></div>
+      </div>
+      <p class="concept">Verde profundo foge do azul obrigatório do setor. Distingue sem gritar.</p>
+    </section>
+
+    <section class="pal" style="--p-brand:#2E3440;--p-accent:#D33F3F;--p-ink:#14171D;--p-neutral:#E9EBEF">
+      <div class="pal__head">
+        <span class="tag">06</span>
+        <h2 class="card__name">Aço & Vermelho</h2>
+      </div>
+      <div class="pal__light">
+        <div class="lockup ctx-light">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="pal__dark">
+        <div class="lockup ctx-dark">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip" style="background:#2E3440"><span>#2E3440</span></div>
+        <div class="chip" style="background:#D33F3F"><span>#D33F3F</span></div>
+        <div class="chip" style="background:#14171D"><span>#14171D</span></div>
+        <div class="chip chip--pale" style="background:#E9EBEF"><span>#E9EBEF</span></div>
+      </div>
+      <p class="concept">Industrial, quase alemã. Precisão e rigor — o vermelho exige uso contido.</p>
+    </section>
+
+    <section class="pal" style="--p-brand:#3B1E5B;--p-accent:#E85D9E;--p-ink:#180C26;--p-neutral:#EDE7F2">
+      <div class="pal__head">
+        <span class="tag">07</span>
+        <h2 class="card__name">Uva & Magenta</h2>
+      </div>
+      <div class="pal__light">
+        <div class="lockup ctx-light">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="pal__dark">
+        <div class="lockup ctx-dark">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip" style="background:#3B1E5B"><span>#3B1E5B</span></div>
+        <div class="chip" style="background:#E85D9E"><span>#E85D9E</span></div>
+        <div class="chip" style="background:#180C26"><span>#180C26</span></div>
+        <div class="chip chip--pale" style="background:#EDE7F2"><span>#EDE7F2</span></div>
+      </div>
+      <p class="concept">A mais criativa e a de maior risco. Diferencia muito em RFP, mas afasta cliente conservador.</p>
+    </section>
+
+    <section class="pal" style="--p-brand:#5B1E30;--p-accent:#D9A377;--p-ink:#1A0A10;--p-neutral:#F1E9E4">
+      <div class="pal__head">
+        <span class="tag">08</span>
+        <h2 class="card__name">Bordô & Areia</h2>
+      </div>
+      <div class="pal__light">
+        <div class="lockup ctx-light">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="pal__dark">
+        <div class="lockup ctx-dark">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip" style="background:#5B1E30"><span>#5B1E30</span></div>
+        <div class="chip" style="background:#D9A377"><span>#D9A377</span></div>
+        <div class="chip" style="background:#1A0A10"><span>#1A0A10</span></div>
+        <div class="chip chip--pale" style="background:#F1E9E4"><span>#F1E9E4</span></div>
+      </div>
+      <p class="concept">Sofisticada e incomum em software. Lê como boutique sênior, não como fábrica de volume.</p>
+    </section>
+
+    <section class="pal" style="--p-brand:#101214;--p-accent:#6E7681;--p-ink:#0A0B0C;--p-neutral:#EDEEEF">
+      <div class="pal__head">
+        <span class="tag">09</span>
+        <h2 class="card__name">Tinta & Papel</h2>
+      </div>
+      <div class="pal__light">
+        <div class="lockup ctx-light">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="pal__dark">
+        <div class="lockup ctx-dark">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip" style="background:#101214"><span>#101214</span></div>
+        <div class="chip" style="background:#6E7681"><span>#6E7681</span></div>
+        <div class="chip" style="background:#0A0B0C"><span>#0A0B0C</span></div>
+        <div class="chip chip--pale" style="background:#EDEEEF"><span>#EDEEEF</span></div>
+      </div>
+      <p class="concept">Sem cor de marca. Radicalmente minimalista: a cor entra só na landing page, nunca na logo.</p>
+    </section>
+
+    <section class="pal" style="--p-brand:#0E3B4A;--p-accent:#9BD154;--p-ink:#08181E;--p-neutral:#E4EEEC">
+      <div class="pal__head">
+        <span class="tag">10</span>
+        <h2 class="card__name">Ciano-escuro & Lima</h2>
+      </div>
+      <div class="pal__light">
+        <div class="lockup ctx-light">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="pal__dark">
+        <div class="lockup ctx-dark">
+          <svg width="54" height="54"><use href="#mark-c3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip" style="background:#0E3B4A"><span>#0E3B4A</span></div>
+        <div class="chip" style="background:#9BD154"><span>#9BD154</span></div>
+        <div class="chip" style="background:#08181E"><span>#08181E</span></div>
+        <div class="chip chip--pale" style="background:#E4EEEC"><span>#E4EEEC</span></div>
+      </div>
+      <p class="concept">Petróleo com acento ácido. Mais técnica e mais jovem que a paleta 01.</p>
+    </section>
+  </div>
+
+  <section class="closing">
+    <h2>Como escolher</h2>
+    <p>Olhe a faixa inferior de cada card — a logo <strong>sobre o fundo de marca</strong>. É a aplicação que mais aparece (slide de capa, header do site, cartão) e a que mais denuncia paleta fraca. Se a marca some ou o acento vibra desconfortavelmente ali, a paleta não serve.</p>
+    <ul>
+      <li>Menor risco para consultoria: <strong>01</strong>, <strong>04</strong> e <strong>06</strong>.</li>
+      <li>Maior diferenciação no setor: <strong>05</strong>, <strong>08</strong> e <strong>10</strong> — verde e bordô são raros em software.</li>
+      <li><strong>09 (Tinta &amp; Papel)</strong> é a aposta contrária: logo sem cor, cor só na landing page. Dá muita liberdade depois.</li>
+    </ul>
+    <p>Me diga o par <strong>símbolo + paleta</strong> (ex.: "C3 com a 06") e eu fecho os SVGs finais.</p>
+  </section>
+</div>
+
+<script>
+  const picks = document.querySelectorAll('.pick');
+  picks.forEach(btn => btn.addEventListener('click', () => {
+    const mark = btn.dataset.mark;
+    picks.forEach(b => b.classList.toggle('is-on', b === btn));
+    document.querySelectorAll('.deck use').forEach(u => {
+      u.setAttribute('href', '#mark-' + mark);
+    });
+  }));
+</script>

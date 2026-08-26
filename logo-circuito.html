@@ -1,0 +1,368 @@
+<title>Circuito e Engrenagem GK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --ground:#05070C;
+    --surface:#0D111A;
+    --sunken:#0A0E16;
+    --ink:#E9EEF7;
+    --muted:#8593A9;
+    --line:#1B2432;
+    --paper:#F5F7FA;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) clamp(1.1rem,4vw,2.5rem) 5rem}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 .9rem;
+  }
+  h1{
+    font-family:"Archivo",sans-serif;font-weight:700;
+    font-size:clamp(1.9rem,1.2rem + 2.6vw,3rem);line-height:1.08;letter-spacing:-.025em;
+    text-wrap:balance;margin:0 0 .8rem;
+  }
+  .lede{max-width:64ch;color:var(--muted);margin:0}
+  .lede strong{color:var(--ink);font-weight:600}
+
+  .deck{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.1rem;
+    margin-top:clamp(2.2rem,5vw,3.4rem);
+  }
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .card__head{display:flex;align-items:center;gap:.7rem;padding:.9rem 1.15rem;border-bottom:1px solid var(--line)}
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:600;letter-spacing:.1em;
+    color:var(--ground);background:var(--ink);padding:.18rem .45rem;border-radius:4px;
+  }
+  .card__name{font-family:"Archivo",sans-serif;font-weight:600;font-size:1.02rem;letter-spacing:-.01em;margin:0}
+
+  .stage--dark{
+    display:flex;align-items:center;justify-content:center;
+    padding:2.4rem 1rem;background:var(--sunken);
+    --knock:var(--sunken);
+  }
+  .lockup{display:flex;align-items:center;gap:1rem}
+  .lockup svg{display:block;flex:none}
+  .word{display:flex;flex-direction:column;line-height:1;gap:.45em}
+  .word b{font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:-.04em;font-size:1.85rem}
+  .word span{
+    font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.58rem;
+    letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+  }
+
+  .proofs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .proof{
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.75rem;
+    padding:1.15rem .5rem .8rem;border-right:1px solid var(--line);min-height:110px;
+    --knock:var(--surface);
+  }
+  .proof:last-child{border-right:0}
+  .proof__box{display:flex;align-items:center;justify-content:center;flex:1}
+  .proof__label{
+    font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .proof--paper{background:var(--paper);--knock:var(--paper)}
+  .proof--paper .proof__label{color:#7A8697}
+  .proof--mono{--fill1:var(--ink);--fill2:var(--ink);--knock:var(--surface)}
+
+  .ramp{display:flex;align-items:center;gap:.3rem;padding:.75rem 1.15rem;border-top:1px solid var(--line)}
+  .ramp i{width:22px;height:22px;border-radius:5px;flex:none}
+  .ramp code{
+    font-family:"IBM Plex Mono",monospace;font-size:.63rem;color:var(--muted);
+    margin-left:auto;letter-spacing:.02em;
+  }
+  .concept{margin:0;padding:.8rem 1.15rem 1.15rem;font-size:.86rem;color:var(--muted)}
+
+  .closing{
+    margin-top:clamp(2.2rem,5vw,3.4rem);padding:clamp(1.4rem,3vw,2rem);
+    border:1px solid var(--line);border-radius:16px;background:var(--surface);
+  }
+  .closing h2{font-family:"Archivo",sans-serif;font-size:1.1rem;font-weight:600;margin:0 0 .55rem;letter-spacing:-.01em}
+  .closing p{margin:0 0 .7rem;color:var(--muted);font-size:.95rem;max-width:72ch}
+  .closing strong{color:var(--ink);font-weight:600}
+  .closing ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--muted);font-size:.92rem}
+  .closing li{margin:.25rem 0}
+
+  :root{
+    --ground:#0A0C08;
+    --surface:#12160E;
+    --sunken:#0D1109;
+    --ink:#E9EBE0;
+    --muted:#8C947C;
+    --line:#232A1B;
+    --paper:#F3F3EC;
+  }
+  .card{--fill1:url(#g-mil);--fill2:#1E2615}
+  .gstage{display:flex;align-items:center;justify-content:center;padding:2.2rem 1rem}
+  .gcard .word span{opacity:.9}
+  .gstage{--knock:var(--sunken)}
+  .gcard .gstage{--knock:inherit}
+  .sec-head{margin:clamp(2.4rem,6vw,3.6rem) 0 1.1rem}
+  .sec-head h2{
+    font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(1.3rem,1rem + 1.4vw,1.8rem);
+    letter-spacing:-.02em;margin:0 0 .45rem;
+  }
+  .sec-head p{margin:0;color:var(--muted);max-width:70ch;font-size:.92rem}
+  .sec-head p strong{color:var(--ink);font-weight:600}
+  .deck{margin-top:0}
+  .proofs{grid-template-columns:repeat(auto-fit,minmax(90px,1fr))}
+
+  :root{
+    --ground:#0A0C08;--surface:#12160E;--sunken:#0D1109;
+    --ink:#E9EBE0;--muted:#8C947C;--line:#232A1B;--paper:#F3F3EC;
+  }
+  .lstage{
+    display:flex;align-items:center;justify-content:center;
+    padding:2.4rem 1rem;background:var(--sunken);
+  }
+  .word span{color:var(--muted)}
+  .note{
+    display:flex;gap:1.1rem;align-items:flex-start;flex-wrap:wrap;
+    margin-top:1.8rem;padding:1.1rem 1.3rem;
+    background:var(--surface);border:1px solid var(--line);
+    border-left:3px solid #A8C07A;border-radius:12px;
+  }
+  .note p{margin:0;font-size:.9rem;color:var(--muted);max-width:62ch}
+  .note p strong{color:var(--ink);font-weight:600}
+  .note p + p{margin-top:.5rem}
+</style>
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <symbol id="mark-l1" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M44.00 80.00L44.00 91.00A31 31 0 0 0 40.11 90.76L35.52 99.09L27.88 96.61L29.07 87.17A31 31 0 0 0 22.78 82.60L14.16 86.64L9.44 80.14L15.95 73.20A31 31 0 0 0 13.55 65.81L4.20 64.01L4.20 55.99L13.55 54.19A31 31 0 0 0 15.95 46.80L9.44 39.86L14.16 33.36L22.78 37.40A31 31 0 0 0 29.07 32.83L27.88 23.39L35.52 20.91L40.11 29.24A31 31 0 0 0 44.00 29.00L44.00 40.00A20 20 0 0 1 44.00 80.00Z"/><path d="M30 60 H78"/><path d="M78 20 V100"/><path d="M78 60 L98 40"/><path d="M78 60 L98 80"/><circle cx="104" cy="34" r="8.5" fill="none"/><circle cx="104" cy="86" r="8.5" fill="none"/><circle cx="78" cy="11.5" r="8.5" fill="none"/></g></symbol>
+  <symbol id="mark-l2" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M55.47 76.38L61.78 85.39A31 31 0 0 0 59.24 87.00L61.26 96.09L55.47 98.32L50.86 90.23A31 31 0 0 0 44.90 90.99L42.45 99.97L36.29 99.25L35.98 89.94A31 31 0 0 0 30.36 87.84L24.00 94.64L18.89 91.13L22.95 82.75A31 31 0 0 0 18.96 78.27L10.16 81.33L7.27 75.84L14.77 70.32A31 31 0 0 0 13.33 64.49L4.12 63.10L4.12 56.90L13.33 55.51A31 31 0 0 0 14.77 49.68L7.27 44.16L10.16 38.67L18.96 41.73A31 31 0 0 0 22.95 37.25L18.89 28.87L24.00 25.36L30.36 32.16A31 31 0 0 0 35.98 30.06L36.29 20.75L42.45 20.03L44.90 29.01A31 31 0 0 0 50.86 29.77L55.47 21.68L61.26 23.91L59.24 33.00A31 31 0 0 0 61.78 34.61L55.47 43.62A20 20 0 0 1 55.47 76.38Z"/><path d="M30 60 H78"/><path d="M78 20 V100"/><path d="M78 60 L98 40"/><path d="M78 60 L98 80"/><circle cx="104" cy="34" r="8.5" fill="none"/><circle cx="104" cy="86" r="8.5" fill="none"/><circle cx="78" cy="11.5" r="8.5" fill="none"/></g></symbol>
+  <symbol id="mark-l3" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M44.00 80.00L44.00 91.00A31 31 0 0 0 40.11 90.76L35.52 99.09L27.88 96.61L29.07 87.17A31 31 0 0 0 22.78 82.60L14.16 86.64L9.44 80.14L15.95 73.20A31 31 0 0 0 13.55 65.81L4.20 64.01L4.20 55.99L13.55 54.19A31 31 0 0 0 15.95 46.80L9.44 39.86L14.16 33.36L22.78 37.40A31 31 0 0 0 29.07 32.83L27.88 23.39L35.52 20.91L40.11 29.24A31 31 0 0 0 44.00 29.00L44.00 40.00A20 20 0 0 1 44.00 80.00Z"/><path d="M30 60 H78"/><path d="M78 24 V96"/><path d="M78 60 L96 42"/><path d="M78 60 L96 78"/><rect x="95.5" y="27.5" width="15" height="15" rx="2" fill="none"/><rect x="95.5" y="77.5" width="15" height="15" rx="2" fill="none"/><rect x="70.5" y="8.5" width="15" height="15" rx="2" fill="none"/></g></symbol>
+  <symbol id="mark-l4" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M44.00 80.00L44.00 91.00A31 31 0 0 0 40.11 90.76L35.52 99.09L27.88 96.61L29.07 87.17A31 31 0 0 0 22.78 82.60L14.16 86.64L9.44 80.14L15.95 73.20A31 31 0 0 0 13.55 65.81L4.20 64.01L4.20 55.99L13.55 54.19A31 31 0 0 0 15.95 46.80L9.44 39.86L14.16 33.36L22.78 37.40A31 31 0 0 0 29.07 32.83L27.88 23.39L35.52 20.91L40.11 29.24A31 31 0 0 0 44.00 29.00L44.00 40.00A20 20 0 0 1 44.00 80.00Z"/><path d="M30 60 H78"/><path d="M78 22 V98"/><path d="M78 52 H96 V38"/><path d="M78 68 H96 V82"/><circle cx="96" cy="29.5" r="8.5" fill="none"/><circle cx="96" cy="90.5" r="8.5" fill="none"/><circle cx="78" cy="13.5" r="8.5" fill="none"/></g></symbol>
+  <symbol id="mark-l5" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"><path d="M44.00 79.00L44.00 89.00A29 29 0 0 0 39.46 88.64L33.45 98.58L24.18 94.75L26.95 83.46A29 29 0 0 0 20.54 77.05L9.25 79.82L5.42 70.55L15.36 64.54A29 29 0 0 0 15.36 55.46L5.42 49.45L9.25 40.18L20.54 42.95A29 29 0 0 0 26.95 36.54L24.18 25.25L33.45 21.42L39.46 31.36A29 29 0 0 0 44.00 31.00L44.00 41.00A19 19 0 0 1 44.00 79.00Z"/><path d="M30 60 H78"/><path d="M78 24 V96"/><path d="M78 60 L97 41"/><path d="M78 60 L97 79"/><circle cx="103" cy="35" r="8.5" fill="currentColor"/><circle cx="103" cy="85" r="8.5" fill="currentColor"/><circle cx="78" cy="16" r="8.5" fill="currentColor"/></g></symbol>
+  <symbol id="mark-l6" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"><circle cx="60" cy="60" r="55" fill="none"/><g transform="translate(60 60) scale(.76) translate(-60 -60)"><path d="M44.00 80.00L44.00 91.00A31 31 0 0 0 40.11 90.76L35.52 99.09L27.88 96.61L29.07 87.17A31 31 0 0 0 22.78 82.60L14.16 86.64L9.44 80.14L15.95 73.20A31 31 0 0 0 13.55 65.81L4.20 64.01L4.20 55.99L13.55 54.19A31 31 0 0 0 15.95 46.80L9.44 39.86L14.16 33.36L22.78 37.40A31 31 0 0 0 29.07 32.83L27.88 23.39L35.52 20.91L40.11 29.24A31 31 0 0 0 44.00 29.00L44.00 40.00A20 20 0 0 1 44.00 80.00Z"/><path d="M30 60 H78"/><path d="M78 20 V100"/><path d="M78 60 L98 40"/><path d="M78 60 L98 80"/><circle cx="104" cy="34" r="8.5" fill="none"/><circle cx="104" cy="86" r="8.5" fill="none"/><circle cx="78" cy="11.5" r="8.5" fill="none"/></g></g></symbol>
+  <symbol id="mark-l7" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"><path d="M60 4 L110 30 V90 L60 116 L10 90 V30 Z" fill="none"/><g transform="translate(60 60) scale(.68) translate(-60 -60)"><path d="M44.00 80.00L44.00 91.00A31 31 0 0 0 40.11 90.76L35.52 99.09L27.88 96.61L29.07 87.17A31 31 0 0 0 22.78 82.60L14.16 86.64L9.44 80.14L15.95 73.20A31 31 0 0 0 13.55 65.81L4.20 64.01L4.20 55.99L13.55 54.19A31 31 0 0 0 15.95 46.80L9.44 39.86L14.16 33.36L22.78 37.40A31 31 0 0 0 29.07 32.83L27.88 23.39L35.52 20.91L40.11 29.24A31 31 0 0 0 44.00 29.00L44.00 40.00A20 20 0 0 1 44.00 80.00Z"/><path d="M30 60 H78"/><path d="M78 20 V100"/><path d="M78 60 L98 40"/><path d="M78 60 L98 80"/><circle cx="104" cy="34" r="8.5" fill="none"/><circle cx="104" cy="86" r="8.5" fill="none"/><circle cx="78" cy="11.5" r="8.5" fill="none"/></g></g></symbol>
+  <symbol id="mark-l8" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"><path d="M44.00 80.00L44.00 88.00A28 28 0 0 0 38.18 87.39L30.06 97.49L18.50 90.82L23.19 78.74A28 28 0 0 0 17.37 68.65L4.56 66.67L4.56 53.33L17.37 51.35A28 28 0 0 0 23.19 41.26L18.50 29.18L30.06 22.51L38.18 32.61A28 28 0 0 0 44.00 32.00L44.00 40.00A20 20 0 0 1 44.00 80.00Z"/><path d="M30 60 H80"/><path d="M80 30 V90"/><path d="M80 60 L100 42"/><path d="M80 60 L100 78"/></g></symbol>
+</svg>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">GK Software · identidade visual · rodada 12</p>
+    <h1>Engrenagem aberta e trilhas de circuito</h1>
+    <p class="lede">O estilo da sua referência é <strong>line art de traço único</strong>: sem preenchimento, espessura constante, nós circulares nas pontas das trilhas. E ele resolve as duas letras de um jeito que nenhuma rodada anterior tinha conseguido — a <strong>meia engrenagem é o G</strong>, e a trilha que sai dela é ao mesmo tempo a barra do G e a haste do K, com os braços virando circuito.</p>
+
+    <div class="note">
+      <p><strong>O que muda em relação a tudo que veio antes:</strong> marca em contorno não tem massa. Ela é elegante em tamanho grande e some rápido na redução — por isso as provas desta rodada são 26px e 18px, não 20px, e por isso a <strong>L8</strong> existe: toda identidade em linha precisa de uma versão simplificada oficial para ícone e favicon. É trabalho a mais no manual, não um defeito.</p>
+    </div>
+  </header>
+
+  <div class="deck">
+    <section class="card">
+      <div class="card__head"><span class="tag">L1</span><h2 class="card__name">Base · fiel à referência</h2></div>
+      <div class="lstage">
+        <div class="lockup" style="color:#A8C07A">
+          <svg width="86" height="86"><use href="#mark-l1"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper" style="color:#2C3B22">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-l1"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="26" height="26"><use href="#mark-l1"/></svg></div>
+          <span class="proof__label">26px</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="18" height="18"><use href="#mark-l1"/></svg></div>
+          <span class="proof__label">18px</span>
+        </div>
+      </div>
+      <p class="concept">Meia engrenagem aberta = G. A trilha que sai dela é a barra do G e, ao mesmo tempo, a haste do K — o acoplamento que você descreveu, agora em linguagem de circuito.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">L2</span><h2 class="card__name">Engrenagem quase fechada</h2></div>
+      <div class="lstage">
+        <div class="lockup" style="color:#A8C07A">
+          <svg width="86" height="86"><use href="#mark-l2"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper" style="color:#2C3B22">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-l2"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="26" height="26"><use href="#mark-l2"/></svg></div>
+          <span class="proof__label">26px</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="18" height="18"><use href="#mark-l2"/></svg></div>
+          <span class="proof__label">18px</span>
+        </div>
+      </div>
+      <p class="concept">A abertura encolhe para 110°: lê mais como engrenagem e o G fica mais explícito, com a contra-forma parecendo mesmo a letra.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">L3</span><h2 class="card__name">Nós quadrados</h2></div>
+      <div class="lstage">
+        <div class="lockup" style="color:#A8C07A">
+          <svg width="86" height="86"><use href="#mark-l3"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper" style="color:#2C3B22">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-l3"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="26" height="26"><use href="#mark-l3"/></svg></div>
+          <span class="proof__label">26px</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="18" height="18"><use href="#mark-l3"/></svg></div>
+          <span class="proof__label">18px</span>
+        </div>
+      </div>
+      <p class="concept">Trocar círculo por quadrado tira o ar de infográfico e aproxima de placa de circuito real. Mais técnico, menos simpático.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">L4</span><h2 class="card__name">Trilhas ortogonais</h2></div>
+      <div class="lstage">
+        <div class="lockup" style="color:#A8C07A">
+          <svg width="86" height="86"><use href="#mark-l4"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper" style="color:#2C3B22">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-l4"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="26" height="26"><use href="#mark-l4"/></svg></div>
+          <span class="proof__label">26px</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="18" height="18"><use href="#mark-l4"/></svg></div>
+          <span class="proof__label">18px</span>
+        </div>
+      </div>
+      <p class="concept">Sem diagonais: as trilhas dobram em 90°, como roteamento de PCB de verdade. O K fica sugerido em vez de desenhado.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">L5</span><h2 class="card__name">Traço grosso · nós sólidos</h2></div>
+      <div class="lstage">
+        <div class="lockup" style="color:#A8C07A">
+          <svg width="86" height="86"><use href="#mark-l5"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper" style="color:#2C3B22">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-l5"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="26" height="26"><use href="#mark-l5"/></svg></div>
+          <span class="proof__label">26px</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="18" height="18"><use href="#mark-l5"/></svg></div>
+          <span class="proof__label">18px</span>
+        </div>
+      </div>
+      <p class="concept">Mesma construção com traço pesado e nós preenchidos. É a versão que sobrevive a impressão pequena e a bordado.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">L6</span><h2 class="card__name">Selo em linha</h2></div>
+      <div class="lstage">
+        <div class="lockup" style="color:#A8C07A">
+          <svg width="86" height="86"><use href="#mark-l6"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper" style="color:#2C3B22">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-l6"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="26" height="26"><use href="#mark-l6"/></svg></div>
+          <span class="proof__label">26px</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="18" height="18"><use href="#mark-l6"/></svg></div>
+          <span class="proof__label">18px</span>
+        </div>
+      </div>
+      <p class="concept">Tudo dentro de um anel fino. Ganha unidade e vira selo — bom para carimbo e rodapé, mas aperta a marca no pequeno.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">L7</span><h2 class="card__name">Dentro da placa</h2></div>
+      <div class="lstage">
+        <div class="lockup" style="color:#A8C07A">
+          <svg width="86" height="86"><use href="#mark-l7"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper" style="color:#2C3B22">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-l7"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="26" height="26"><use href="#mark-l7"/></svg></div>
+          <span class="proof__label">26px</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="18" height="18"><use href="#mark-l7"/></svg></div>
+          <span class="proof__label">18px</span>
+        </div>
+      </div>
+      <p class="concept">A mesma marca inscrita no hexágono das rodadas anteriores, agora em contorno. É a ponte entre esta rodada e a família da placa usinada.</p>
+    </section>
+    <section class="card">
+      <div class="card__head"><span class="tag">L8</span><h2 class="card__name">Versão reduzida</h2></div>
+      <div class="lstage">
+        <div class="lockup" style="color:#A8C07A">
+          <svg width="86" height="86"><use href="#mark-l8"/></svg>
+          <div class="word"><b>GK</b><span>Software</span></div>
+        </div>
+      </div>
+      <div class="proofs">
+        <div class="proof proof--paper" style="color:#2C3B22">
+          <div class="proof__box"><svg width="46" height="46"><use href="#mark-l8"/></svg></div>
+          <span class="proof__label">Fundo claro</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="26" height="26"><use href="#mark-l8"/></svg></div>
+          <span class="proof__label">26px</span>
+        </div>
+        <div class="proof" style="color:#E9EBE0">
+          <div class="proof__box"><svg width="18" height="18"><use href="#mark-l8"/></svg></div>
+          <span class="proof__label">18px</span>
+        </div>
+      </div>
+      <p class="concept">A simplificação obrigatória para 16–24px: três dentes, sem nós, trilhas curtas. Toda marca em linha precisa de uma irmã assim.</p>
+    </section>
+  </div>
+
+  <section class="closing">
+    <h2>Leitura das oito</h2>
+    <ul>
+      <li><strong>L1</strong> é a mais fiel à sua referência e a mais equilibrada. A leitura de G depende do contexto: quem vê a marca ao lado do nome "GK Software" lê a letra na hora; quem vê sozinha lê uma engrenagem. Isso é aceitável — a maioria das marcas funciona assim.</li>
+      <li><strong>L2</strong> é a mais legível como letra, porque a abertura menor deixa o G explícito. Se o objetivo é que se leia GK sem ajuda, é essa.</li>
+      <li><strong>L4 (ortogonal)</strong> é a mais autoral: roteamento de PCB de verdade, sem diagonais. É a que menos parece ícone de banco de imagens.</li>
+      <li><strong>L5</strong> resolve o problema estrutural do line art — traço grosso e nós sólidos aguentam camiseta, carimbo e impressão pequena.</li>
+      <li><strong>L7</strong> é a ponte com a placa usinada das rodadas anteriores, caso você queira as duas linguagens no mesmo sistema.</li>
+    </ul>
+    <p>Minha recomendação: <strong>L2 como marca principal</strong>, <strong>L5</strong> como versão de aplicação física e <strong>L8</strong> como ícone — três arquivos, um sistema coerente. Em verde tanque ou floresta, que foram os que você apontou.</p>
+    <p>Se for essa a direção, eu fecho o pacote completo: SVG horizontal, empilhado, símbolo isolado, favicon, versão de uma cor e as regras de tamanho mínimo.</p>
+  </section>
+</div>
