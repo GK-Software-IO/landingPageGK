@@ -1,0 +1,60 @@
+name: Publicar no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Permissões mínimas exigidas pelo deploy oficial de Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Um deploy por vez. cancel-in-progress fica falso de propósito: cancelar um
+# deploy pela metade pode deixar o site publicado num estado intermediário.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Definir o domínio do site
+        id: dominio
+        run: |
+          # Domínio próprio quando existir (variável do repositório ou CNAME);
+          # senão, a URL do próprio Pages, com o subcaminho do repositório.
+          # O valor entra nas meta tags canonical e og:, que precisam de URL
+          # absoluta — errar aqui não quebra a página, só faz o link
+          # compartilhado apontar para o lugar errado.
+          if [ -n "${{ vars.SITE_DOMINIO }}" ]; then
+            echo "valor=${{ vars.SITE_DOMINIO }}" >> "$GITHUB_OUTPUT"
+          elif [ -f CNAME ]; then
+            echo "valor=$(tr -d '[:space:]' < CNAME)" >> "$GITHUB_OUTPUT"
+          else
+            echo "valor=${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Construir public/
+        run: ./deploy/build.sh "${{ steps.dominio.outputs.valor }}"
+
+      - name: Preservar o domínio próprio
+        run: '[ -f CNAME ] && cp CNAME public/CNAME || true'
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  publicar:
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - id: pages
+        uses: actions/deploy-pages@v4
