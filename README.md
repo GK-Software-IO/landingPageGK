@@ -41,5 +41,5 @@ canal, o que dá recortes com transparência real em vez de recorte duro.
 
 - Os oito itens de serviço da seção espalhada são **rascunho**, não o catálogo
   real da GK.
-- O e-mail e o prazo de resposta no rodapé são **placeholders**.
+- O prazo de resposta no rodapé ("um dia útil") é um **placeholder**.
 - Domínio ainda não definido.
