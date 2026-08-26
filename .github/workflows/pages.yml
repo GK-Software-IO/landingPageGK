@@ -36,7 +36,11 @@ jobs:
           elif [ -f CNAME ]; then
             echo "valor=$(tr -d '[:space:]' < CNAME)" >> "$GITHUB_OUTPUT"
           else
-            echo "valor=${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> "$GITHUB_OUTPUT"
+            # O Pages serve o host em minúsculas; a variável do GitHub preserva
+            # a caixa do nome da organização. Sem normalizar, o canonical
+            # aponta para um host escrito diferente do endereço real.
+            dono=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+            echo "valor=$dono.github.io/${{ github.event.repository.name }}" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Construir public/
