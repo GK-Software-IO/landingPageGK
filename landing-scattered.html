@@ -6,7 +6,7 @@
 <title>GK Software — Ideias que viram operação</title>
 <meta name="description" content="Loja própria, catálogo automático e sistemas sob medida. Sem planilha, sem cadastro na mão. Consultoria avulsa para times técnicos.">
 <link rel="canonical" href="https://__DOMINIO__/">
-<meta name="theme-color" content="#141416">
+<meta name="theme-color" content="#2A3524">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
@@ -27,56 +27,57 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
 <style>
   :root{
-    --paper:#FFFFFF;
-    --ash:#EFEDEA;
-    --ink:#141416;
-    --mute:#6E6C70;
-    --peach:#FFB26B;
-    --ember:#C9631A;
-    --hair:#D8D5D1;
+    --verde:#2A3524;      /* base escura: hero, painel, rodapé */
+    --verde-2:#4B5A3E;    /* detalhes e filetes */
+    --verde-3:#6F8160;    /* linhas de circuito */
+    --claro:#E7E9E2;      /* seções de leitura */
+    --branco:#F7F8F4;
+    --ink:#1B2217;
+    --laranja:#E8832A;    /* o laranja do logo: só botão, filete e número */
+    --mute:#5C6654;       /* texto de apoio sobre claro */
+    --mute-esc:#AEB8A4;   /* texto de apoio sobre verde */
+    --hair:#C4C9B9;
     --gut:clamp(1.15rem,4vw,3.6rem);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    margin:0;background:var(--paper);color:var(--ink);
+    margin:0;background:var(--claro);color:var(--ink);position:relative;
     font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16.5px;line-height:1.62;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   a{color:inherit}
   .shell{max-width:1560px;margin:0 auto;padding-inline:var(--gut)}
+  :focus-visible{outline:2px solid var(--laranja);outline-offset:3px}
 
-  /* tipos ------------------------------------------------------------ */
   .display{
     font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;
     line-height:.82;letter-spacing:-.045em;margin:0;
   }
   .serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;
     text-transform:none;letter-spacing:-.01em}
-  .mono{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
 
   /* header ----------------------------------------------------------- */
-  .top{position:absolute;top:0;left:0;right:0;z-index:20}
+  .top{position:absolute;top:0;left:0;right:0;z-index:20;color:var(--branco)}
   .top__in{display:flex;align-items:center;gap:1.4rem;padding-block:1.5rem}
   .logo{display:flex;align-items:center;gap:.62rem;text-decoration:none}
   .logo img{display:block;height:34px;width:auto}
   .logo__tx{display:flex;flex-direction:column;line-height:1;gap:.3em}
   .logo__tx b{font-family:"Archivo",sans-serif;font-weight:800;font-size:1.02rem;letter-spacing:-.01em}
   .logo__tx span{font-family:"Archivo",sans-serif;font-weight:600;font-size:.44rem;
-    letter-spacing:.36em;text-indent:.36em;color:var(--mute)}
-  .menu{margin-left:auto;display:flex;gap:1.5rem;font-size:.86rem;color:var(--mute)}
+    letter-spacing:.36em;text-indent:.36em;color:var(--mute-esc)}
+  .menu{margin-left:auto;display:flex;gap:1.5rem;font-size:.86rem;color:var(--mute-esc)}
   .menu a{text-decoration:none}
-  .menu a:hover{color:var(--ink)}
+  .menu a:hover{color:var(--branco)}
   @media(max-width:760px){
-    /* três itens curtos cabem numa linha: empilhar é melhor que esconder
-       atrás de um hambúrguer, que seria um toque a mais por nada */
     .top__in{flex-wrap:wrap;gap:.55rem 1rem;padding-block:1.15rem}
     .menu{margin-left:0;width:100%;gap:1.15rem;font-size:.8rem}
   }
 
   /* hero ------------------------------------------------------------- */
+  .hero-wrap{background:var(--verde);color:var(--branco);overflow:hidden}
   .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-    padding-block:8rem 3rem;position:relative}
+    padding-block:8rem 3.5rem;position:relative}
   @media(max-width:760px){.hero{padding-block:10rem 2.5rem}}
   .hero__type{position:relative;isolation:isolate}
   .word{font-size:clamp(2.9rem,12.2vw,13.4rem);display:block;will-change:transform;
@@ -84,122 +85,123 @@
   .word--b{margin-left:clamp(.8rem,9vw,11rem)}
   .bridge{
     display:block;font-size:clamp(1.4rem,3.6vw,3.3rem);line-height:1;
-    margin:.16em 0 .1em clamp(.4rem,4.5vw,4.6rem);color:var(--ember);
+    margin:.16em 0 .1em clamp(.4rem,4.5vw,4.6rem);color:var(--laranja);
   }
   .hero__mark{
-    position:absolute;right:-1.5vw;top:-4vw;width:clamp(120px,15vw,220px);opacity:.16;
-    pointer-events:none;will-change:transform;
+    position:absolute;right:-1.5vw;top:-4vw;width:clamp(120px,15vw,220px);opacity:.2;
+    pointer-events:none;will-change:transform;z-index:-1;
   }
   @media(max-width:900px){
-    /* em tela estreita não há canto livre ao lado do título: o símbolo sobe
-       para o vazio acima dele, encostado à direita, sem cruzar o texto */
-    .hero__mark{
-      top:auto;right:0;bottom:calc(100% + .7rem);
-      width:clamp(88px,24vw,150px);opacity:.2;
-    }
+    .hero__mark{top:auto;right:0;bottom:calc(100% + .7rem);width:clamp(88px,24vw,150px);opacity:.28}
   }
-  .hero__foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;
+  .hero__foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,380px);gap:2.4rem;
     align-items:end;margin-top:clamp(2.6rem,7vw,5.6rem)}
-  .hero__claim{font-family:"Archivo",sans-serif;font-weight:600;font-size:clamp(1.02rem,1.6vw,1.32rem);
-    line-height:1.28;letter-spacing:-.015em;margin:0 0 .55rem;max-width:23ch}
-  .hero__sub{color:var(--mute);margin:0;max-width:42ch;font-size:.98rem}
-  .hero__tag{font-size:clamp(2rem,6vw,5.4rem);line-height:.9;color:var(--ink);white-space:nowrap}
-  @media(max-width:860px){
-    .hero__foot{grid-template-columns:1fr;gap:.9rem;margin-top:clamp(1.8rem,6vw,3rem)}
-    .hero__tag{font-size:clamp(1.8rem,10vw,3.4rem)}
-  }
+  @media(max-width:860px){.hero__foot{grid-template-columns:1fr;gap:2rem;margin-top:clamp(1.8rem,6vw,3rem)}}
+  .hero__claim{font-family:"Archivo",sans-serif;font-weight:600;font-size:clamp(1.15rem,1.9vw,1.55rem);
+    line-height:1.26;letter-spacing:-.015em;margin:0 0 .7rem;max-width:26ch}
+  .hero__sub{color:var(--mute-esc);margin:0 0 1.6rem;max-width:42ch;font-size:1rem}
 
-  /* faixa divisória --------------------------------------------------- */
-  .rule{display:flex;align-items:baseline;gap:1.1rem;border-top:1px solid var(--ink);
-    padding-top:.85rem;margin-bottom:clamp(2.2rem,5vw,3.6rem)}
-  .rule__k{color:var(--ink)}
-  .rule__n{margin-left:auto;font-family:"Archivo",sans-serif;font-weight:800;font-size:1.5rem;
-    letter-spacing:-.03em;line-height:1}
+  .btn{display:inline-block;text-decoration:none;font-family:"Archivo",sans-serif;font-weight:700;
+    font-size:.95rem;padding:.8rem 1.35rem;border-radius:3px;border:2px solid transparent;
+    transition:transform .18s ease,background-color .18s ease,color .18s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn--laranja{background:var(--laranja);color:var(--ink)}
+  .btn--laranja:hover{background:#F2923B}
+  .btn--linha{border-color:var(--ink);color:var(--ink)}
+  .btn--linha:hover{background:var(--ink);color:var(--branco)}
+
+  /* painel: a operação rodando --------------------------------------- */
+  .ops{border:1px solid var(--verde-2);background:#243020;border-radius:4px;padding:1.25rem 1.4rem 1.1rem}
+  .ops__n{font-family:"Archivo",sans-serif;font-weight:800;font-size:clamp(2.6rem,5vw,3.9rem);
+    line-height:1;letter-spacing:-.04em;margin:0;font-variant-numeric:tabular-nums}
+  .ops__l{margin:.25rem 0 0;font-size:.92rem}
+  .ops__z{margin:0;color:var(--mute-esc);font-size:.82rem}
+  .ops__log{list-style:none;margin:1rem 0 0;padding:.9rem 0 0;border-top:1px solid var(--verde-2);
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;line-height:1.9;min-height:calc(1.9em * 4 + .9rem);
+    color:var(--mute-esc)}
+  .ops__log li{display:flex;gap:.6rem;align-items:baseline;animation:entra .35s ease both}
+  .ops__log i{flex:none;width:.5rem;height:.5rem;border-radius:50%;background:var(--verde-3);transform:translateY(-.05em)}
+  .ops__log li:last-child{color:var(--branco)}
+  .ops__log li:last-child i{background:var(--laranja)}
+  @keyframes entra{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 
   /* manifesto --------------------------------------------------------- */
   .band{padding-block:clamp(4.5rem,11vw,9rem)}
+  .band--tight{padding-top:0}
   .manifesto{font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:-.035em;line-height:1.02;
     font-size:clamp(1.9rem,5.6vw,4.6rem);margin:0;max-width:19ch;text-wrap:balance}
   .manifesto .serif{font-weight:400;letter-spacing:-.02em;
-    border-bottom:.09em solid var(--peach);padding-bottom:.02em}
+    border-bottom:.09em solid var(--laranja);padding-bottom:.02em}
   .manifesto__side{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));
     gap:clamp(1.4rem,3vw,2.8rem);margin-top:clamp(2.6rem,6vw,4.4rem);margin-left:auto;max-width:720px}
-  .manifesto__side h3{font-family:"Archivo",sans-serif;font-size:.78rem;font-weight:700;
-    text-transform:uppercase;letter-spacing:.1em;margin:0 0 .35rem}
-  .manifesto__side p{margin:0;color:var(--mute);font-size:.95rem}
+  .manifesto__side h3{font-family:"Archivo",sans-serif;font-size:1.05rem;font-weight:700;
+    letter-spacing:-.01em;margin:0 0 .35rem}
+  .manifesto__side p{margin:0;color:var(--mute);font-size:.97rem}
 
-  /* scattered --------------------------------------------------------- */
-  .scatter{display:grid;grid-template-columns:repeat(12,1fr);
-    gap:clamp(.9rem,2vw,1.6rem);align-items:start}
-  .tile{padding:clamp(1.3rem,2.4vw,2.1rem);border-radius:2px;min-height:clamp(150px,17vw,232px);
-    display:flex;flex-direction:column;will-change:transform}
-  .tile__k{margin:0 0 auto;opacity:.62}
-  .tile__t{font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.06;
-    font-size:clamp(1.05rem,1.9vw,1.55rem);margin:1.6rem 0 0;text-wrap:balance}
-  .tile--peach{background:var(--peach);color:var(--ink)}
-  .tile--ink{background:var(--ink);color:var(--paper)}
-  .tile--ash{background:var(--ash);color:var(--ink)}
-  .tile--line{background:var(--paper);color:var(--ink);border:1px solid var(--hair)}
-  /* posições irregulares: é isto que faz o "scattered" */
-  .t1{grid-column:1/span 4}
-  .t2{grid-column:6/span 4;margin-top:clamp(2rem,6vw,5.5rem)}
-  .t3{grid-column:10/span 3}
-  .t4{grid-column:2/span 3;margin-top:clamp(1rem,3vw,2.5rem)}
-  .t5{grid-column:6/span 5;margin-top:clamp(.5rem,2vw,1.5rem)}
-  .t6{grid-column:1/span 3;margin-top:clamp(1.5rem,4vw,3.5rem)}
-  .t7{grid-column:5/span 4}
-  .t8{grid-column:10/span 3;margin-top:clamp(1rem,3vw,2rem)}
-  @media(max-width:1000px){
-    .scatter{grid-template-columns:repeat(6,1fr)}
-    .t1,.t4,.t6{grid-column:1/span 3}
-    .t2,.t5,.t7{grid-column:4/span 3}
-    .t3,.t8{grid-column:2/span 4}
-  }
-  @media(max-width:620px){
-    .scatter{grid-template-columns:1fr}
-    .tile{grid-column:1/-1 !important;margin-top:0 !important}
-  }
+  /* régua de seção ---------------------------------------------------- */
+  .rule{display:flex;align-items:baseline;gap:1.1rem;border-top:2px solid var(--ink);
+    padding-top:.85rem;margin-bottom:clamp(2rem,4vw,3rem)}
+  .rule__k{font-family:"Archivo",sans-serif;font-weight:600;font-size:1rem}
+  .rule__n{margin-left:auto;font-family:"Archivo",sans-serif;font-weight:800;font-size:1.8rem;
+    letter-spacing:-.03em;line-height:1}
 
-  /* frentes ----------------------------------------------------------- */
-  .lanes{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);
-    border:1px solid var(--hair)}
+  /* resultados: grade alinhada ---------------------------------------- */
+  .res{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2.4rem clamp(1.2rem,2.4vw,2.2rem)}
+  @media(max-width:1000px){.res{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:560px){.res{grid-template-columns:1fr;gap:1.8rem}}
+  .res__i{position:relative;padding-top:1.1rem;display:flex;flex-direction:column;min-height:9.5rem}
+  .res__i::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--verde-2);
+    transform-origin:top;transition:transform .25s ease,background-color .25s ease}
+  .res__i:first-child::before{background:var(--laranja)}
+  .res__i:hover::before{transform:scaleY(2.6);background:var(--laranja)}
+  .res__t{font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:-.03em;line-height:1.02;
+    font-size:clamp(1.55rem,2.5vw,2.25rem);margin:0;transition:color .25s ease}
+  .res__i:hover .res__t{color:var(--verde-2)}
+  .res__d{margin:.45rem 0 0;color:var(--mute);font-size:.97rem;max-width:26ch}
+  .res__c{margin:auto 0 0;padding-top:1.2rem;font-size:.82rem;color:var(--mute)}
+
+  /* duas portas ------------------------------------------------------- */
+  .lanes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.6rem)}
   @media(max-width:860px){.lanes{grid-template-columns:1fr}}
-  .lane{background:var(--paper);padding:clamp(1.8rem,3.4vw,3.2rem);position:relative;overflow:hidden}
-  .lane__badge{font-family:"Archivo",sans-serif;font-weight:800;font-size:.74rem;letter-spacing:.02em;
-    background:var(--ink);color:var(--paper);width:1.9rem;height:1.9rem;border-radius:50%;
-    display:grid;place-items:center;margin-bottom:1.15rem}
+  .lane{padding:clamp(1.8rem,3.4vw,3.2rem);border-radius:4px;display:flex;flex-direction:column;align-items:flex-start}
+  .lane--loja{background:var(--verde);color:var(--branco)}
+  .lane--cons{background:var(--branco);border:1px solid var(--hair)}
   .lane__t{font-family:"Archivo",sans-serif;font-weight:700;letter-spacing:-.03em;
-    font-size:clamp(1.5rem,2.7vw,2.15rem);margin:0 0 .55rem;line-height:1.04}
-  .lane__l{color:var(--mute);margin:0 0 1.5rem;max-width:36ch}
-  .lane__cta{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;
-    font-family:"Archivo",sans-serif;font-weight:700;font-size:.92rem;
-    border-bottom:2px solid var(--peach);padding-bottom:.18rem;transition:gap .18s ease}
-  .lane:hover .lane__cta{gap:.85rem}
-  .lane__cta:focus-visible{outline:2px solid var(--ember);outline-offset:4px}
+    font-size:clamp(1.6rem,2.9vw,2.3rem);margin:0 0 .55rem;line-height:1.04}
+  .lane__l{margin:0 0 1.8rem;max-width:36ch}
+  .lane--loja .lane__l{color:var(--mute-esc)}
+  .lane--cons .lane__l{color:var(--mute)}
 
   /* fecho ------------------------------------------------------------- */
-  .close{background:var(--ink);color:var(--paper);padding-block:clamp(4.5rem,10vw,8rem);margin-top:clamp(4rem,9vw,7rem)}
+  .close{background:var(--ink);color:var(--branco);padding-block:clamp(4.5rem,10vw,8rem)}
   .close__t{font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;
     letter-spacing:-.04em;line-height:.92;font-size:clamp(2.2rem,8vw,6.4rem);margin:0 0 2rem;text-wrap:balance}
-  .close__t .serif{text-transform:none;font-weight:400;color:var(--peach)}
+  .close__t .serif{text-transform:none;font-weight:400;color:var(--laranja)}
   .close__grid{display:flex;flex-wrap:wrap;gap:2.4rem 3.4rem;align-items:flex-end}
+  .close__i{margin:0}
   .close__i b{display:block;font-family:"Archivo",sans-serif;font-size:1.06rem;font-weight:600}
-  .close__i a{text-decoration:none;border-bottom:1px solid #FFB26B66;padding-bottom:.1rem;
+  .close__i a{text-decoration:none;border-bottom:1px solid #E8832A88;padding-bottom:.1rem;
     transition:border-color .18s ease}
-  .close__i a:hover{border-bottom-color:var(--peach)}
-  .close__i a:focus-visible{outline:2px solid var(--peach);outline-offset:3px}
-  .close__i span{color:#A5A2A6;font-size:.82rem}
-  .close__sig{margin-left:auto;font-family:"Archivo",sans-serif;font-weight:600;font-size:.7rem;
-    letter-spacing:.24em;text-indent:.24em;text-transform:uppercase;color:#EDEDEFb0}
+  .close__i a:hover{border-bottom-color:var(--laranja)}
+  .close__i span{color:var(--mute-esc);font-size:.82rem}
+  .close__sig{margin:0 0 0 auto;font-family:"Archivo",sans-serif;font-weight:600;font-size:.78rem;
+    letter-spacing:.2em;text-indent:.2em;text-transform:uppercase;color:var(--mute-esc)}
   @media(max-width:700px){.close__sig{margin-left:0}}
 
-  /* reveal ------------------------------------------------------------ */
-  .rise{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
-  .rise.in{opacity:1;transform:none}
+  /* trilha de circuito ------------------------------------------------ */
+  .trace{position:absolute;left:0;top:0;width:100%;pointer-events:none;z-index:6;overflow:visible}
+  .trace path{fill:none;stroke-linejoin:round;stroke-linecap:round}
+  .trace__base{stroke:var(--verde-3);stroke-opacity:.22;stroke-width:1.5}
+  .trace__draw{stroke:var(--verde-3);stroke-width:1.8}
+  .trace circle{fill:var(--verde);stroke:var(--verde-3);stroke-width:1.8;transition:fill .3s ease,stroke .3s ease}
+  .trace circle.on{fill:var(--laranja);stroke:var(--laranja)}
+  @media(max-width:700px){.trace{display:none}}
+
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    .rise{opacity:1;transform:none;transition:none}
     [data-px],[data-drift],[data-spin]{transform:none !important}
+    .ops__log li{animation:none}
+    .btn,.res__i::before,.res__t{transition:none}
   }
 </style>
 </head>
@@ -220,72 +222,82 @@
 </header>
 
 <main>
-  <section class="shell hero">
-    <div class="hero__type">
-      <img class="hero__mark" src="assets/gk-simbolo-tinta.png" alt="" data-px="0,-90" data-spin="150" data-mouse="16,11">
-      <h1 class="display">
-        <span class="word" data-px="-95,0" data-drift="12,3.5,9,0" data-mouse="-22,-7">Ideias</span>
-        <span class="bridge serif">que viram</span>
-        <span class="word word--b" data-px="95,0" data-drift="-12,-3.5,9,3.14159" data-mouse="22,7">Operação</span>
-      </h1>
-    </div>
-    <div class="hero__foot">
-      <div class="rise">
-        <p class="hero__claim">Você quer vender online. A gente monta a loja e automatiza o trabalho chato.</p>
-        <p class="hero__sub">Loja própria, catálogo e sistemas sob medida. Sem planilha, sem cadastro na mão.</p>
+  <div class="hero-wrap">
+    <section class="shell hero" id="topo">
+      <div class="hero__type">
+        <img class="hero__mark" src="assets/gk-simbolo-positivo.png" alt="" data-px="0,-90" data-spin="150" data-mouse="16,11">
+        <h1 class="display">
+          <span class="word" data-px="-95,0" data-drift="12,3.5,9,0" data-mouse="-22,-7">Ideias</span>
+          <span class="bridge serif">que viram</span>
+          <span class="word word--b" data-px="95,0" data-drift="-12,-3.5,9,3.14159" data-mouse="22,7">Operação</span>
+        </h1>
       </div>
-      <p class="hero__tag serif rise">— sob medida</p>
-    </div>
-  </section>
+      <div class="hero__foot">
+        <div>
+          <p class="hero__claim">Você quer vender online. A gente monta a loja e automatiza o trabalho chato.</p>
+          <p class="hero__sub">Loja própria, catálogo e sistemas sob medida. Sem planilha, sem cadastro na mão.</p>
+          <a class="btn btn--laranja" href="https://wa.me/5547988187638?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GK.%20Queria%20falar%20sobre%20uma%20loja." target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
+        <aside class="ops" aria-hidden="true">
+          <p class="ops__n" id="opsN">3.000</p>
+          <p class="ops__l">produtos cadastrados</p>
+          <p class="ops__z">0 digitados por pessoas</p>
+          <ul class="ops__log" id="opsLog">
+            <li><i></i>imagem encontrada · #2987</li>
+            <li><i></i>preço ajustado · #2988</li>
+            <li><i></i>feed enviado ao Merchant Center</li>
+            <li><i></i>catálogo completo</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </div>
 
   <section class="shell band" id="fazemos">
-    <p class="manifesto rise">Quem vende não deveria perder o dia <span class="serif">digitando produto.</span></p>
+    <p class="manifesto">Quem vende não deveria perder o dia <span class="serif">digitando produto.</span></p>
     <div class="manifesto__side">
-      <div class="rise">
+      <div>
         <h3>Loja que funciona sozinha</h3>
         <p>A GK constrói a loja, automatiza catálogo, preço e campanha, coloca no ar e sustenta. Você acompanha funcionando, não em apresentação.</p>
       </div>
-      <div class="rise">
+      <div>
         <h3>Seu time técnico não está sozinho</h3>
         <p>Se o time é seu, a GK entra só onde pesa: diagnóstico, arquitetura e revisão de código. Sem assumir o teclado.</p>
       </div>
     </div>
   </section>
 
-  <section class="shell band" style="padding-top:0">
-    <div class="rule rise">
-      <span class="mono rule__k">Resultados reais</span>
+  <section class="shell band band--tight" id="resultados">
+    <div class="rule">
+      <span class="rule__k">Resultados reais</span>
       <span class="rule__n">3.000+</span>
     </div>
-    <div class="scatter">
-      <article class="tile tile--ash  t1" data-px="0,-34"><p class="mono tile__k">caso · loja de acabamentos</p><h3 class="tile__t">+3.000 produtos cadastrados sem ninguém digitar</h3></article>
-      <article class="tile tile--peach t2" data-px="0,52"><p class="mono tile__k">caso · loja de acabamentos</p><h3 class="tile__t">Imagens buscadas automaticamente</h3></article>
-      <article class="tile tile--line  t3" data-px="0,-58"><p class="mono tile__k">caso · loja de acabamentos</p><h3 class="tile__t">Preços ajustados sozinhos</h3></article>
-      <article class="tile tile--ink   t4" data-px="0,40"><p class="mono tile__k">caso · loja de acabamentos</p><h3 class="tile__t">Feed do Google Merchant Center configurável</h3></article>
-      <article class="tile tile--ink   t5" data-px="0,-46"><p class="mono tile__k">caso · loja de acabamentos</p><h3 class="tile__t">Campanhas de preço dentro da loja</h3></article>
-      <article class="tile tile--line  t6" data-px="0,58"><p class="mono tile__k">caso · empresa sem site</p><h3 class="tile__t">Site novo para quem não tinha presença online</h3></article>
-      <article class="tile tile--peach t7" data-px="0,-40"><p class="mono tile__k">caso · empresa sem site</p><h3 class="tile__t">Melhor posição no Google</h3></article>
-      <article class="tile tile--ash   t8" data-px="0,46"><p class="mono tile__k">consultoria avulsa</p><h3 class="tile__t">Diagnóstico para times técnicos, sem amarrar projeto</h3></article>
+    <div class="res">
+      <article class="res__i"><h3 class="res__t">+3.000 produtos</h3><p class="res__d">cadastrados sem ninguém digitar</p><p class="res__c">Loja de acabamentos</p></article>
+      <article class="res__i"><h3 class="res__t">Imagens</h3><p class="res__d">buscadas automaticamente</p><p class="res__c">Loja de acabamentos</p></article>
+      <article class="res__i"><h3 class="res__t">Preços</h3><p class="res__d">ajustados sozinhos</p><p class="res__c">Loja de acabamentos</p></article>
+      <article class="res__i"><h3 class="res__t">Merchant Center</h3><p class="res__d">feed do Google configurável</p><p class="res__c">Loja de acabamentos</p></article>
+      <article class="res__i"><h3 class="res__t">Campanhas</h3><p class="res__d">de preço dentro da loja</p><p class="res__c">Loja de acabamentos</p></article>
+      <article class="res__i"><h3 class="res__t">Site novo</h3><p class="res__d">para quem não tinha presença online</p><p class="res__c">Empresa sem site</p></article>
+      <article class="res__i"><h3 class="res__t">Melhor posição</h3><p class="res__d">no Google</p><p class="res__c">Empresa sem site</p></article>
+      <article class="res__i"><h3 class="res__t">Consultoria avulsa</h3><p class="res__d">diagnóstico para times técnicos, sem amarrar projeto</p><p class="res__c">Para times técnicos</p></article>
     </div>
   </section>
 
-  <section class="shell band" id="frentes" style="padding-top:0">
-    <div class="rule rise">
-      <span class="mono rule__k">Duas portas, dois compromissos</span>
-      <span class="rule__n">1 / 2</span>
+  <section class="shell band band--tight" id="frentes">
+    <div class="rule">
+      <span class="rule__k">Duas portas, dois compromissos</span>
     </div>
-    <div class="lanes rise">
-      <div class="lane">
-        <div class="lane__badge">1</div>
+    <div class="lanes">
+      <div class="lane lane--loja">
         <h2 class="lane__t">Loja e sistemas sob medida</h2>
         <p class="lane__l">Você diz o que quer vender. A GK monta a loja, automatiza o catálogo e mantém no ar.</p>
-        <a class="lane__cta" href="https://wa.me/5547988187638?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GK.%20Queria%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">Falar sobre um projeto <span aria-hidden="true">→</span></a>
+        <a class="btn btn--laranja" href="https://wa.me/5547988187638?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GK.%20Queria%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">Falar sobre um projeto</a>
       </div>
-      <div class="lane">
-        <div class="lane__badge">2</div>
+      <div class="lane lane--cons">
         <h2 class="lane__t">Consultoria</h2>
         <p class="lane__l">Seu time constrói. A GK entra para diagnosticar, decidir arquitetura e revisar, sem assumir o teclado.</p>
-        <a class="lane__cta" href="https://wa.me/5547988187638?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GK.%20Queria%20conversar%20sobre%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Agendar um diagnóstico <span aria-hidden="true">→</span></a>
+        <a class="btn btn--linha" href="https://wa.me/5547988187638?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GK.%20Queria%20conversar%20sobre%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Agendar um diagnóstico</a>
       </div>
     </div>
   </section>
@@ -293,12 +305,12 @@
 
 <footer class="close" id="contato">
   <div class="shell">
-    <h2 class="close__t rise">Tem um problema<br><span class="serif">em mente?</span></h2>
+    <h2 class="close__t">Tem um problema<br><span class="serif">em mente?</span></h2>
     <div class="close__grid">
-      <p class="close__i rise"><b><a href="mailto:contato@gksoftware.com.br">contato@gksoftware.com.br</a></b><span>resposta em até um dia útil</span></p>
-      <p class="close__i rise"><b><a href="https://wa.me/5547988187638?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GK." target="_blank" rel="noopener">(47) 98818-7638</a></b><span>WhatsApp</span></p>
-      <p class="close__i rise"><b>Consultoria avulsa</b><span>diagnóstico fechado, sem amarrar projeto</span></p>
-      <p class="close__sig rise">Ideias que viram operação</p>
+      <p class="close__i"><b><a href="mailto:contato@gksoftware.com.br">contato@gksoftware.com.br</a></b><span>resposta em até um dia útil</span></p>
+      <p class="close__i"><b><a href="https://wa.me/5547988187638?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GK." target="_blank" rel="noopener">(47) 98818-7638</a></b><span>WhatsApp</span></p>
+      <p class="close__i"><b>Consultoria avulsa</b><span>diagnóstico fechado, sem amarrar projeto</span></p>
+      <p class="close__sig">Ideias que viram operação</p>
     </div>
   </div>
 </footer>
@@ -306,9 +318,8 @@
 <script>
   const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* 1. hero: parallax, deriva e mouse -------------------------------- */
   if (!reduz) {
-    // Um só laço compõe todas as camadas de movimento na mesma transform,
-    // para que scroll, deriva contínua e mouse nunca briguem pelo elemento.
     const num = (v, i, pad = 0) => { const p = (v || '').split(','); return p[i] !== undefined ? +p[i] : pad; };
     const moveis = [...document.querySelectorAll('[data-px],[data-drift],[data-mouse],[data-spin]')].map(el => ({
       el,
@@ -322,20 +333,17 @@
 
     let alvoX = 0, alvoY = 0, suaveX = 0, suaveY = 0, vivo = false;
 
-    // As amplitudes são calibradas para tela larga. Em pixel fixo, 95px de deslocamento
-    // é uma fração enorme de uma tela estreita e joga a palavra para fora do enquadramento.
+    // Amplitudes calibradas para tela larga; em tela estreita um teto evita
+    // que parallax e deriva somados tirem a primeira letra do enquadramento.
     let esc = 1, teto = Infinity;
     const calibrar = () => {
       esc = Math.min(1, Math.max(.24, innerWidth / 1440));
-      // Em tela larga sobram centenas de px de folga lateral e o gesto pode ser amplo.
-      // Em tela estreita a margem é de ~18px: sem teto, parallax e deriva se somam
-      // no mesmo sentido e a primeira letra sai do enquadramento.
       teto = innerWidth < 900 ? innerWidth * .035 : Infinity;
     };
     calibrar();
 
     addEventListener('pointermove', (e) => {
-      alvoX = (e.clientX / innerWidth  - .5) * 2;   // -1 .. 1
+      alvoX = (e.clientX / innerWidth  - .5) * 2;
       alvoY = (e.clientY / innerHeight - .5) * 2;
     }, { passive: true });
 
@@ -346,15 +354,13 @@
         const r = m.el.getBoundingClientRect();
         m.p = Math.max(-1.2, Math.min(1.2, (r.top + r.height / 2 - vh / 2) / vh));
       }
-      // fora do hero o laço contínuo está parado: garante uma passada por scroll,
-      // senão os blocos espalhados congelam justamente quando entram na tela.
       if (!vivo && !agendado) { agendado = true; requestAnimationFrame(quadro); }
     }
 
     const t0 = performance.now();
     function quadro(agora) {
       const t = (agora - t0) / 1000;
-      suaveX += (alvoX - suaveX) * .055;            // inércia: o cursor puxa, não arrasta
+      suaveX += (alvoX - suaveX) * .055;
       suaveY += (alvoY - suaveY) * .055;
       for (const m of moveis) {
         const w = 6.2831853 / m.per;
@@ -369,26 +375,104 @@
     }
 
     // o laço só roda enquanto o hero está na tela
-    const hero = document.querySelector('.hero');
     new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !vivo) { vivo = true; agendado = true; requestAnimationFrame(quadro); }
       else if (!e.isIntersecting) { vivo = false; }
-    }).observe(hero);
+    }).observe(document.querySelector('.hero'));
 
     addEventListener('scroll', medirScroll, { passive: true });
     addEventListener('resize', () => { calibrar(); medirScroll(); }, { passive: true });
     medirScroll();
   }
 
-  const obs = new IntersectionObserver((entradas) => {
-    for (const e of entradas) {
-      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-    }
-  }, { rootMargin: '0px 0px -12% 0px' });
-  document.querySelectorAll('.rise').forEach((el, i) => {
-    el.style.transitionDelay = (i % 4) * 90 + 'ms';
-    obs.observe(el);
-  });
+  /* 2. painel: o cadastro rodando ------------------------------------ */
+  (() => {
+    const n = document.getElementById('opsN');
+    const log = document.getElementById('opsLog');
+    const TOTAL = 3000, DUR = 5200;
+    const fmt = v => v.toLocaleString('pt-BR');
+    const passos = ['imagem encontrada', 'preço ajustado', 'descrição importada', 'imagem encontrada', 'preço ajustado', 'categoria definida'];
+    if (reduz) return;                       // sem movimento: o HTML já traz o estado final
+
+    const linha = txt => {
+      const li = document.createElement('li');
+      li.innerHTML = '<i></i>' + txt;
+      log.appendChild(li);
+      while (log.children.length > 4) log.removeChild(log.firstChild);
+    };
+
+    log.innerHTML = '';
+    n.textContent = '0';
+    const ini = performance.now();
+    let ult = -1, k = 0;
+    (function passo(agora) {
+      // o timestamp do rAF pode vir um pouco antes de `ini`: sem o piso, o progresso fica negativo
+      const f = Math.max(0, Math.min(1, (agora - ini) / DUR));
+      const v = Math.round(TOTAL * (1 - Math.pow(1 - f, 3)));
+      n.textContent = fmt(v);
+      const marca = Math.floor((agora - ini) / 650);
+      if (f < 1 && marca !== ult) { ult = marca; linha(passos[k++ % passos.length] + ' · #' + Math.max(1, v)); }
+      if (f < 1) requestAnimationFrame(passo);
+      else { linha('feed enviado ao Merchant Center'); setTimeout(() => linha('catálogo completo'), 700); }
+    })(ini);
+  })();
+
+  /* 3. trilha de circuito: liga as seções e se desenha ao rolar ------ */
+  (() => {
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'trace');
+    svg.setAttribute('aria-hidden', 'true');
+    const base = document.createElementNS(NS, 'path'); base.setAttribute('class', 'trace__base');
+    const draw = document.createElementNS(NS, 'path'); draw.setAttribute('class', 'trace__draw');
+    svg.append(base, draw);
+    document.body.appendChild(svg);
+
+    const alvos = ['#fazemos', '#resultados', '#frentes', '#contato'].map(s => document.querySelector(s));
+    let nos = [], comp = 1, y0 = 0, y1 = 1;
+
+    const montar = () => {
+      const top = el => el.getBoundingClientRect().top + scrollY;
+      const sh = document.querySelector('.shell');
+      const x = sh.getBoundingClientRect().left + parseFloat(getComputedStyle(sh).paddingLeft) / 2;
+      const ys = [top(document.querySelector('.hero')) + 130, ...alvos.map(a => top(a) + 56)];
+      let d = `M${x} ${ys[0]}`, lado = 1, xa = x;
+      for (let i = 1; i < ys.length; i++) {
+        const meio = (ys[i - 1] + ys[i]) / 2, xn = x + 9 * lado;
+        d += ` V${meio - 6} H${xn} V${ys[i]}`;
+        ys[i] = [ys[i], xn];
+        lado *= -1; xa = xn;
+      }
+      base.setAttribute('d', d); draw.setAttribute('d', d);
+      svg.setAttribute('height', document.documentElement.scrollHeight);
+      svg.querySelectorAll('circle').forEach(c => c.remove());
+      nos = ys.map((p, i) => {
+        const [cy, cx] = i === 0 ? [p, x] : p;
+        const c = document.createElementNS(NS, 'circle');
+        c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', 5);
+        svg.appendChild(c);
+        return { c, y: cy };
+      });
+      comp = draw.getTotalLength();
+      draw.style.strokeDasharray = comp;
+      y0 = ys[0] instanceof Array ? ys[0][0] : ys[0];
+      y1 = nos[nos.length - 1].y;
+      pintar();
+    };
+
+    const pintar = () => {
+      const ref = scrollY + innerHeight * .65;
+      const p = reduz ? 1 : Math.max(0, Math.min(1, (ref - y0) / (y1 - y0)));
+      draw.style.strokeDashoffset = comp * (1 - p);
+      for (const n of nos) n.c.classList.toggle('on', reduz || n.y < ref);
+    };
+
+    addEventListener('scroll', pintar, { passive: true });
+    addEventListener('resize', montar, { passive: true });
+    addEventListener('load', montar);
+    if (document.fonts) document.fonts.ready.then(montar);
+    montar();
+  })();
 </script>
 </body>
 </html>
