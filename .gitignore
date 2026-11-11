@@ -3,3 +3,4 @@
 
 # saída do build: gerada por ./deploy/build.sh <dominio>
 public/
+.superpowers/
